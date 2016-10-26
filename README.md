@@ -1,2 +1,2 @@
 # osm
-Object Store Manipulator - `curl` for cloud storage services.
+Object Store Manipulator - `curl` for cloud storage services. 🙌
