@@ -1,0 +1,12 @@
+package: github.com/appscode/osm
+import:
+- package: cloud.google.com/go
+  version: v0.6.0
+- package: github.com/fatih/color
+  version: v1.4.1
+- package: github.com/mitchellh/go-homedir
+- package: github.com/spf13/cobra
+- package: golang.org/x/net
+- package: golang.org/x/oauth2
+- package: google.golang.org/api
+- package: gopkg.in/yaml.v2
