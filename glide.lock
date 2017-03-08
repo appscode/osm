@@ -1,5 +1,5 @@
-hash: d826bfb639c55c4d5dc2baa0a5da9ab590045708fa312bb7af217089a31fd48a
-updated: 2017-03-08T02:14:11.795526708-08:00
+hash: 8f9fe41a6119259c073f7375bceaacf4f596616b9a295324450e6e9eb9f676dd
+updated: 2017-03-08T02:21:42.850854526-08:00
 imports:
 - name: cloud.google.com/go
   version: c116c7972ec94f148459a304d07a67ecbc770d4b
@@ -16,6 +16,10 @@ imports:
   - proto
 - name: github.com/googleapis/gax-go
   version: 8c5154c0fe5bf18cf649634d4c6df50897a32751
+- name: github.com/graymeta/stow
+  version: 24dbf1204dcfe42cd42f52ce9429c48d4929a6e1
+  repo: https://github.com/appscode/stow.git
+  vcs: git
 - name: github.com/inconshreveable/mousetrap
   version: 76626ae9c91c4f2a10f34cad8ce83ea42c93bb75
 - name: github.com/mattn/go-colorable

@@ -4,6 +4,10 @@ import:
   version: v0.6.0
 - package: github.com/fatih/color
   version: v1.4.1
+- package: github.com/graymeta/stow
+  repo: https://github.com/appscode/stow.git
+  version: master
+  vcs: git
 - package: github.com/mitchellh/go-homedir
 - package: github.com/spf13/cobra
 - package: golang.org/x/net
