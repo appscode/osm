@@ -3,6 +3,32 @@
 # osm
 Object Store Manipulator - `curl` for cloud storage services. 🙌
 
+## Install OSM
+You can download and install a pre-built binary:
+```bash
+# Linux amd 64-bit:
+wget -O osm https://cdn.appscode.com/binaries/osm/0.1.0/osm-linux-amd64 \
+  && chmod +x osm \
+  && sudo mv osm /usr/local/bin/
+
+# Linux 386 32-bit:
+wget -O osm https://cdn.appscode.com/binaries/osm/0.1.0/osm-linux-386 \
+  && chmod +x osm \
+  && sudo mv osm /usr/local/bin/
+
+# Mac 64-bit
+wget -O osm https://cdn.appscode.com/binaries/osm/0.1.0/osm-darwin-amd64 \
+  && chmod +x osm \
+  && sudo mv osm /usr/local/bin/
+
+# Mac 32-bit
+wget -O osm https://cdn.appscode.com/binaries/osm/0.1.0/osm-darwin-386 \
+  && chmod +x osm \
+  && sudo mv osm /usr/local/bin/
+```
+
+To build from source, run: `go get -u github.com/appscode/osm`
+
 ## Usage
 ```bash
 osm [command] [flags]
@@ -33,33 +59,7 @@ Use "osm [command] --help" for more information about a command.
 
 ```
 
-## Install OSM
-You can download and install a pre-built binary:
-```bash
-# Linux amd 64-bit:
-wget -O osm https://cdn.appscode.com/binaries/osm/0.1.0/osm-linux-amd64 \
-  && chmod +x osm \
-  && sudo mv osm /usr/local/bin/
-
-# Linux 386 32-bit:
-wget -O osm https://cdn.appscode.com/binaries/osm/0.1.0/osm-linux-386 \
-  && chmod +x osm \
-  && sudo mv osm /usr/local/bin/
-
-# Mac 64-bit
-wget -O osm https://cdn.appscode.com/binaries/osm/0.1.0/osm-darwin-amd64 \
-  && chmod +x osm \
-  && sudo mv osm /usr/local/bin/
-
-# Mac 32-bit
-wget -O osm https://cdn.appscode.com/binaries/osm/0.1.0/osm-darwin-386 \
-  && chmod +x osm \
-  && sudo mv osm /usr/local/bin/
-```
-
-To build from source: `go get -u github.com/appscode/osm`
-
-## OSM Configuration
+### OSM Configuration
 `osm` stores credentials necessary to connect to a cloud storage provider in YAML format in `$HOME/.osm/config` file.
 This allows providing commands one time for multiple subsequent operations with a cloud provider.
 ```bash
@@ -73,8 +73,7 @@ osm config set-context osm-gs --provider=google --google.json_key_path=<path_sa_
 osm config set-context osm-az --provider=azure --azure.account=<storage_ac> --azure.key=<key>
 ```
 
-## Bucket Operations
-
+### Bucket Operations
 ```bash
 # create bucket
 osm mc mybucket
