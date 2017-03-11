@@ -6,20 +6,20 @@ import (
 	"github.com/spf13/cobra"
 )
 
-type containerCreateRequest struct {
-	context string
-	bucket  string
+type containerMakeRequest struct {
+	context   string
+	container string
 }
 
 func NewCmdMakeContainer() *cobra.Command {
-	req := &containerCreateRequest{}
+	req := &containerMakeRequest{}
 	cmd := &cobra.Command{
 		Use:     "mc <name>",
-		Short:   "Create container",
+		Short:   "Make container",
 		Example: "osm mc mybucket",
 		Run: func(cmd *cobra.Command, args []string) {
-			req.bucket = args[0]
-			createContainer(req)
+			req.container = args[0]
+			makeContainer(req)
 		},
 	}
 
@@ -27,14 +27,14 @@ func NewCmdMakeContainer() *cobra.Command {
 	return cmd
 }
 
-func createContainer(req *containerCreateRequest) {
+func makeContainer(req *containerMakeRequest) {
 	cfg, err := otx.LoadConfig()
 	term.ExitOnError(err)
 
 	loc, err := cfg.Dial(req.context)
 	term.ExitOnError(err)
 
-	_, err = loc.CreateContainer(req.bucket)
+	_, err = loc.CreateContainer(req.container)
 	term.ExitOnError(err)
-	term.Successln("Successfully created container " + req.bucket)
+	term.Successln("Successfully created container " + req.container)
 }

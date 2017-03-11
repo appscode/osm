@@ -7,20 +7,20 @@ import (
 	"github.com/spf13/cobra"
 )
 
-type bucketRemoveRequest struct {
-	context string
-	bucket  string
-	force   bool
+type containerRemoveRequest struct {
+	context   string
+	container string
+	force     bool
 }
 
 func NewCmdRemoveContainer() *cobra.Command {
-	req := &bucketRemoveRequest{}
+	req := &containerRemoveRequest{}
 	cmd := &cobra.Command{
 		Use:     "rc <name>",
 		Short:   "Remove container",
 		Example: "osm rc mybucket",
 		Run: func(cmd *cobra.Command, args []string) {
-			req.bucket = args[0]
+			req.container = args[0]
 			removeContainer(req)
 		},
 	}
@@ -30,7 +30,7 @@ func NewCmdRemoveContainer() *cobra.Command {
 	return cmd
 }
 
-func removeContainer(req *bucketRemoveRequest) {
+func removeContainer(req *containerRemoveRequest) {
 	cfg, err := otx.LoadConfig()
 	term.ExitOnError(err)
 
@@ -38,7 +38,7 @@ func removeContainer(req *bucketRemoveRequest) {
 	term.ExitOnError(err)
 
 	if req.force {
-		c, err := loc.Container(req.bucket)
+		c, err := loc.Container(req.container)
 		term.ExitOnError(err)
 
 		cursor := stow.CursorStart
@@ -55,7 +55,7 @@ func removeContainer(req *bucketRemoveRequest) {
 		}
 	}
 
-	err = loc.RemoveContainer(req.bucket)
+	err = loc.RemoveContainer(req.container)
 	term.ExitOnError(err)
-	term.Successln("Successfully removed container " + req.bucket)
+	term.Successln("Successfully removed container " + req.container)
 }

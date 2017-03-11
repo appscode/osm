@@ -53,10 +53,12 @@ func main() {
 	rootCmd.AddCommand(cfgCmd.NewCmdConfig())
 
 	rootCmd.AddCommand(osmCmd.NewCmdMakeContainer())
+	rootCmd.AddCommand(osmCmd.NewCmdListContainer())
 	rootCmd.AddCommand(osmCmd.NewCmdRemoveContainer())
 
 	rootCmd.AddCommand(osmCmd.NewCmdPush())
 	rootCmd.AddCommand(osmCmd.NewCmdPull())
+	rootCmd.AddCommand(osmCmd.NewCmdStat())
 	rootCmd.AddCommand(osmCmd.NewCmdRemove())
 
 	rootCmd.AddCommand(v.NewCmdVersion())
