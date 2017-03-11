@@ -57,7 +57,7 @@ func removeContainer(req *containerRemoveRequest) {
 			items, next, err := c.Items(stow.NoPrefix, cursor, 50)
 			term.ExitOnError(err)
 			for _, item := range items {
-				term.Warningln("Removing term: " + item.ID())
+				term.Warningln("Removing item: " + item.ID())
 				c.RemoveItem(item.ID())
 			}
 			cursor = next
