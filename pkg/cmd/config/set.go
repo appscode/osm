@@ -1,6 +1,7 @@
 package config
 
 import (
+	"io/ioutil"
 	"os"
 
 	"github.com/appscode/go-term"
@@ -21,7 +22,7 @@ type setContextRequest struct {
 	s3ConfigEndpoint         string
 	s3ConfigRegion           string
 	s3ConfigSecretKey        string
-	gcsConfigJSON            string
+	gcsConfigJSONKeyPath     string
 	gcsConfigProjectId       string
 	gcsConfigScopes          string
 	azureConfigAccount       string
@@ -60,7 +61,7 @@ func newCmdSet() *cobra.Command {
 	setCmd.Flags().StringVar(&req.s3ConfigRegion, s3.Kind+"."+s3.ConfigRegion, "", "S3 config region")
 	setCmd.Flags().StringVar(&req.s3ConfigSecretKey, s3.Kind+"."+s3.ConfigSecretKey, "", "S3 config secret key")
 
-	setCmd.Flags().StringVar(&req.gcsConfigJSON, gcs.Kind+"."+gcs.ConfigJSON, "", "GCS config json")
+	setCmd.Flags().StringVar(&req.gcsConfigJSONKeyPath, gcs.Kind+".json_key_path", "", "GCS config json key path")
 	setCmd.Flags().StringVar(&req.gcsConfigProjectId, gcs.Kind+"."+gcs.ConfigProjectId, "", "GCS config project id")
 	setCmd.Flags().StringVar(&req.gcsConfigScopes, gcs.Kind+"."+gcs.ConfigScopes, "", "GCS config scopes")
 
@@ -91,8 +92,10 @@ func setContext(req *setContextRequest) {
 			s3.ConfigSecretKey:   req.s3ConfigSecretKey,
 		}
 	case gcs.Kind:
+		jsonKey, err := ioutil.ReadFile(req.gcsConfigJSONKeyPath)
+		term.ExitOnError(err)
 		nc.Config = stow.ConfigMap{
-			gcs.ConfigJSON:      req.gcsConfigJSON,
+			gcs.ConfigJSON:      string(jsonKey),
 			gcs.ConfigProjectId: req.gcsConfigProjectId,
 			gcs.ConfigScopes:    req.gcsConfigScopes,
 		}
