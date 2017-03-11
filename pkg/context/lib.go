@@ -4,6 +4,7 @@ import (
 	"errors"
 	"io/ioutil"
 	"os"
+	"path/filepath"
 
 	"github.com/graymeta/stow"
 	homeDir "github.com/mitchellh/go-homedir"
@@ -46,6 +47,7 @@ func (config *OSMConfig) Save() error {
 	if err != nil {
 		return err
 	}
+	os.MkdirAll(filepath.Dir(configPath), 0755)
 	if err := ioutil.WriteFile(configPath, data, 0600); err != nil {
 		return err
 	}

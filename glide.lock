@@ -1,15 +1,15 @@
 hash: d6a2bf0eae880334b86aacc5b5b29da4c00044618da02820cad33fb5eb8ec8a0
-updated: 2017-03-10T18:31:48.682616612-08:00
+updated: 2017-03-11T00:39:00.294779195-08:00
 imports:
 - name: cloud.google.com/go
-  version: c116c7972ec94f148459a304d07a67ecbc770d4b
+  version: 620e968dec62c9aac95a23e38e32e2cb831f73e3
   subpackages:
   - compute/metadata
   - internal
 - name: github.com/appscode/errors
   version: 6a668ba07d02064c06707b7d8b0f5239db707045
 - name: github.com/appscode/go
-  version: 7ba1c0a441c6c319a501e54db6e93deaff5fe0dd
+  version: b9008e99fa90d7806f404e0eab52bdecb4444826
   subpackages:
   - env
   - version
@@ -48,21 +48,21 @@ imports:
   subpackages:
   - storage
 - name: github.com/facebookgo/stack
-  version: d9d227395bc3d7a635388c75b2e3b3a750e11888
+  version: 751773369052141c013c6e827a71e8f35c07879c
 - name: github.com/fatih/color
   version: 9131ab34cf20d2f6d83fdc67168a5430d1c7dc23
 - name: github.com/go-ini/ini
-  version: 6e4869b434bd001f6983749881c7ead3545887d8
+  version: 7e015cd18f007383aa571cc413bd2ec09cff7f2d
 - name: github.com/golang/glog
   version: 23def4e6c14b4da8ac2ed8007337bc5eb5007998
 - name: github.com/golang/protobuf
-  version: 8ee79997227bf9b34611aee7946ae64735e6fd93
+  version: c9c7427a2a70d2eb3bafa0ab2dc163e45f143317
   subpackages:
   - proto
 - name: github.com/googleapis/gax-go
   version: 8c5154c0fe5bf18cf649634d4c6df50897a32751
 - name: github.com/graymeta/stow
-  version: 88f1af61248efcaca1f3d3ef917f7647e27df019
+  version: 6366d2d3d1eeb08d2cab7abbc9fe04cf57ac6b45
   repo: https://github.com/appscode/stow.git
   vcs: git
   subpackages:
@@ -82,17 +82,17 @@ imports:
   version: 57fdcb988a5c543893cc61bce354a6e24ab70022
   repo: https://github.com/mattn/go-isatty
 - name: github.com/mitchellh/go-homedir
-  version: d682a8f0cf139663a984ff12528da460ca963de9
+  version: b8bc1bf767474819792c23f32d8286a45736f1c6
 - name: github.com/ncw/swift
   version: 5850d90fd74c3abb87b70ef3f4cb86198f01a6e6
 - name: github.com/pkg/errors
-  version: a22138067af1c4942683050411a841ade67fe1eb
+  version: bfd5150e4e41705ded2129ec33379de1cb90b513
 - name: github.com/spf13/cobra
-  version: 9c28e4bbd74e5c3ed7aacbc552b2cab7cfdfe744
+  version: 16c014f1a19d865b765b420e74508f80eb831ada
 - name: github.com/spf13/pflag
-  version: c7e63cf4530bcd3ba943729cee0efeff2ebea63f
+  version: 9ff6c6923cfffbcd502984b8e0c80539a94968b7
 - name: golang.org/x/net
-  version: f4b625ec9b21d620bb5ce57f2dfc3e08ca97fce6
+  version: a6577fac2d73be281a500b310739095313165611
   subpackages:
   - context
   - context/ctxhttp
@@ -103,7 +103,7 @@ imports:
   - lex/httplex
   - trace
 - name: golang.org/x/oauth2
-  version: d5040cddfc0da40b408c9a1da4728662435176a9
+  version: efb10a30610e617dbb17fc243f4cc61a8cfa2903
   subpackages:
   - google
   - internal
@@ -115,14 +115,14 @@ imports:
   subpackages:
   - unix
 - name: google.golang.org/api
-  version: f093df3d954a6024843c4a47c4410a2cb7af85aa
+  version: 1202890e803f07684581b575fda809bf335a533f
   subpackages:
   - gensupport
   - googleapi
   - googleapi/internal/uritemplates
   - storage/v1
 - name: google.golang.org/appengine
-  version: 150dc57a1b433e64154302bdc40b6bb8aefa313a
+  version: b79c28f0197795b4050bfcd7c4c2209136c594b1
   subpackages:
   - internal
   - internal/app_identity
@@ -134,12 +134,13 @@ imports:
   - internal/urlfetch
   - urlfetch
 - name: google.golang.org/grpc
-  version: 708a7f9f3283aa2d4f6132d287d78683babe55c8
+  version: d50cf2db166eaff3f2429425758d12205085eb5b
   subpackages:
   - codes
   - credentials
   - grpclog
   - internal
+  - keepalive
   - metadata
   - naming
   - peer
@@ -147,5 +148,5 @@ imports:
   - tap
   - transport
 - name: gopkg.in/yaml.v2
-  version: a5b47d31c556af34a302ce5d659e6fea44d90de0
+  version: a3f3340b5840cee44f372bddb5880fcbc419b46a
 testImports: []

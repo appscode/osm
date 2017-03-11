@@ -55,6 +55,10 @@ func main() {
 	rootCmd.AddCommand(osmCmd.NewCmdMakeContainer())
 	rootCmd.AddCommand(osmCmd.NewCmdRemoveContainer())
 
+	rootCmd.AddCommand(osmCmd.NewCmdPush())
+	rootCmd.AddCommand(osmCmd.NewCmdPull())
+	rootCmd.AddCommand(osmCmd.NewCmdRemove())
+
 	rootCmd.AddCommand(v.NewCmdVersion())
 	if err := rootCmd.Execute(); err != nil {
 		log.Fatal(err)

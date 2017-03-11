@@ -3,6 +3,7 @@ package cmd
 import (
 	"github.com/appscode/go-term"
 	otx "github.com/appscode/osm/pkg/context"
+	"github.com/graymeta/stow"
 	"github.com/spf13/cobra"
 )
 
@@ -40,9 +41,9 @@ func removeContainer(req *bucketRemoveRequest) {
 		c, err := loc.Container(req.bucket)
 		term.ExitOnError(err)
 
-		cursor := ""
+		cursor := stow.CursorStart
 		for {
-			items, next, err := c.Items("", cursor, 50)
+			items, next, err := c.Items(stow.NoPrefix, cursor, 50)
 			term.ExitOnError(err)
 			for _, item := range items {
 				c.RemoveItem(item.ID())

@@ -61,7 +61,7 @@ func newGoogleStorageClient(config stow.Config) (*storage.Service, error) {
 	json, _ := config.Config(ConfigJSON)
 
 	scopes := []string{storage.DevstorageReadWriteScope}
-	if s, ok := config.Config(ConfigScopes); ok {
+	if s, ok := config.Config(ConfigScopes); ok && s != "" {
 		scopes = strings.Split(s, ",")
 	}
 
