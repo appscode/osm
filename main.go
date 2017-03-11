@@ -1,19 +1,58 @@
-//go:generate go-extpoints pkg//cmd/provider/extpoints
-
 package main
 
 import (
-	"os"
-	"runtime"
-	"github.com/appscode/osm/pkg/cmd"
+	"flag"
+	"log"
+
+	v "github.com/appscode/go/version"
+	osmCmd "github.com/appscode/osm/pkg/cmd"
+	cfgCmd "github.com/appscode/osm/pkg/cmd/config"
+	"github.com/spf13/cobra"
 )
 
+var (
+	Version         string
+	VersionStrategy string
+	Os              string
+	Arch            string
+	CommitHash      string
+	GitBranch       string
+	GitTag          string
+	CommitTimestamp string
+	BuildTimestamp  string
+	BuildHost       string
+	BuildHostOs     string
+	BuildHostArch   string
+)
+
+func init() {
+	v.Version.Version = Version
+	v.Version.VersionStrategy = VersionStrategy
+	v.Version.Os = Os
+	v.Version.Arch = Arch
+	v.Version.CommitHash = CommitHash
+	v.Version.GitBranch = GitBranch
+	v.Version.GitTag = GitTag
+	v.Version.CommitTimestamp = CommitTimestamp
+	v.Version.BuildTimestamp = BuildTimestamp
+	v.Version.BuildHost = BuildHost
+	v.Version.BuildHostOs = BuildHostOs
+	v.Version.BuildHostArch = BuildHostArch
+}
+
 func main() {
-	runtime.GOMAXPROCS(runtime.NumCPU())
-	rootCmd := cmd.NewCmd()
-	// execute commands.
-	if err := rootCmd.Execute(); err != nil {
-		os.Exit(1)
+	rootCmd := &cobra.Command{
+		Use:   "osm [command]",
+		Short: `AppsCode Object Store Manipulator`,
+		Run: func(c *cobra.Command, args []string) {
+			c.Help()
+		},
 	}
-	os.Exit(0)
+	rootCmd.PersistentFlags().AddGoFlagSet(flag.CommandLine)
+	rootCmd.AddCommand(cfgCmd.NewCmdConfig())
+	rootCmd.AddCommand(osmCmd.NewCmdCreate())
+	rootCmd.AddCommand(v.NewCmdVersion())
+	if err := rootCmd.Execute(); err != nil {
+		log.Fatal(err)
+	}
 }

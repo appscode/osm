@@ -3,8 +3,8 @@ package config
 import (
 	"os"
 
-	osm_context "github.com/appscode/osm/pkg/context"
-	"github.com/appscode/osm/pkg/printer"
+	"github.com/appscode/go-term"
+	otx "github.com/appscode/osm/pkg/context"
 	"github.com/spf13/cobra"
 )
 
@@ -15,7 +15,7 @@ func newCmdUse() *cobra.Command {
 		Example: "osm config use-context",
 		Run: func(cmd *cobra.Command, args []string) {
 			if len(args) == 0 {
-				printer.Error("Provide context name as argument. See examples")
+				term.Errorln("Provide context name as argument. See examples")
 				cmd.Help()
 				os.Exit(1)
 			} else if len(args) > 1 {
@@ -31,27 +31,27 @@ func newCmdUse() *cobra.Command {
 }
 
 func useContex(name string) {
-	config, err := osm_context.GetConfigData()
+	config, err := otx.LoadConfig()
 	if err != nil {
-		printer.Error(err)
+		term.Fatalln(err)
+	}
+	if config.CurrentContext == name {
 		return
 	}
-	var contextData *osm_context.Context
-	for _, osmCtx := range config.Contexts {
-		if osmCtx.Name == name {
-			contextData = osmCtx
+
+	found := false
+	for i := range config.Contexts {
+		if config.Contexts[i].Name == name {
+			found = true
+			break
 		}
 	}
-
-	if contextData != nil {
-		config.CurrentContext = contextData.Name
-	} else {
-		printer.Error("Invalid context name")
-
+	if !found {
+		term.Fatalln("Invalid context name")
 	}
 
-	if err := osm_context.SetConfigData(config); err != nil {
-		printer.Error(err)
-		return
+	config.CurrentContext = name
+	if err := config.Save(); err != nil {
+		term.Fatalln(err)
 	}
 }

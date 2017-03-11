@@ -4,57 +4,53 @@ import (
 	"io/ioutil"
 	"os"
 
+	"github.com/graymeta/stow"
 	homeDir "github.com/mitchellh/go-homedir"
 	"gopkg.in/yaml.v2"
 )
 
 var (
-	home, _ = homeDir.Dir()
+	home, _    = homeDir.Dir()
+	configPath = home + "/.osm/config"
 )
 
 func Home() string {
 	return home
 }
 
-type Attrs struct {
-	CredentialDir string `yaml:"credential_dir"`
-	Provider      string `yaml:"provider"`
-}
-
 type Context struct {
-	ContextData struct {
-		CredentialDir string `yaml:"credential_dir"`
-		Provider      string `yaml:"provider"`
-	} `yaml:"context"`
-	Name string `yaml:"name"`
+	Name     string         `json:"name"`
+	Provider string         `json:"provider"`
+	Config   stow.ConfigMap `json:"config"`
 }
 
-type ConfigData struct {
-	Contexts       []*Context `yaml:"contexts"`
-	CurrentContext string     `yaml:"current-context"`
+type OSMConfig struct {
+	Contexts       []*Context `json:"contexts"`
+	CurrentContext string     `json:"current-context"`
 }
 
-func GetConfigData() (*ConfigData, error) {
-	config := &ConfigData{}
-	path := Home() + "/.osm/config"
-	d, err := ioutil.ReadFile(path)
-	if err != nil {
-		return nil, nil
+func LoadConfig() (*OSMConfig, error) {
+	if _, err := os.Stat(configPath); err != nil {
+		return nil, err
 	}
-	err = yaml.Unmarshal(d, config)
-	return config, nil
+	os.Chmod(configPath, 0600)
+
+	config := &OSMConfig{}
+	bytes, err := ioutil.ReadFile(configPath)
+	if err != nil {
+		return nil, err
+	}
+	err = yaml.Unmarshal(bytes, config)
+	return config, err
 }
 
-func SetConfigData(config *ConfigData) error {
-	path := Home() + "/.osm/config"
+func (config *OSMConfig) Save() error {
 	data, err := yaml.Marshal(config)
 	if err != nil {
 		return err
 	}
-
-	if err := ioutil.WriteFile(path, data, os.ModePerm); err != nil {
+	if err := ioutil.WriteFile(configPath, data, 0600); err != nil {
 		return err
 	}
-
 	return nil
 }
