@@ -43,7 +43,7 @@ func init() {
 func main() {
 	rootCmd := &cobra.Command{
 		Use:   "osm [command]",
-		Short: `AppsCode Object Store Manipulator`,
+		Short: `Object Store Manipulator by AppsCode`,
 		Run: func(c *cobra.Command, args []string) {
 			c.Help()
 		},
