@@ -3,6 +3,36 @@
 # osm
 Object Store Manipulator - `curl` for cloud storage services. 🙌
 
+## Usage
+```bash
+osm [command] [flags]
+osm [command]
+
+Available Commands:
+  config      OSM configuration
+  help        Help about any command
+  ls          List container
+  mc          Make container
+  pull        Pull item from container
+  push        Push item from container
+  rc          Remove container
+  rm          Remove item from container
+  stat        Stat item from container
+  version     Prints binary version number.
+
+Flags:
+      --alsologtostderr                  log to standard error as well as files
+      --log_backtrace_at traceLocation   when logging hits line file:N, emit a stack trace (default :0)
+      --log_dir string                   If non-empty, write log files in this directory
+      --logtostderr                      log to standard error instead of files
+      --stderrthreshold severity         logs at or above this threshold go to stderr (default 2)
+  -v, --v Level                          log level for V logs
+      --vmodule moduleSpec               comma-separated list of pattern=N settings for file-filtered logging
+
+Use "osm [command] --help" for more information about a command.
+
+```
+
 ## Build
 
     ./hack/make.py
