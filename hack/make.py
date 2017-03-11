@@ -46,6 +46,7 @@ BUILD_METADATA = libbuild.metadata(libbuild.REPO_ROOT)
 libbuild.BIN_MATRIX = {
     'osm': {
         'type': 'go',
+        'release': True,
         'go_version': True,
         'distro': {
             'darwin': ['386', 'amd64'],
