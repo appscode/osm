@@ -6,16 +6,16 @@ import (
 	"github.com/spf13/cobra"
 )
 
-type bucketCreateRequest struct {
+type containerCreateRequest struct {
 	context string
 	bucket  string
 }
 
 func NewCmdMakeContainer() *cobra.Command {
-	req := &bucketCreateRequest{}
+	req := &containerCreateRequest{}
 	cmd := &cobra.Command{
 		Use:     "mc <name>",
-		Short:   "Create Bucket",
+		Short:   "Create container",
 		Example: "osm mc mybucket",
 		Run: func(cmd *cobra.Command, args []string) {
 			req.bucket = args[0]
@@ -27,7 +27,7 @@ func NewCmdMakeContainer() *cobra.Command {
 	return cmd
 }
 
-func createContainer(req *bucketCreateRequest) {
+func createContainer(req *containerCreateRequest) {
 	cfg, err := otx.LoadConfig()
 	term.ExitOnError(err)
 
