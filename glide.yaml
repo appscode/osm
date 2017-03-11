@@ -9,6 +9,8 @@ import:
 - package: gopkg.in/yaml.v2
 - package: github.com/ghodss/yaml
 - package: github.com/dustin/go-humanize
+- package: github.com/olekukonko/tablewriter
+  version: cca8bbc0798408af109aaaa239cbd2634846b340
 - package: github.com/graymeta/stow
   repo: https://github.com/appscode/stow.git
   version: master

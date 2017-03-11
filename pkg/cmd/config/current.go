@@ -5,32 +5,28 @@ import (
 
 	"github.com/appscode/go-term"
 	otx "github.com/appscode/osm/pkg/context"
-	"github.com/ghodss/yaml"
 	"github.com/spf13/cobra"
 )
 
-func newCmdView() *cobra.Command {
+func newCmdCurrent() *cobra.Command {
 	setCmd := &cobra.Command{
-		Use:     "view",
-		Short:   "View config",
-		Example: "osm config view",
+		Use:     "current-context",
+		Short:   "Current context",
+		Example: "osm config current-context",
 		Run: func(cmd *cobra.Command, args []string) {
-			if len(args) > 1 {
+			if len(args) > 0 {
 				cmd.Help()
 				os.Exit(1)
 			}
-			viewContext()
+			currentContext()
 		},
 	}
 	return setCmd
 }
 
-func viewContext() {
+func currentContext() {
 	config, err := otx.LoadConfig()
 	term.ExitOnError(err)
 
-	data, err := yaml.Marshal(config)
-	term.ExitOnError(err)
-
-	term.Infoln(string(data))
+	term.Infoln(config.CurrentContext)
 }
