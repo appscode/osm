@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"fmt"
+	"os"
 
 	"github.com/appscode/go-term"
 	otx "github.com/appscode/osm/pkg/context"
@@ -23,6 +24,15 @@ func NewCmdListContainer() *cobra.Command {
 		Short:   "List container",
 		Example: "osm ls mybucket",
 		Run: func(cmd *cobra.Command, args []string) {
+			if len(args) == 0 {
+				term.Errorln("Provide container name as argument. See examples:")
+				cmd.Help()
+				os.Exit(1)
+			} else if len(args) > 1 {
+				cmd.Help()
+				os.Exit(1)
+			}
+
 			req.container = args[0]
 			listContainer(req)
 		},

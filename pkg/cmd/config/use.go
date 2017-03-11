@@ -10,12 +10,12 @@ import (
 
 func newCmdUse() *cobra.Command {
 	setCmd := &cobra.Command{
-		Use:     "use-context",
+		Use:     "use-context <name>",
 		Short:   "Use context",
-		Example: "osm config use-context",
+		Example: "osm config use-context <name>",
 		Run: func(cmd *cobra.Command, args []string) {
 			if len(args) == 0 {
-				term.Errorln("Provide context name as argument. See examples")
+				term.Errorln("Provide context name as argument. See examples:")
 				cmd.Help()
 				os.Exit(1)
 			} else if len(args) > 1 {

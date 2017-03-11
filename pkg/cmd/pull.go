@@ -1,6 +1,8 @@
 package cmd
 
 import (
+	"os"
+
 	"github.com/appscode/go-term"
 	"github.com/appscode/go/io"
 	otx "github.com/appscode/osm/pkg/context"
@@ -21,6 +23,15 @@ func NewCmdPull() *cobra.Command {
 		Short:   "Pull item from container",
 		Example: "osm pull -c mybucket f1.txt /tmp/f1.txt",
 		Run: func(cmd *cobra.Command, args []string) {
+			if len(args) < 2 {
+				term.Errorln("Provide source item and destination path as argument. See examples:")
+				cmd.Help()
+				os.Exit(1)
+			} else if len(args) > 2 {
+				cmd.Help()
+				os.Exit(1)
+			}
+
 			req.srcID = args[0]
 			req.destPath = args[1]
 			pullItem(req)

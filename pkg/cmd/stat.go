@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"fmt"
+	"os"
 
 	"github.com/appscode/go-term"
 	otx "github.com/appscode/osm/pkg/context"
@@ -22,6 +23,15 @@ func NewCmdStat() *cobra.Command {
 		Short:   "Stat item from container",
 		Example: "osm stat -c mybucket f1.txt",
 		Run: func(cmd *cobra.Command, args []string) {
+			if len(args) == 0 {
+				term.Errorln("Provide item id as argument. See examples:")
+				cmd.Help()
+				os.Exit(1)
+			} else if len(args) > 1 {
+				cmd.Help()
+				os.Exit(1)
+			}
+
 			req.itemID = args[0]
 			statItem(req)
 		},

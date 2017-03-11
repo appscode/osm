@@ -11,7 +11,7 @@ import (
 func newCmdCurrent() *cobra.Command {
 	setCmd := &cobra.Command{
 		Use:     "current-context",
-		Short:   "Current context",
+		Short:   "Print current context",
 		Example: "osm config current-context",
 		Run: func(cmd *cobra.Command, args []string) {
 			if len(args) > 0 {

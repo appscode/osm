@@ -12,10 +12,10 @@ import (
 func newCmdView() *cobra.Command {
 	setCmd := &cobra.Command{
 		Use:     "view",
-		Short:   "View config",
+		Short:   "Print osm config",
 		Example: "osm config view",
 		Run: func(cmd *cobra.Command, args []string) {
-			if len(args) > 1 {
+			if len(args) > 0 {
 				cmd.Help()
 				os.Exit(1)
 			}

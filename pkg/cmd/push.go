@@ -22,6 +22,15 @@ func NewCmdPush() *cobra.Command {
 		Short:   "Push item from container",
 		Example: "osm push -c mybucket f1.txt /tmp/f1.txt",
 		Run: func(cmd *cobra.Command, args []string) {
+			if len(args) < 2 {
+				term.Errorln("Provide source path and destination item as argument. See examples:")
+				cmd.Help()
+				os.Exit(1)
+			} else if len(args) > 2 {
+				cmd.Help()
+				os.Exit(1)
+			}
+
 			req.srcPath = args[0]
 			req.destID = args[1]
 			pushItem(req)

@@ -1,6 +1,8 @@
 package cmd
 
 import (
+	"os"
+
 	"github.com/appscode/go-term"
 	otx "github.com/appscode/osm/pkg/context"
 	"github.com/spf13/cobra"
@@ -19,6 +21,15 @@ func NewCmdRemove() *cobra.Command {
 		Short:   "Remove item from container",
 		Example: "osm rm -c mybucket f1.txt",
 		Run: func(cmd *cobra.Command, args []string) {
+			if len(args) == 0 {
+				term.Errorln("Provide item id as argument. See examples:")
+				cmd.Help()
+				os.Exit(1)
+			} else if len(args) > 1 {
+				cmd.Help()
+				os.Exit(1)
+			}
+
 			req.itemID = args[0]
 			removeItem(req)
 		},

@@ -12,10 +12,10 @@ import (
 func newCmdGet() *cobra.Command {
 	setCmd := &cobra.Command{
 		Use:     "get-contexts",
-		Short:   "Get contexts",
+		Short:   "List available contexts",
 		Example: "osm config get-contexts",
 		Run: func(cmd *cobra.Command, args []string) {
-			if len(args) > 1 {
+			if len(args) > 0 {
 				cmd.Help()
 				os.Exit(1)
 			}
