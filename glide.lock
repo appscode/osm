@@ -1,5 +1,5 @@
 hash: 58f62ff936fc9e1e93a1b3cf43fc152b110aea27b8928b707f0fb7ca55cf5a97
-updated: 2017-03-11T03:36:55.12415688-08:00
+updated: 2017-03-11T05:33:57.546665728-08:00
 imports:
 - name: cloud.google.com/go
   version: 620e968dec62c9aac95a23e38e32e2cb831f73e3
@@ -67,7 +67,7 @@ imports:
 - name: github.com/googleapis/gax-go
   version: 8c5154c0fe5bf18cf649634d4c6df50897a32751
 - name: github.com/graymeta/stow
-  version: 6366d2d3d1eeb08d2cab7abbc9fe04cf57ac6b45
+  version: d4b253dd4995360ae103b6460bbadeaa7fb3cdb4
   repo: https://github.com/appscode/stow.git
   vcs: git
   subpackages:
