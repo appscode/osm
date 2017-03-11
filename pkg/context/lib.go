@@ -1,6 +1,7 @@
 package context
 
 import (
+	"errors"
 	"io/ioutil"
 	"os"
 
@@ -13,10 +14,6 @@ var (
 	home, _    = homeDir.Dir()
 	configPath = home + "/.osm/config"
 )
-
-func Home() string {
-	return home
-}
 
 type Context struct {
 	Name     string         `json:"name"`
@@ -53,4 +50,17 @@ func (config *OSMConfig) Save() error {
 		return err
 	}
 	return nil
+}
+
+func (config *OSMConfig) Dial(cliCtx string) (stow.Location, error) {
+	ctx := config.CurrentContext
+	if cliCtx != "" {
+		ctx = cliCtx
+	}
+	for _, osmCtx := range config.Contexts {
+		if osmCtx.Name == ctx {
+			return stow.Dial(osmCtx.Provider, osmCtx.Config)
+		}
+	}
+	return nil, errors.New("Failed to determine context.")
 }

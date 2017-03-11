@@ -50,7 +50,7 @@ func main() {
 	}
 	rootCmd.PersistentFlags().AddGoFlagSet(flag.CommandLine)
 	rootCmd.AddCommand(cfgCmd.NewCmdConfig())
-	rootCmd.AddCommand(osmCmd.NewCmdCreate())
+	rootCmd.AddCommand(osmCmd.NewCmdMakeContainer())
 	rootCmd.AddCommand(v.NewCmdVersion())
 	if err := rootCmd.Execute(); err != nil {
 		log.Fatal(err)

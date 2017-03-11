@@ -135,8 +135,6 @@ func setContext(req *setContextRequest) {
 		config.Contexts = append(config.Contexts, nc)
 	}
 	config.CurrentContext = req.Name
-
-	if err := config.Save(); err != nil {
-		term.Fatalln(err)
-	}
+	err := config.Save()
+	term.ExitOnError(err)
 }

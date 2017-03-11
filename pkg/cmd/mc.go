@@ -11,44 +11,30 @@ type bucketCreateRequest struct {
 	bucket  string
 }
 
-func NewCmdCreate() *cobra.Command {
+func NewCmdMakeContainer() *cobra.Command {
 	req := &bucketCreateRequest{}
 	cmd := &cobra.Command{
-		Use:     "mc bucket-name",
+		Use:     "mc <name>",
 		Short:   "Create Bucket",
 		Example: "osm mc mybucket",
 		Run: func(cmd *cobra.Command, args []string) {
 			req.bucket = args[0]
-			createBucket(req)
+			createContainer(req)
 		},
 	}
 
-	cmd.Flags().StringVarP(&req.context, "context", "", "", "The name of the osmconfig context to use")
+	cmd.Flags().StringVarP(&req.context, "context", "", "", "Name of osmconfig context to use")
 	return cmd
 }
 
-func createBucket(req *bucketCreateRequest) {
+func createContainer(req *bucketCreateRequest) {
 	cfg, err := otx.LoadConfig()
-	if err != nil {
-		term.Fatalln(err)
-	}
-	if req.context != "" {
-		req.context = cfg.CurrentContext
-	}
-	var ctx *otx.Context
-	for _, osmCtx := range cfg.Contexts {
-		if osmCtx.Name == req.context {
-			ctx = osmCtx
-			break
-		}
-	}
-	if ctx == nil {
-		term.Fatalln("Missing context")
-	}
+	term.ExitOnError(err)
 
-	//provider := extpoints.CloudProviders.Lookup(contextData.ContextData.Provider)
-	//if err := provider.CreateBucket(req.bucket, contextData); err != nil {
-	//	printer.Error(err)
-	//	os.Exit(1)
-	//}
+	loc, err := cfg.Dial(req.context)
+	term.ExitOnError(err)
+
+	_, err = loc.CreateContainer(req.bucket)
+	term.ExitOnError(err)
+	term.Successln("Successfully created container " + req.bucket)
 }

@@ -32,9 +32,8 @@ func newCmdUse() *cobra.Command {
 
 func useContex(name string) {
 	config, err := otx.LoadConfig()
-	if err != nil {
-		term.Fatalln(err)
-	}
+	term.ExitOnError(err)
+
 	if config.CurrentContext == name {
 		return
 	}
@@ -51,7 +50,6 @@ func useContex(name string) {
 	}
 
 	config.CurrentContext = name
-	if err := config.Save(); err != nil {
-		term.Fatalln(err)
-	}
+	err = config.Save()
+	term.ExitOnError(err)
 }
