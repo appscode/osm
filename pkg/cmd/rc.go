@@ -59,10 +59,10 @@ func removeContainer(req *containerRemoveRequest) {
 			for _, item := range items {
 				c.RemoveItem(item.ID())
 			}
-			if len(items) == 0 {
+			cursor = next
+			if stow.IsCursorEnd(cursor) {
 				break
 			}
-			cursor = next
 		}
 	}
 

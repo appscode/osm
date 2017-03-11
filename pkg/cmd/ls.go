@@ -63,10 +63,14 @@ func listContainer(req *containerListRequest) {
 			n++
 			term.Infoln(item.ID())
 		}
-		if len(items) == 0 {
+		cursor = next
+		if stow.IsCursorEnd(cursor) {
 			break
 		}
-		cursor = next
 	}
-	term.Successln(fmt.Sprintf("Found %v items in container %v", n, req.container))
+	cnt := fmt.Sprintf("%v items", n)
+	if n <= 1 {
+		cnt = fmt.Sprintf("%v item", n)
+	}
+	term.Successln(fmt.Sprintf("Found %v in container %v", cnt, req.container))
 }
