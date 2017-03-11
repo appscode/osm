@@ -33,32 +33,41 @@ Use "osm [command] --help" for more information about a command.
 
 ```
 
-## Build
+## OSM Configuration
+`osm` stores credentials necessary to connect to a cloud storage provider in YAML format in `$HOME/.osm/config` file.
+This allows providing commands one time for multiple subsequent operations with a cloud provider.
+```bash
+# AWS S3:
+osm config set-context osm-s3 --provider=s3 --s3.access_key_id=<key_id> --s3.secret_key=<secret_key> --s3.region=us-east-1
 
-    ./hack/make.py
+# Google Cloud Storage:
+osm config set-context osm-gs --provider=google --google.json_key_path=<path_sa_file> --google.project_id=<my_project>
 
-## Set Context
-    osm config set-context gcs -p gce -c /var/credential/gce
-    osm config use-context gcs
+# Microsoft Azure ARM Storage:
+osm config set-context osm-az --provider=azure --azure.account=<storage_ac> --azure.key=<key>
+```
 
-## View Context
+## Bucket Operations
 
-    osm config view
+```bash
+# create bucket
+osm mc mybucket
 
-Config YAML:
+# upload file to bucket
+osm push -c mybucket ~/Downloads/appscode.pdf a/b/c.pdf
 
-    contexts:
-    - context:
-        credential_dir: /var/credential/gce
-        provider: gce
-      name: gcs
-    current-context: gcs
+# print uploaded file attributes
+osm stat -c mybucket a/b/c.pdf
 
-## Create Bucket
-    osm create -b db-box
+# download file from bucket
+osm pull -c mybucket a/b/c.pdf /tmp/d.pdf
 
-This will create `db-box` bucket in gcs
+# list bucket
+osm ls mybucket
 
-You can also use `context` while creating
+# remove file from bucket
+osm rm -c mybucket a/b/c.pdf
 
-    osm create -b db-box --context=gcs
+# remove bucket (use -f to delete any files inside)
+osm rc -f mybucket
+```
