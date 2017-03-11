@@ -82,38 +82,58 @@ func setContext(req *setContextRequest) {
 	nc := &otx.Context{
 		Name:     req.Name,
 		Provider: req.Provider,
+		Config:   stow.ConfigMap{},
 	}
 	switch req.Provider {
 	case s3.Kind:
-		nc.Config = stow.ConfigMap{
-			s3.ConfigAccessKeyID: req.s3ConfigAccessKeyID,
-			s3.ConfigEndpoint:    req.s3ConfigEndpoint,
-			s3.ConfigRegion:      req.s3ConfigRegion,
-			s3.ConfigSecretKey:   req.s3ConfigSecretKey,
+		nc.Config = stow.ConfigMap{}
+		if req.s3ConfigAccessKeyID != "" {
+			nc.Config[s3.ConfigAccessKeyID] = req.s3ConfigAccessKeyID
+		}
+		if req.s3ConfigEndpoint != "" {
+			nc.Config[s3.ConfigEndpoint] = req.s3ConfigEndpoint
+		}
+		if req.s3ConfigRegion != "" {
+			nc.Config[s3.ConfigRegion] = req.s3ConfigRegion
+		}
+		if req.s3ConfigSecretKey != "" {
+			nc.Config[s3.ConfigSecretKey] = req.s3ConfigSecretKey
 		}
 	case gcs.Kind:
-		jsonKey, err := ioutil.ReadFile(req.gcsConfigJSONKeyPath)
-		term.ExitOnError(err)
-		nc.Config = stow.ConfigMap{
-			gcs.ConfigJSON:      string(jsonKey),
-			gcs.ConfigProjectId: req.gcsConfigProjectId,
-			gcs.ConfigScopes:    req.gcsConfigScopes,
+		if req.gcsConfigJSONKeyPath != "" {
+			jsonKey, err := ioutil.ReadFile(req.gcsConfigJSONKeyPath)
+			term.ExitOnError(err)
+			nc.Config[gcs.ConfigJSON] = string(jsonKey)
+		}
+		if req.gcsConfigProjectId != "" {
+			nc.Config[gcs.ConfigProjectId] = req.gcsConfigProjectId
+		}
+		if req.gcsConfigScopes != "" {
+			nc.Config[gcs.ConfigScopes] = req.gcsConfigScopes
 		}
 	case azure.Kind:
-		nc.Config = stow.ConfigMap{
-			azure.ConfigAccount: req.azureConfigAccount,
-			azure.ConfigKey:     req.azureConfigKey,
+		if req.azureConfigAccount != "" {
+			nc.Config[azure.ConfigAccount] = req.azureConfigAccount
+		}
+		if req.azureConfigKey != "" {
+			nc.Config[azure.ConfigKey] = req.azureConfigKey
 		}
 	case local.Kind:
-		nc.Config = stow.ConfigMap{
-			local.ConfigKeyPath: req.localConfigKeyPath,
+		if req.localConfigKeyPath != "" {
+			nc.Config[local.ConfigKeyPath] = req.localConfigKeyPath
 		}
 	case swift.Kind:
-		nc.Config = stow.ConfigMap{
-			swift.ConfigKey:           req.swiftConfigKey,
-			swift.ConfigTenantAuthURL: req.swiftConfigTenantAuthURL,
-			swift.ConfigTenantName:    req.swiftConfigTenantName,
-			swift.ConfigUsername:      req.swiftConfigUsername,
+		if req.swiftConfigKey != "" {
+			nc.Config[swift.ConfigKey] = req.swiftConfigKey
+		}
+		if req.swiftConfigTenantAuthURL != "" {
+			nc.Config[swift.ConfigTenantAuthURL] = req.swiftConfigTenantAuthURL
+		}
+		if req.swiftConfigTenantName != "" {
+			nc.Config[swift.ConfigTenantName] = req.swiftConfigTenantName
+		}
+		if req.swiftConfigUsername != "" {
+			nc.Config[swift.ConfigUsername] = req.swiftConfigUsername
 		}
 	default:
 		term.Fatalln("Unknown provider:" + req.Provider)
