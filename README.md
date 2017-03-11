@@ -96,3 +96,10 @@ osm rm -c mybucket a/b/c.pdf
 # remove bucket (use -f to delete any files inside)
 osm rc -f mybucket
 ```
+
+## Issues
+Please file an issue if you think you've found a bug. Be sure to describe
+ * How can it be reproduced?
+ * What did you expect?
+ * What actually occurred?
+ * Cloud provider, Go version, platform, etc. if possibly relevant.
