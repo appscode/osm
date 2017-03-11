@@ -5,7 +5,7 @@ import (
 
 	"github.com/appscode/go-term"
 	otx "github.com/appscode/osm/pkg/context"
-	"github.com/flynn/go-tuf/Godeps/_workspace/src/github.com/dustin/go-humanize"
+	"github.com/dustin/go-humanize"
 	"github.com/spf13/cobra"
 )
 

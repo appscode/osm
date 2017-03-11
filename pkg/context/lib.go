@@ -6,9 +6,9 @@ import (
 	"os"
 	"path/filepath"
 
+	"github.com/ghodss/yaml"
 	"github.com/graymeta/stow"
 	homeDir "github.com/mitchellh/go-homedir"
-	"gopkg.in/yaml.v2"
 )
 
 var (

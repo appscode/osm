@@ -1,5 +1,5 @@
-hash: d6a2bf0eae880334b86aacc5b5b29da4c00044618da02820cad33fb5eb8ec8a0
-updated: 2017-03-11T00:39:00.294779195-08:00
+hash: 5f1e149130d6ec37008d66f311dc4d142c9ea5bf319f5da98c0f9a6e52e60577
+updated: 2017-03-11T03:05:33.318843211-08:00
 imports:
 - name: cloud.google.com/go
   version: 620e968dec62c9aac95a23e38e32e2cb831f73e3
@@ -12,6 +12,7 @@ imports:
   version: b9008e99fa90d7806f404e0eab52bdecb4444826
   subpackages:
   - env
+  - io
   - version
 - name: github.com/appscode/go-term
   version: f3615b583144c395b1189d6a131b5023d276847c
@@ -47,10 +48,14 @@ imports:
   vcs: git
   subpackages:
   - storage
+- name: github.com/dustin/go-humanize
+  version: 259d2a102b871d17f30e3cd9881a642961a1e486
 - name: github.com/facebookgo/stack
   version: 751773369052141c013c6e827a71e8f35c07879c
 - name: github.com/fatih/color
   version: 9131ab34cf20d2f6d83fdc67168a5430d1c7dc23
+- name: github.com/ghodss/yaml
+  version: 04f313413ffd65ce25f2541bfd2b2ceec5c0908c
 - name: github.com/go-ini/ini
   version: 7e015cd18f007383aa571cc413bd2ec09cff7f2d
 - name: github.com/golang/glog
