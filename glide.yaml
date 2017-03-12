@@ -16,7 +16,7 @@ import:
   version: master
   vcs: git
 - package: github.com/aws/aws-sdk-go
-  version: v1.1.36
+  version: v1.7.8
 - package: google.golang.org/api/storage/v1
   version: master
 - package: github.com/Azure/azure-sdk-for-go
