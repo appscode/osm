@@ -1,7 +1,7 @@
 [Website](https://appscode.com) • [Slack](https://slack.appscode.com) • [Forum](https://discuss.appscode.com) • [Twitter](https://twitter.com/AppsCodeHQ)
 
 # osm
-Object Store Manipulator - `curl` for cloud storage services. 🙌
+Object Store Manipulator - `curl` for cloud storage services. 🙌 `osm` can create & delete buckets and upload, download & delete files from buckets for AWS S3, Google Cloud Storage & Microsoft Azure storage. Its single binary can be easily packaged instead of official puthon based clis inside Docker images.
 
 ## Install OSM
 You can download and install a pre-built binary:
