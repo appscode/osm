@@ -7,22 +7,22 @@ Object Store Manipulator - `curl` for cloud storage services. 🙌 `osm` can cre
 You can download and install a pre-built binary:
 ```bash
 # Linux amd 64-bit:
-wget -O osm https://cdn.appscode.com/binaries/osm/0.1.0/osm-linux-amd64 \
+wget -O osm https://cdn.appscode.com/binaries/osm/0.1.1/osm-linux-amd64 \
   && chmod +x osm \
   && sudo mv osm /usr/local/bin/
 
 # Linux 386 32-bit:
-wget -O osm https://cdn.appscode.com/binaries/osm/0.1.0/osm-linux-386 \
+wget -O osm https://cdn.appscode.com/binaries/osm/0.1.1/osm-linux-386 \
   && chmod +x osm \
   && sudo mv osm /usr/local/bin/
 
 # Mac 64-bit
-wget -O osm https://cdn.appscode.com/binaries/osm/0.1.0/osm-darwin-amd64 \
+wget -O osm https://cdn.appscode.com/binaries/osm/0.1.1/osm-darwin-amd64 \
   && chmod +x osm \
   && sudo mv osm /usr/local/bin/
 
 # Mac 32-bit
-wget -O osm https://cdn.appscode.com/binaries/osm/0.1.0/osm-darwin-386 \
+wget -O osm https://cdn.appscode.com/binaries/osm/0.1.1/osm-darwin-386 \
   && chmod +x osm \
   && sudo mv osm /usr/local/bin/
 ```
