@@ -45,7 +45,12 @@ func makeContainer(req *containerMakeRequest) {
 	loc, err := cfg.Dial(req.context)
 	term.ExitOnError(err)
 
-	_, err = loc.CreateContainer(req.container)
-	term.ExitOnError(err)
-	term.Successln("Successfully created container " + req.container)
+	_, err = loc.Container(req.container)
+	if err != nil {
+		_, err = loc.CreateContainer(req.container)
+		term.ExitOnError(err)
+		term.Successln("Successfully created container " + req.container)
+	} else {
+		term.Infoln("Container " + req.container + " already exists!")
+	}
 }
