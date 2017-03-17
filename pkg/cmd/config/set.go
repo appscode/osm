@@ -85,7 +85,7 @@ func setContext(req *setContextRequest) {
 		Config:   stow.ConfigMap{},
 	}
 	switch req.Provider {
-	case s3.Kind, "aws":
+	case s3.Kind:
 		nc.Provider = s3.Kind
 		if req.s3ConfigAccessKeyID != "" {
 			nc.Config[s3.ConfigAccessKeyID] = req.s3ConfigAccessKeyID
@@ -99,7 +99,7 @@ func setContext(req *setContextRequest) {
 		if req.s3ConfigSecretKey != "" {
 			nc.Config[s3.ConfigSecretKey] = req.s3ConfigSecretKey
 		}
-	case gcs.Kind, "gs":
+	case gcs.Kind:
 		nc.Provider = gcs.Kind
 		if req.gcsConfigJSONKeyPath != "" {
 			jsonKey, err := ioutil.ReadFile(req.gcsConfigJSONKeyPath)
