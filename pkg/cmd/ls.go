@@ -10,15 +10,15 @@ import (
 	"github.com/spf13/cobra"
 )
 
-type containerListRequest struct {
+type itemListRequest struct {
 	context   string
 	container string
 	prefix    string
 	delimiter string
 }
 
-func NewCmdListContainer() *cobra.Command {
-	req := &containerListRequest{}
+func NewCmdListIetms() *cobra.Command {
+	req := &itemListRequest{}
 	cmd := &cobra.Command{
 		Use:     "ls <name>",
 		Short:   "List container",
@@ -34,7 +34,7 @@ func NewCmdListContainer() *cobra.Command {
 			}
 
 			req.container = args[0]
-			listContainer(req)
+			listItems(req)
 		},
 	}
 
@@ -44,7 +44,7 @@ func NewCmdListContainer() *cobra.Command {
 	return cmd
 }
 
-func listContainer(req *containerListRequest) {
+func listItems(req *itemListRequest) {
 	cfg, err := otx.LoadConfig()
 	term.ExitOnError(err)
 
