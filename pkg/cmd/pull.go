@@ -2,10 +2,12 @@ package cmd
 
 import (
 	"os"
+	"path/filepath"
 
 	"github.com/appscode/go-term"
 	"github.com/appscode/go/io"
 	otx "github.com/appscode/osm/pkg/context"
+	"github.com/graymeta/stow"
 	"github.com/spf13/cobra"
 )
 
@@ -34,7 +36,7 @@ func NewCmdPull() *cobra.Command {
 
 			req.srcID = args[0]
 			req.destPath = args[1]
-			pullItem(req)
+			pull(req)
 		},
 	}
 
@@ -43,7 +45,7 @@ func NewCmdPull() *cobra.Command {
 	return cmd
 }
 
-func pullItem(req *itemPullRequest) {
+func pull(req *itemPullRequest) {
 	cfg, err := otx.LoadConfig()
 	term.ExitOnError(err)
 
@@ -54,13 +56,36 @@ func pullItem(req *itemPullRequest) {
 	term.ExitOnError(err)
 
 	item, err := c.Item(req.srcID)
-	term.ExitOnError(err)
+	if err != nil {
+		cursor := stow.CursorStart
+		for {
+			items, next, err := c.Items(req.srcID, cursor, 50)
+			term.ExitOnError(err)
+			for _, item := range items {
+				r, err := filepath.Rel(req.srcID, item.ID())
+				term.ExitOnError(err)
 
+				f := filepath.Join(req.destPath, r)
+				os.MkdirAll(filepath.Dir(f), 0755)
+				pullItem(item, f, item.ID())
+			}
+			cursor = next
+			if stow.IsCursorEnd(cursor) {
+				break
+			}
+		}
+		term.Successln("Successfully pulled folder " + req.srcID)
+	} else {
+		pullItem(item, req.destPath, req.srcID)
+	}
+}
+
+func pullItem(item stow.Item, destPath, srcID string) {
 	rd, err := item.Open()
 	term.ExitOnError(err)
 	defer rd.Close()
 
-	err = io.WriteFile(req.destPath, rd, 0640)
+	err = io.WriteFile(destPath, rd, 0640)
 	term.ExitOnError(err)
-	term.Successln("Successfully pulled item " + req.srcID)
+	term.Successln("Successfully pulled item " + srcID)
 }

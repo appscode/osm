@@ -2,9 +2,11 @@ package cmd
 
 import (
 	"os"
+	"path/filepath"
 
 	"github.com/appscode/go-term"
 	otx "github.com/appscode/osm/pkg/context"
+	"github.com/graymeta/stow"
 	"github.com/spf13/cobra"
 )
 
@@ -33,7 +35,7 @@ func NewCmdPush() *cobra.Command {
 
 			req.srcPath = args[0]
 			req.destID = args[1]
-			pushItem(req)
+			push(req)
 		},
 	}
 
@@ -42,7 +44,7 @@ func NewCmdPush() *cobra.Command {
 	return cmd
 }
 
-func pushItem(req *itemPushRequest) {
+func push(req *itemPushRequest) {
 	cfg, err := otx.LoadConfig()
 	term.ExitOnError(err)
 
@@ -52,16 +54,32 @@ func pushItem(req *itemPushRequest) {
 	c, err := loc.Container(req.container)
 	term.ExitOnError(err)
 
-	in, err := os.Open(req.srcPath)
+	si, err := os.Stat(req.srcPath)
+	term.ExitOnError(err)
+	if si.IsDir() {
+		err := filepath.Walk(req.srcPath, func(path string, fi os.FileInfo, err error) error {
+			if !fi.IsDir() {
+				r, err := filepath.Rel(req.srcPath, path)
+				term.ExitOnError(err)
+				pushItem(c, filepath.Join(req.destID, r), path, fi)
+			}
+			return nil
+		})
+		term.ExitOnError(err)
+		term.Successln("Successfully pushed folder " + req.srcPath)
+	} else {
+		pushItem(c, req.destID, req.srcPath, si)
+	}
+}
+
+func pushItem(c stow.Container, destID, srcPath string, fi os.FileInfo) {
+	in, err := os.Open(srcPath)
 	if err != nil {
 		return
 	}
 	defer in.Close()
 
-	fi, err := in.Stat()
-	term.ExitOnError(err)
-
-	item, err := c.Put(req.destID, in, fi.Size(), nil)
+	item, err := c.Put(destID, in, fi.Size(), nil)
 	term.ExitOnError(err)
 	term.Successln("Successfully pushed item " + item.ID())
 }
