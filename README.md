@@ -1,3 +1,5 @@
+[![Go Report Card](https://goreportcard.com/badge/github.com/appscode/osm)](https://goreportcard.com/report/github.com/appscode/osm)
+
 [Website](https://appscode.com) • [Slack](https://slack.appscode.com) • [Forum](https://discuss.appscode.com) • [Twitter](https://twitter.com/AppsCodeHQ)
 
 # osm
