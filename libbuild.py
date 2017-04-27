@@ -196,12 +196,11 @@ def upload_to_cloud(folder, f, version):
     if not isinstance(buckets, dict):
         buckets = {buckets: ''}
     for bucket, region in buckets.items():
-        dst = "{bucket}/binaries/{name}/{version}/{file}{ext}".format(
+        dst = "{bucket}/binaries/{name}/{version}/{file}".format(
             bucket=bucket,
             name=name,
             version=version,
-            file=f,
-            ext='.exe' if '-windows-' in f else ''
+            file=f
         )
         if bucket.startswith('gs://'):
             upload_to_gcs(folder, f, dst, BIN_MATRIX[name].get('release', False))
@@ -237,8 +236,10 @@ def update_registry(version):
     lf = dist + '/latest.txt'
     write_file(lf, version)
     for name in os.listdir(dist):
+        if os.path.isfile(dist + '/' + name):
+            continue
         if name not in BIN_MATRIX:
-            return
+            continue
         call("gsutil cp {2} {0}/binaries/{1}/latest.txt".format(bucket, name, lf), cwd=REPO_ROOT)
         if BIN_MATRIX[name].get('release', False):
             call('gsutil acl ch -u AllUsers:R -r {0}/binaries/{1}/latest.txt'.format(bucket, name), cwd=REPO_ROOT)
