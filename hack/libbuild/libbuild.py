@@ -5,6 +5,7 @@ from __future__ import absolute_import
 
 import datetime
 import fnmatch
+import glob
 import io
 import json
 import os
@@ -59,7 +60,7 @@ def metadata(cwd, goos='', goarch=''):
     if md['git_tag']:
         md['version'] = md['git_tag']
         md['version_strategy'] = 'tag'
-    elif not md['git_branch'] in ['master', 'HEAD']:
+    elif not md['git_branch'] in ['master', 'HEAD'] and not md['git_branch'].startswith('release-'):
         md['version'] = md['git_branch']
         md['version_strategy'] = 'branch'
     else:
@@ -150,7 +151,14 @@ def to_upper_camel(lower_snake):
 def go_build(name, goos, goarch, main):
     linker_opts = []
     if BIN_MATRIX[name].get('go_version', False):
-        for k, v in metadata(REPO_ROOT, goos, goarch).items():
+        md = metadata(REPO_ROOT, goos, goarch)
+        if md['version_strategy'] == 'tag':
+            del md['commit_timestamp']
+            del md['build_timestamp']
+            del md['build_host']
+            del md['build_host_os']
+            del md['build_host_arch']
+        for k, v in md.items():
             linker_opts.append('-X')
             linker_opts.append('main.' + to_upper_camel(k) + '=' + v)
 
@@ -255,6 +263,10 @@ def ungroup_go_imports(*paths):
             for dir, _, files in os.walk(p):
                 for f in fnmatch.filter(files, '*.go'):
                     _ungroup_go_imports(dir + '/' + f)
+        else:
+            for f in glob.glob(p):
+                print('Ungrouping imports of file: ' + f)
+                _ungroup_go_imports(f)
 
 
 BEGIN_IMPORT_REGEX = ur'import \(\s*'
