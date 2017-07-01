@@ -473,38 +473,38 @@ func (k *Key) StringsWithShadows(delim string) []string {
 
 // Float64s returns list of float64 divided by given delimiter. Any invalid input will be treated as zero value.
 func (k *Key) Float64s(delim string) []float64 {
-	vals, _ := k.getFloat64s(delim, true, false)
+	vals, _ := k.parseFloat64s(k.Strings(delim), true, false)
 	return vals
 }
 
 // Ints returns list of int divided by given delimiter. Any invalid input will be treated as zero value.
 func (k *Key) Ints(delim string) []int {
-	vals, _ := k.getInts(delim, true, false)
+	vals, _ := k.parseInts(k.Strings(delim), true, false)
 	return vals
 }
 
 // Int64s returns list of int64 divided by given delimiter. Any invalid input will be treated as zero value.
 func (k *Key) Int64s(delim string) []int64 {
-	vals, _ := k.getInt64s(delim, true, false)
+	vals, _ := k.parseInt64s(k.Strings(delim), true, false)
 	return vals
 }
 
 // Uints returns list of uint divided by given delimiter. Any invalid input will be treated as zero value.
 func (k *Key) Uints(delim string) []uint {
-	vals, _ := k.getUints(delim, true, false)
+	vals, _ := k.parseUints(k.Strings(delim), true, false)
 	return vals
 }
 
 // Uint64s returns list of uint64 divided by given delimiter. Any invalid input will be treated as zero value.
 func (k *Key) Uint64s(delim string) []uint64 {
-	vals, _ := k.getUint64s(delim, true, false)
+	vals, _ := k.parseUint64s(k.Strings(delim), true, false)
 	return vals
 }
 
 // TimesFormat parses with given format and returns list of time.Time divided by given delimiter.
 // Any invalid input will be treated as zero value (0001-01-01 00:00:00 +0000 UTC).
 func (k *Key) TimesFormat(format, delim string) []time.Time {
-	vals, _ := k.getTimesFormat(format, delim, true, false)
+	vals, _ := k.parseTimesFormat(format, k.Strings(delim), true, false)
 	return vals
 }
 
@@ -517,41 +517,41 @@ func (k *Key) Times(delim string) []time.Time {
 // ValidFloat64s returns list of float64 divided by given delimiter. If some value is not float, then
 // it will not be included to result list.
 func (k *Key) ValidFloat64s(delim string) []float64 {
-	vals, _ := k.getFloat64s(delim, false, false)
+	vals, _ := k.parseFloat64s(k.Strings(delim), false, false)
 	return vals
 }
 
 // ValidInts returns list of int divided by given delimiter. If some value is not integer, then it will
 // not be included to result list.
 func (k *Key) ValidInts(delim string) []int {
-	vals, _ := k.getInts(delim, false, false)
+	vals, _ := k.parseInts(k.Strings(delim), false, false)
 	return vals
 }
 
 // ValidInt64s returns list of int64 divided by given delimiter. If some value is not 64-bit integer,
 // then it will not be included to result list.
 func (k *Key) ValidInt64s(delim string) []int64 {
-	vals, _ := k.getInt64s(delim, false, false)
+	vals, _ := k.parseInt64s(k.Strings(delim), false, false)
 	return vals
 }
 
 // ValidUints returns list of uint divided by given delimiter. If some value is not unsigned integer,
 // then it will not be included to result list.
 func (k *Key) ValidUints(delim string) []uint {
-	vals, _ := k.getUints(delim, false, false)
+	vals, _ := k.parseUints(k.Strings(delim), false, false)
 	return vals
 }
 
 // ValidUint64s returns list of uint64 divided by given delimiter. If some value is not 64-bit unsigned
 // integer, then it will not be included to result list.
 func (k *Key) ValidUint64s(delim string) []uint64 {
-	vals, _ := k.getUint64s(delim, false, false)
+	vals, _ := k.parseUint64s(k.Strings(delim), false, false)
 	return vals
 }
 
 // ValidTimesFormat parses with given format and returns list of time.Time divided by given delimiter.
 func (k *Key) ValidTimesFormat(format, delim string) []time.Time {
-	vals, _ := k.getTimesFormat(format, delim, false, false)
+	vals, _ := k.parseTimesFormat(format, k.Strings(delim), false, false)
 	return vals
 }
 
@@ -562,33 +562,33 @@ func (k *Key) ValidTimes(delim string) []time.Time {
 
 // StrictFloat64s returns list of float64 divided by given delimiter or error on first invalid input.
 func (k *Key) StrictFloat64s(delim string) ([]float64, error) {
-	return k.getFloat64s(delim, false, true)
+	return k.parseFloat64s(k.Strings(delim), false, true)
 }
 
 // StrictInts returns list of int divided by given delimiter or error on first invalid input.
 func (k *Key) StrictInts(delim string) ([]int, error) {
-	return k.getInts(delim, false, true)
+	return k.parseInts(k.Strings(delim), false, true)
 }
 
 // StrictInt64s returns list of int64 divided by given delimiter or error on first invalid input.
 func (k *Key) StrictInt64s(delim string) ([]int64, error) {
-	return k.getInt64s(delim, false, true)
+	return k.parseInt64s(k.Strings(delim), false, true)
 }
 
 // StrictUints returns list of uint divided by given delimiter or error on first invalid input.
 func (k *Key) StrictUints(delim string) ([]uint, error) {
-	return k.getUints(delim, false, true)
+	return k.parseUints(k.Strings(delim), false, true)
 }
 
 // StrictUint64s returns list of uint64 divided by given delimiter or error on first invalid input.
 func (k *Key) StrictUint64s(delim string) ([]uint64, error) {
-	return k.getUint64s(delim, false, true)
+	return k.parseUint64s(k.Strings(delim), false, true)
 }
 
 // StrictTimesFormat parses with given format and returns list of time.Time divided by given delimiter
 // or error on first invalid input.
 func (k *Key) StrictTimesFormat(format, delim string) ([]time.Time, error) {
-	return k.getTimesFormat(format, delim, false, true)
+	return k.parseTimesFormat(format, k.Strings(delim), false, true)
 }
 
 // StrictTimes parses with RFC3339 format and returns list of time.Time divided by given delimiter
@@ -597,9 +597,8 @@ func (k *Key) StrictTimes(delim string) ([]time.Time, error) {
 	return k.StrictTimesFormat(time.RFC3339, delim)
 }
 
-// getFloat64s returns list of float64 divided by given delimiter.
-func (k *Key) getFloat64s(delim string, addInvalid, returnOnInvalid bool) ([]float64, error) {
-	strs := k.Strings(delim)
+// parseFloat64s transforms strings to float64s.
+func (k *Key) parseFloat64s(strs []string, addInvalid, returnOnInvalid bool) ([]float64, error) {
 	vals := make([]float64, 0, len(strs))
 	for _, str := range strs {
 		val, err := strconv.ParseFloat(str, 64)
@@ -613,9 +612,8 @@ func (k *Key) getFloat64s(delim string, addInvalid, returnOnInvalid bool) ([]flo
 	return vals, nil
 }
 
-// getInts returns list of int divided by given delimiter.
-func (k *Key) getInts(delim string, addInvalid, returnOnInvalid bool) ([]int, error) {
-	strs := k.Strings(delim)
+// parseInts transforms strings to ints.
+func (k *Key) parseInts(strs []string, addInvalid, returnOnInvalid bool) ([]int, error) {
 	vals := make([]int, 0, len(strs))
 	for _, str := range strs {
 		val, err := strconv.Atoi(str)
@@ -629,9 +627,8 @@ func (k *Key) getInts(delim string, addInvalid, returnOnInvalid bool) ([]int, er
 	return vals, nil
 }
 
-// getInt64s returns list of int64 divided by given delimiter.
-func (k *Key) getInt64s(delim string, addInvalid, returnOnInvalid bool) ([]int64, error) {
-	strs := k.Strings(delim)
+// parseInt64s transforms strings to int64s.
+func (k *Key) parseInt64s(strs []string, addInvalid, returnOnInvalid bool) ([]int64, error) {
 	vals := make([]int64, 0, len(strs))
 	for _, str := range strs {
 		val, err := strconv.ParseInt(str, 10, 64)
@@ -645,9 +642,8 @@ func (k *Key) getInt64s(delim string, addInvalid, returnOnInvalid bool) ([]int64
 	return vals, nil
 }
 
-// getUints returns list of uint divided by given delimiter.
-func (k *Key) getUints(delim string, addInvalid, returnOnInvalid bool) ([]uint, error) {
-	strs := k.Strings(delim)
+// parseUints transforms strings to uints.
+func (k *Key) parseUints(strs []string, addInvalid, returnOnInvalid bool) ([]uint, error) {
 	vals := make([]uint, 0, len(strs))
 	for _, str := range strs {
 		val, err := strconv.ParseUint(str, 10, 0)
@@ -661,9 +657,8 @@ func (k *Key) getUints(delim string, addInvalid, returnOnInvalid bool) ([]uint, 
 	return vals, nil
 }
 
-// getUint64s returns list of uint64 divided by given delimiter.
-func (k *Key) getUint64s(delim string, addInvalid, returnOnInvalid bool) ([]uint64, error) {
-	strs := k.Strings(delim)
+// parseUint64s transforms strings to uint64s.
+func (k *Key) parseUint64s(strs []string, addInvalid, returnOnInvalid bool) ([]uint64, error) {
 	vals := make([]uint64, 0, len(strs))
 	for _, str := range strs {
 		val, err := strconv.ParseUint(str, 10, 64)
@@ -677,9 +672,8 @@ func (k *Key) getUint64s(delim string, addInvalid, returnOnInvalid bool) ([]uint
 	return vals, nil
 }
 
-// getTimesFormat parses with given format and returns list of time.Time divided by given delimiter.
-func (k *Key) getTimesFormat(format, delim string, addInvalid, returnOnInvalid bool) ([]time.Time, error) {
-	strs := k.Strings(delim)
+// parseTimesFormat transforms strings to times in given format.
+func (k *Key) parseTimesFormat(format string, strs []string, addInvalid, returnOnInvalid bool) ([]time.Time, error) {
 	vals := make([]time.Time, 0, len(strs))
 	for _, str := range strs {
 		val, err := time.Parse(format, str)

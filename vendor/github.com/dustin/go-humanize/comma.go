@@ -2,7 +2,6 @@ package humanize
 
 import (
 	"bytes"
-	"math"
 	"math/big"
 	"strconv"
 	"strings"
@@ -14,12 +13,6 @@ import (
 // e.g. Comma(834142) -> 834,142
 func Comma(v int64) string {
 	sign := ""
-
-	// minin64 can't be negated to a usable value, so it has to be special cased.
-	if v == math.MinInt64 {
-		return "-9,223,372,036,854,775,808"
-	}
-
 	if v < 0 {
 		sign = "-"
 		v = 0 - v
@@ -46,7 +39,7 @@ func Comma(v int64) string {
 // Commaf produces a string form of the given number in base 10 with
 // commas after every three orders of magnitude.
 //
-// e.g. Commaf(834142.32) -> 834,142.32
+// e.g. Comma(834142.32) -> 834,142.32
 func Commaf(v float64) string {
 	buf := &bytes.Buffer{}
 	if v < 0 {

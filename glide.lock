@@ -1,23 +1,22 @@
-hash: e23fdddb235ad3a34da92cd85af2e4a3134fed721cc895570f76dc406109fb76
-updated: 2017-03-12T00:24:44.277180112-08:00
+hash: 136fcc09fc088afe96c5d9653e4c52703c19bf2034f90aacea60da4a68ea0f07
+updated: 2017-07-01T16:46:28.322687434-07:00
 imports:
 - name: cloud.google.com/go
-  version: 3b1ae45394a234c385be014e9a488f2bb6eef821
+  version: fe3d41e1ecb2ce36ad3a979037c9b9a2b726226f
   subpackages:
   - compute/metadata
   - internal
 - name: github.com/appscode/errors
-  version: 6a668ba07d02064c06707b7d8b0f5239db707045
+  version: 748883e321a9f99fe901bd2663c7af3fcae43ea4
 - name: github.com/appscode/go
-  version: b9008e99fa90d7806f404e0eab52bdecb4444826
+  version: ecda61fa4e8943020e9948723e49c4ae544f7a3a
   subpackages:
   - env
   - io
+  - runtime
   - version
 - name: github.com/appscode/go-term
-  version: f3615b583144c395b1189d6a131b5023d276847c
-- name: github.com/appscode/log
-  version: 68e0e42e42c01371f3950571fc87c2298a51dd8f
+  version: 620ebcf71e8e9dd59363149cd05ce8d3d57231e6
 - name: github.com/aws/aws-sdk-go
   version: 819b71cf8430e434c1eee7e7e8b0f2b8870be899
   subpackages:
@@ -51,20 +50,22 @@ imports:
   vcs: git
   subpackages:
   - storage
+- name: github.com/cpuguy83/go-md2man
+  version: 71acacd42f85e5e82f70a55327789582a5200a90
+  subpackages:
+  - md2man
 - name: github.com/dustin/go-humanize
-  version: 259d2a102b871d17f30e3cd9881a642961a1e486
+  version: f3565c9525600a911af3bd34f8b535ea81b2a9e0
 - name: github.com/facebookgo/stack
-  version: 751773369052141c013c6e827a71e8f35c07879c
+  version: d9d227395bc3d7a635388c75b2e3b3a750e11888
 - name: github.com/fatih/color
   version: 9131ab34cf20d2f6d83fdc67168a5430d1c7dc23
 - name: github.com/ghodss/yaml
-  version: 73d445a93680fa1a78ae23a5839bad48f32ba1ee
+  version: 0ca9ea5df5451ffdf184b4428c902747c2c11cd7
 - name: github.com/go-ini/ini
-  version: 7e015cd18f007383aa571cc413bd2ec09cff7f2d
-- name: github.com/golang/glog
-  version: 44145f04b68cf362d9c4df2182967c2275eaefed
+  version: d3de07a94d22b4a0972deb4b96d790c2c0ce8333
 - name: github.com/golang/protobuf
-  version: 8616e8ee5e20a1704615e6c8d7afcdac06087a67
+  version: 8ee79997227bf9b34611aee7946ae64735e6fd93
   subpackages:
   - proto
 - name: github.com/graymeta/stow
@@ -80,7 +81,7 @@ imports:
 - name: github.com/inconshreveable/mousetrap
   version: 76626ae9c91c4f2a10f34cad8ce83ea42c93bb75
 - name: github.com/jmespath/go-jmespath
-  version: bd40a432e4c76585ef6b72d3fd96fb9b6dc7b68d
+  version: 0b12d6b521d83fc7f755e7cfc1b1fbdd35a01a74
 - name: github.com/mattn/go-colorable
   version: 5411d3eea5978e6cdc258b30de592b60df6aba96
   repo: https://github.com/mattn/go-colorable
@@ -88,19 +89,25 @@ imports:
   version: 57fdcb988a5c543893cc61bce354a6e24ab70022
   repo: https://github.com/mattn/go-isatty
 - name: github.com/mattn/go-runewidth
-  version: 14207d285c6c197daabb5c9793d63e7af9ab2d50
+  version: e882a96ec18dd43fa283187b66af74497c9101c0
 - name: github.com/mitchellh/go-homedir
-  version: b8bc1bf767474819792c23f32d8286a45736f1c6
+  version: d682a8f0cf139663a984ff12528da460ca963de9
 - name: github.com/ncw/swift
-  version: 5850d90fd74c3abb87b70ef3f4cb86198f01a6e6
+  version: 8e9b10220613abdbc2896808ee6b43e411a4fa6c
 - name: github.com/olekukonko/tablewriter
   version: cca8bbc0798408af109aaaa239cbd2634846b340
 - name: github.com/pkg/errors
-  version: bfd5150e4e41705ded2129ec33379de1cb90b513
+  version: a22138067af1c4942683050411a841ade67fe1eb
+- name: github.com/russross/blackfriday
+  version: 300106c228d52c8941d4b3de6054a6062a86dda3
+- name: github.com/shurcooL/sanitized_anchor_name
+  version: 10ef21a441db47d8b13ebcc5fd2310f636973c77
 - name: github.com/spf13/cobra
-  version: f62e98d28ab7ad31d707ba837a966378465c7b57
+  version: 8c6fa02d2225de0f9bdcb7ca912556f68d172d8c
+  subpackages:
+  - doc
 - name: github.com/spf13/pflag
-  version: 5ccb023bc27df288a957c5e994cd44fd19619465
+  version: e57e3eeb33f795204c1ca35f56c44f83227c6e66
 - name: golang.org/x/net
   version: e90d6d0afc4c315a0d87a568ae68577cc15149a0
   subpackages:
@@ -119,7 +126,7 @@ imports:
   subpackages:
   - unix
 - name: google.golang.org/api
-  version: 1202890e803f07684581b575fda809bf335a533f
+  version: e6586c9293b9d514c7f5d5076731ec977cff1be6
   subpackages:
   - gensupport
   - googleapi
@@ -138,5 +145,5 @@ imports:
   - internal/urlfetch
   - urlfetch
 - name: gopkg.in/yaml.v2
-  version: 53feefa2559fb8dfa8d81baad31be332c97d6c77
+  version: cd8b52f8269e0feb286dfeef29f8fe4d5b397e0b
 testImports: []
