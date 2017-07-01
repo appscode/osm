@@ -1,11 +1,13 @@
 package context
 
 import (
+	"encoding/json"
 	"errors"
 	"io/ioutil"
 	"os"
 	"path/filepath"
 
+	yc "github.com/appscode/go/encoding/yaml"
 	"github.com/ghodss/yaml"
 	"github.com/graymeta/stow"
 	homeDir "github.com/mitchellh/go-homedir"
@@ -38,7 +40,11 @@ func LoadConfig() (*OSMConfig, error) {
 	if err != nil {
 		return nil, err
 	}
-	err = yaml.Unmarshal(bytes, config)
+	jsonData, err := yc.ToJSON(bytes)
+	if err != nil {
+		return nil, err
+	}
+	err = json.Unmarshal(jsonData, config)
 	return config, err
 }
 

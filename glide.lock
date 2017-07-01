@@ -1,5 +1,5 @@
 hash: 136fcc09fc088afe96c5d9653e4c52703c19bf2034f90aacea60da4a68ea0f07
-updated: 2017-07-01T16:46:28.322687434-07:00
+updated: 2017-07-01T16:52:25.990731089-07:00
 imports:
 - name: cloud.google.com/go
   version: fe3d41e1ecb2ce36ad3a979037c9b9a2b726226f
@@ -11,6 +11,7 @@ imports:
 - name: github.com/appscode/go
   version: ecda61fa4e8943020e9948723e49c4ae544f7a3a
   subpackages:
+  - encoding/yaml
   - env
   - io
   - runtime
