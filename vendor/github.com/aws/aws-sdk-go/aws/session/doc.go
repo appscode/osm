@@ -96,7 +96,7 @@ handler logs every request and its payload made by a service client:
 	// Create a session, and add additional handlers for all service
 	// clients created with the Session to inherit. Adds logging handler.
 	sess := session.Must(session.NewSession())
-	
+
 	sess.Handlers.Send.PushFront(func(r *request.Request) {
 		// Log every request made and its payload
 		logger.Println("Request: %s/%s, Payload: %s",
@@ -169,8 +169,8 @@ session option must be set to SharedConfigEnable, or AWS_SDK_LOAD_CONFIG
 environment variable set.
 
 The shared configuration instructs the SDK to assume an IAM role with MFA
-when the mfa_serial configuration field is set in the shared config 
-(~/.aws/config) or shared credentials (~/.aws/credentials) file. 
+when the mfa_serial configuration field is set in the shared config
+(~/.aws/config) or shared credentials (~/.aws/credentials) file.
 
 If mfa_serial is set in the configuration, the SDK will assume the role, and
 the AssumeRoleTokenProvider session option is not set an an error will
