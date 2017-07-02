@@ -19,14 +19,14 @@ func newCmdView() *cobra.Command {
 				cmd.Help()
 				os.Exit(1)
 			}
-			viewContext()
+			viewContext(otx.GetConfigPath(cmd))
 		},
 	}
 	return setCmd
 }
 
-func viewContext() {
-	config, err := otx.LoadConfig()
+func viewContext(configPath string) {
+	config, err := otx.LoadConfig(configPath)
 	term.ExitOnError(err)
 
 	data, err := yaml.Marshal(config)

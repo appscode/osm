@@ -32,7 +32,7 @@ func NewCmdRemoveContainer() *cobra.Command {
 			}
 
 			req.container = args[0]
-			removeContainer(req)
+			removeContainer(req, otx.GetConfigPath(cmd))
 		},
 	}
 
@@ -41,8 +41,8 @@ func NewCmdRemoveContainer() *cobra.Command {
 	return cmd
 }
 
-func removeContainer(req *containerRemoveRequest) {
-	cfg, err := otx.LoadConfig()
+func removeContainer(req *containerRemoveRequest, configPath string) {
+	cfg, err := otx.LoadConfig(configPath)
 	term.ExitOnError(err)
 
 	loc, err := cfg.Dial(req.context)

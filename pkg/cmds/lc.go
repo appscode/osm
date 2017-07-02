@@ -26,7 +26,7 @@ func NewCmdListContainers() *cobra.Command {
 				os.Exit(1)
 			}
 
-			listContainers(req)
+			listContainers(req, otx.GetConfigPath(cmd))
 		},
 	}
 
@@ -34,8 +34,8 @@ func NewCmdListContainers() *cobra.Command {
 	return cmd
 }
 
-func listContainers(req *containerListRequest) {
-	cfg, err := otx.LoadConfig()
+func listContainers(req *containerListRequest, configPath string) {
+	cfg, err := otx.LoadConfig(configPath)
 	term.ExitOnError(err)
 
 	loc, err := cfg.Dial(req.context)

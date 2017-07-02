@@ -8,14 +8,10 @@ import (
 	"path/filepath"
 
 	yc "github.com/appscode/go/encoding/yaml"
+	"github.com/appscode/log"
 	"github.com/ghodss/yaml"
 	"github.com/graymeta/stow"
-	homeDir "github.com/mitchellh/go-homedir"
-)
-
-var (
-	home, _    = homeDir.Dir()
-	configPath = home + "/.osm/config"
+	"github.com/spf13/cobra"
 )
 
 type Context struct {
@@ -29,7 +25,15 @@ type OSMConfig struct {
 	CurrentContext string     `json:"current-context"`
 }
 
-func LoadConfig() (*OSMConfig, error) {
+func GetConfigPath(cmd *cobra.Command) string {
+	s, err := cmd.Flags().GetString("osmconfig")
+	if err != nil {
+		log.Fatalf("error accessing flag osmconfig for command %s: %v", cmd.Name(), err)
+	}
+	return s
+}
+
+func LoadConfig(configPath string) (*OSMConfig, error) {
 	if _, err := os.Stat(configPath); err != nil {
 		return nil, err
 	}
@@ -48,7 +52,7 @@ func LoadConfig() (*OSMConfig, error) {
 	return config, err
 }
 
-func (config *OSMConfig) Save() error {
+func (config *OSMConfig) Save(configPath string) error {
 	data, err := yaml.Marshal(config)
 	if err != nil {
 		return err

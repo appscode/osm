@@ -30,7 +30,7 @@ func NewCmdMakeContainer() *cobra.Command {
 			}
 
 			req.container = args[0]
-			makeContainer(req)
+			makeContainer(req, otx.GetConfigPath(cmd))
 		},
 	}
 
@@ -38,8 +38,8 @@ func NewCmdMakeContainer() *cobra.Command {
 	return cmd
 }
 
-func makeContainer(req *containerMakeRequest) {
-	cfg, err := otx.LoadConfig()
+func makeContainer(req *containerMakeRequest, configPath string) {
+	cfg, err := otx.LoadConfig(configPath)
 	term.ExitOnError(err)
 
 	loc, err := cfg.Dial(req.context)

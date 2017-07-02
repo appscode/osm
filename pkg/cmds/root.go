@@ -5,6 +5,7 @@ import (
 
 	v "github.com/appscode/go/version"
 	cfgCmd "github.com/appscode/osm/pkg/cmds/config"
+	"github.com/mitchellh/go-homedir"
 	"github.com/spf13/cobra"
 )
 
@@ -17,6 +18,8 @@ func NewCmdOsm() *cobra.Command {
 		},
 	}
 	rootCmd.PersistentFlags().AddGoFlagSet(flag.CommandLine)
+	home, _ := homedir.Dir()
+	rootCmd.PersistentFlags().String("osmconfig", home+"/.osm/config", "Path to osm config")
 
 	rootCmd.AddCommand(cfgCmd.NewCmdConfig())
 

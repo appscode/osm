@@ -54,7 +54,7 @@ func newCmdSet() *cobra.Command {
 			}
 
 			req.Name = args[0]
-			setContext(req)
+			setContext(req, otx.GetConfigPath(cmd))
 		},
 	}
 	setCmd.Flags().StringVar(&req.Provider, "provider", "", "Cloud storage provider")
@@ -83,7 +83,7 @@ func newCmdSet() *cobra.Command {
 	return setCmd
 }
 
-func setContext(req *setContextRequest) {
+func setContext(req *setContextRequest, configPath string) {
 	nc := &otx.Context{
 		Name:     req.Name,
 		Provider: req.Provider,
@@ -149,7 +149,7 @@ func setContext(req *setContextRequest) {
 		term.Fatalln("Unknown provider:" + req.Provider)
 	}
 
-	config, _ := otx.LoadConfig()
+	config, _ := otx.LoadConfig(configPath)
 	if config == nil {
 		config = &otx.OSMConfig{
 			Contexts: make([]*otx.Context, 0),
@@ -168,6 +168,6 @@ func setContext(req *setContextRequest) {
 		config.Contexts = append(config.Contexts, nc)
 	}
 	config.CurrentContext = req.Name
-	err := config.Save()
+	err := config.Save(configPath)
 	term.ExitOnError(err)
 }

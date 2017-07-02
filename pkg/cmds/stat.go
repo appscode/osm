@@ -33,7 +33,7 @@ func NewCmdStat() *cobra.Command {
 			}
 
 			req.itemID = args[0]
-			statItem(req)
+			statItem(req, otx.GetConfigPath(cmd))
 		},
 	}
 
@@ -42,8 +42,8 @@ func NewCmdStat() *cobra.Command {
 	return cmd
 }
 
-func statItem(req *itemStatRequest) {
-	cfg, err := otx.LoadConfig()
+func statItem(req *itemStatRequest, configPath string) {
+	cfg, err := otx.LoadConfig(configPath)
 	term.ExitOnError(err)
 
 	loc, err := cfg.Dial(req.context)

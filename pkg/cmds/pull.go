@@ -36,7 +36,7 @@ func NewCmdPull() *cobra.Command {
 
 			req.srcID = args[0]
 			req.destPath = args[1]
-			pull(req)
+			pull(req, otx.GetConfigPath(cmd))
 		},
 	}
 
@@ -45,8 +45,8 @@ func NewCmdPull() *cobra.Command {
 	return cmd
 }
 
-func pull(req *itemPullRequest) {
-	cfg, err := otx.LoadConfig()
+func pull(req *itemPullRequest, configPath string) {
+	cfg, err := otx.LoadConfig(configPath)
 	term.ExitOnError(err)
 
 	loc, err := cfg.Dial(req.context)

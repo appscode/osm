@@ -31,7 +31,7 @@ func NewCmdRemove() *cobra.Command {
 			}
 
 			req.itemID = args[0]
-			removeItem(req)
+			removeItem(req, otx.GetConfigPath(cmd))
 		},
 	}
 
@@ -40,8 +40,8 @@ func NewCmdRemove() *cobra.Command {
 	return cmd
 }
 
-func removeItem(req *itemRemoveRequest) {
-	cfg, err := otx.LoadConfig()
+func removeItem(req *itemRemoveRequest, configPath string) {
+	cfg, err := otx.LoadConfig(configPath)
 	term.ExitOnError(err)
 
 	loc, err := cfg.Dial(req.context)

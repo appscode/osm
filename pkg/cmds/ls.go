@@ -34,7 +34,7 @@ func NewCmdListIetms() *cobra.Command {
 			}
 
 			req.container = args[0]
-			listItems(req)
+			listItems(req, otx.GetConfigPath(cmd))
 		},
 	}
 
@@ -44,8 +44,8 @@ func NewCmdListIetms() *cobra.Command {
 	return cmd
 }
 
-func listItems(req *itemListRequest) {
-	cfg, err := otx.LoadConfig()
+func listItems(req *itemListRequest, configPath string) {
+	cfg, err := otx.LoadConfig(configPath)
 	term.ExitOnError(err)
 
 	loc, err := cfg.Dial(req.context)

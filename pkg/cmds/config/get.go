@@ -19,14 +19,14 @@ func newCmdGet() *cobra.Command {
 				cmd.Help()
 				os.Exit(1)
 			}
-			getContexts()
+			getContexts(otx.GetConfigPath(cmd))
 		},
 	}
 	return setCmd
 }
 
-func getContexts() {
-	config, err := otx.LoadConfig()
+func getContexts(configPath string) {
+	config, err := otx.LoadConfig(configPath)
 	term.ExitOnError(err)
 
 	table := tablewriter.NewWriter(os.Stdout)

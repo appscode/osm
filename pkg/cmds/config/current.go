@@ -18,14 +18,14 @@ func newCmdCurrent() *cobra.Command {
 				cmd.Help()
 				os.Exit(1)
 			}
-			currentContext()
+			currentContext(otx.GetConfigPath(cmd))
 		},
 	}
 	return setCmd
 }
 
-func currentContext() {
-	config, err := otx.LoadConfig()
+func currentContext(configPath string) {
+	config, err := otx.LoadConfig(configPath)
 	term.ExitOnError(err)
 
 	term.Infoln(config.CurrentContext)

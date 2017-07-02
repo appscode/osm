@@ -24,14 +24,14 @@ func newCmdUse() *cobra.Command {
 			}
 
 			name := args[0]
-			useContex(name)
+			useContex(name, otx.GetConfigPath(cmd))
 		},
 	}
 	return setCmd
 }
 
-func useContex(name string) {
-	config, err := otx.LoadConfig()
+func useContex(name, configPath string) {
+	config, err := otx.LoadConfig(configPath)
 	term.ExitOnError(err)
 
 	if config.CurrentContext == name {
@@ -50,6 +50,6 @@ func useContex(name string) {
 	}
 
 	config.CurrentContext = name
-	err = config.Save()
+	err = config.Save(configPath)
 	term.ExitOnError(err)
 }
