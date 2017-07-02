@@ -3,6 +3,7 @@ package config
 import (
 	"io/ioutil"
 	"os"
+	"strconv"
 
 	"github.com/appscode/go-term"
 	otx "github.com/appscode/osm/pkg/context"
@@ -18,10 +19,12 @@ import (
 type setContextRequest struct {
 	Name                     string
 	Provider                 string
+	s3ConfigAuthType         string
 	s3ConfigAccessKeyID      string
 	s3ConfigEndpoint         string
 	s3ConfigRegion           string
 	s3ConfigSecretKey        string
+	s3ConfigDisableSSL       bool
 	gcsConfigJSONKeyPath     string
 	gcsConfigProjectId       string
 	gcsConfigScopes          string
@@ -60,6 +63,8 @@ func newCmdSet() *cobra.Command {
 	setCmd.Flags().StringVar(&req.s3ConfigEndpoint, s3.Kind+"."+s3.ConfigEndpoint, "", "S3 config endpoint")
 	setCmd.Flags().StringVar(&req.s3ConfigRegion, s3.Kind+"."+s3.ConfigRegion, "", "S3 config region")
 	setCmd.Flags().StringVar(&req.s3ConfigSecretKey, s3.Kind+"."+s3.ConfigSecretKey, "", "S3 config secret key")
+	setCmd.Flags().StringVar(&req.s3ConfigAuthType, s3.Kind+"."+s3.ConfigAuthType, "accesskey", "S3 config auth type (accesskey, iam)")
+	setCmd.Flags().BoolVar(&req.s3ConfigDisableSSL, s3.Kind+"."+s3.ConfigDisableSSL, false, "S3 config disable SSL")
 
 	setCmd.Flags().StringVar(&req.gcsConfigJSONKeyPath, gcs.Kind+".json_key_path", "", "GCS config json key path")
 	setCmd.Flags().StringVar(&req.gcsConfigProjectId, gcs.Kind+"."+gcs.ConfigProjectId, "", "GCS config project id")
@@ -99,6 +104,10 @@ func setContext(req *setContextRequest) {
 		if req.s3ConfigSecretKey != "" {
 			nc.Config[s3.ConfigSecretKey] = req.s3ConfigSecretKey
 		}
+		if req.s3ConfigAuthType != "" {
+			nc.Config[s3.ConfigAuthType] = req.s3ConfigAuthType
+		}
+		nc.Config[s3.ConfigDisableSSL] = strconv.FormatBool(req.s3ConfigDisableSSL)
 	case gcs.Kind:
 		nc.Provider = gcs.Kind
 		if req.gcsConfigJSONKeyPath != "" {

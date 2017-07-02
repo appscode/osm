@@ -1,5 +1,5 @@
 hash: 136fcc09fc088afe96c5d9653e4c52703c19bf2034f90aacea60da4a68ea0f07
-updated: 2017-07-01T16:52:25.990731089-07:00
+updated: 2017-07-01T17:39:39.572184318-07:00
 imports:
 - name: cloud.google.com/go
   version: fe3d41e1ecb2ce36ad3a979037c9b9a2b726226f
@@ -70,7 +70,7 @@ imports:
   subpackages:
   - proto
 - name: github.com/graymeta/stow
-  version: d4b253dd4995360ae103b6460bbadeaa7fb3cdb4
+  version: 570a04814c391b8f71e078752d67d660b353947b
   repo: https://github.com/appscode/stow.git
   vcs: git
   subpackages:

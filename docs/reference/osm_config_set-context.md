@@ -29,6 +29,8 @@ osm config set-context <name>
       --local.path string              Local config key path
       --provider string                Cloud storage provider
       --s3.access_key_id string        S3 config access key id
+      --s3.auth_type string            S3 config auth type (accesskey, iam) (default "accesskey")
+      --s3.disable_ssl                 S3 config disable SSL
       --s3.endpoint string             S3 config endpoint
       --s3.region string               S3 config region
       --s3.secret_key string           S3 config secret key
