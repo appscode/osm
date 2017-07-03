@@ -1,5 +1,5 @@
-hash: 136fcc09fc088afe96c5d9653e4c52703c19bf2034f90aacea60da4a68ea0f07
-updated: 2017-07-01T17:39:39.572184318-07:00
+hash: 5fc5814f8a0f72accce06d90942f2bec4c7c9f1a542bedefd2fac080c03cd18f
+updated: 2017-07-03T10:36:58.689387871-07:00
 imports:
 - name: cloud.google.com/go
   version: fe3d41e1ecb2ce36ad3a979037c9b9a2b726226f
@@ -18,6 +18,8 @@ imports:
   - version
 - name: github.com/appscode/go-term
   version: 620ebcf71e8e9dd59363149cd05ce8d3d57231e6
+- name: github.com/appscode/log
+  version: 68e0e42e42c01371f3950571fc87c2298a51dd8f
 - name: github.com/aws/aws-sdk-go
   version: 819b71cf8430e434c1eee7e7e8b0f2b8870be899
   subpackages:
@@ -64,13 +66,15 @@ imports:
 - name: github.com/ghodss/yaml
   version: 0ca9ea5df5451ffdf184b4428c902747c2c11cd7
 - name: github.com/go-ini/ini
-  version: d3de07a94d22b4a0972deb4b96d790c2c0ce8333
+  version: 2e44421e256d82ebbf3d4d4fcabe8930b905eff3
+- name: github.com/golang/glog
+  version: 44145f04b68cf362d9c4df2182967c2275eaefed
 - name: github.com/golang/protobuf
-  version: 8ee79997227bf9b34611aee7946ae64735e6fd93
+  version: 8616e8ee5e20a1704615e6c8d7afcdac06087a67
   subpackages:
   - proto
 - name: github.com/graymeta/stow
-  version: 570a04814c391b8f71e078752d67d660b353947b
+  version: 9457960a7989724e98ca759ed456e0e05ca69601
   repo: https://github.com/appscode/stow.git
   vcs: git
   subpackages:
@@ -82,7 +86,7 @@ imports:
 - name: github.com/inconshreveable/mousetrap
   version: 76626ae9c91c4f2a10f34cad8ce83ea42c93bb75
 - name: github.com/jmespath/go-jmespath
-  version: 0b12d6b521d83fc7f755e7cfc1b1fbdd35a01a74
+  version: 3433f3ea46d9f8019119e7dd41274e112a2359a9
 - name: github.com/mattn/go-colorable
   version: 5411d3eea5978e6cdc258b30de592b60df6aba96
   repo: https://github.com/mattn/go-colorable
@@ -94,7 +98,7 @@ imports:
 - name: github.com/mitchellh/go-homedir
   version: d682a8f0cf139663a984ff12528da460ca963de9
 - name: github.com/ncw/swift
-  version: 8e9b10220613abdbc2896808ee6b43e411a4fa6c
+  version: bf51ccd3b5c3a1f12ac762b4511c5f9f1ce6b26f
 - name: github.com/olekukonko/tablewriter
   version: cca8bbc0798408af109aaaa239cbd2634846b340
 - name: github.com/pkg/errors

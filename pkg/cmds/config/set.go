@@ -35,6 +35,13 @@ type setContextRequest struct {
 	swiftConfigTenantAuthURL string
 	swiftConfigTenantName    string
 	swiftConfigUsername      string
+	swiftConfigDomain        string
+	swiftConfigRegion        string
+	swiftConfigTenantId      string
+	swiftConfigTenantDomain  string
+	swiftConfigTrustId       string
+	swiftConfigStorageURL    string
+	swiftConfigAuthToken     string
 }
 
 func newCmdSet() *cobra.Command {
@@ -79,6 +86,13 @@ func newCmdSet() *cobra.Command {
 	setCmd.Flags().StringVar(&req.swiftConfigTenantAuthURL, swift.Kind+"."+swift.ConfigTenantAuthURL, "", "Swift teanant auth url")
 	setCmd.Flags().StringVar(&req.swiftConfigTenantName, swift.Kind+"."+swift.ConfigTenantName, "", "Swift tenant name")
 	setCmd.Flags().StringVar(&req.swiftConfigUsername, swift.Kind+"."+swift.ConfigUsername, "", "Swift username")
+	setCmd.Flags().StringVar(&req.swiftConfigDomain, swift.Kind+"."+swift.ConfigDomain, "", "Swift domain")
+	setCmd.Flags().StringVar(&req.swiftConfigRegion, swift.Kind+"."+swift.ConfigRegion, "", "Swift region")
+	setCmd.Flags().StringVar(&req.swiftConfigTenantId, swift.Kind+"."+swift.ConfigTenantId, "", "Swift TenantId")
+	setCmd.Flags().StringVar(&req.swiftConfigTenantDomain, swift.Kind+"."+swift.ConfigTenantDomain, "", "Swift TenantDomain")
+	setCmd.Flags().StringVar(&req.swiftConfigTrustId, swift.Kind+"."+swift.ConfigTrustId, "", "Swift TrustId")
+	setCmd.Flags().StringVar(&req.swiftConfigStorageURL, swift.Kind+"."+swift.ConfigStorageURL, "", "Swift StorageURL")
+	setCmd.Flags().StringVar(&req.swiftConfigAuthToken, swift.Kind+"."+swift.ConfigAuthToken, "", "Swift AuthToken")
 
 	return setCmd
 }
@@ -144,6 +158,27 @@ func setContext(req *setContextRequest, configPath string) {
 		}
 		if req.swiftConfigUsername != "" {
 			nc.Config[swift.ConfigUsername] = req.swiftConfigUsername
+		}
+		if req.swiftConfigDomain != "" {
+			nc.Config[swift.ConfigDomain] = req.swiftConfigDomain
+		}
+		if req.swiftConfigRegion != "" {
+			nc.Config[swift.ConfigRegion] = req.swiftConfigRegion
+		}
+		if req.swiftConfigTenantId != "" {
+			nc.Config[swift.ConfigTenantId] = req.swiftConfigTenantId
+		}
+		if req.swiftConfigTenantDomain != "" {
+			nc.Config[swift.ConfigTenantDomain] = req.swiftConfigTenantDomain
+		}
+		if req.swiftConfigTrustId != "" {
+			nc.Config[swift.ConfigTrustId] = req.swiftConfigTrustId
+		}
+		if req.swiftConfigStorageURL != "" {
+			nc.Config[swift.ConfigStorageURL] = req.swiftConfigStorageURL
+		}
+		if req.swiftConfigAuthToken != "" {
+			nc.Config[swift.ConfigAuthToken] = req.swiftConfigAuthToken
 		}
 	default:
 		term.Fatalln("Unknown provider:" + req.Provider)

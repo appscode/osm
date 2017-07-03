@@ -57,13 +57,13 @@ func listItems(req *itemListRequest, configPath string) {
 	cursor := stow.CursorStart
 	n := 0
 	for {
-		_, items, next, err := c.Browse(req.prefix, req.delimiter, cursor, 50)
+		page, err := c.Browse(req.prefix, req.delimiter, cursor, 50)
 		term.ExitOnError(err)
-		for _, item := range items {
+		for _, item := range page.Items {
 			n++
 			term.Infoln(item.ID())
 		}
-		cursor = next
+		cursor = page.Cursor
 		if stow.IsCursorEnd(cursor) {
 			break
 		}

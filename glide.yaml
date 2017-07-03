@@ -25,3 +25,4 @@ import:
   vcs: git
   version: v7.0.1-beta
 - package: github.com/ncw/swift
+  version: master
