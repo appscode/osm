@@ -1,5 +1,5 @@
 hash: 5fc5814f8a0f72accce06d90942f2bec4c7c9f1a542bedefd2fac080c03cd18f
-updated: 2017-07-03T10:36:58.689387871-07:00
+updated: 2017-07-03T10:50:34.354178572-07:00
 imports:
 - name: cloud.google.com/go
   version: fe3d41e1ecb2ce36ad3a979037c9b9a2b726226f
@@ -9,7 +9,7 @@ imports:
 - name: github.com/appscode/errors
   version: 748883e321a9f99fe901bd2663c7af3fcae43ea4
 - name: github.com/appscode/go
-  version: ecda61fa4e8943020e9948723e49c4ae544f7a3a
+  version: 9fde097ebcef0add8325c8fbee63ae01e7da530e
   subpackages:
   - encoding/yaml
   - env
@@ -98,7 +98,7 @@ imports:
 - name: github.com/mitchellh/go-homedir
   version: d682a8f0cf139663a984ff12528da460ca963de9
 - name: github.com/ncw/swift
-  version: bf51ccd3b5c3a1f12ac762b4511c5f9f1ce6b26f
+  version: 9e6fdb8957a022d5780a78b58d6181c3580bb01f
 - name: github.com/olekukonko/tablewriter
   version: cca8bbc0798408af109aaaa239cbd2634846b340
 - name: github.com/pkg/errors
