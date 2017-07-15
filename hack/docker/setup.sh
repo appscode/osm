@@ -38,21 +38,19 @@ build_binary() {
 
 build_docker() {
     pushd $GOPATH/src/github.com/appscode/osm/hack/docker
-    cp $DIST/osm/osm-linux-amd64 osm
+    cp $DIST/osm/osm-alpine-amd64 osm
     chmod 755 osm
 
     cat >Dockerfile <<EOL
 FROM alpine
 
 RUN set -x \
-  && apk update \
-  && apk add ca-certificates \
-  && rm -rf /var/cache/apk/*
+  && apk add --update --no-cache ca-certificates
 
-COPY osm /osm
+COPY osm /usr/bin/osm
 
 USER nobody:nobody
-ENTRYPOINT ["/osm"]
+ENTRYPOINT ["osm"]
 EOL
     local cmd="docker build -t appscode/$IMG:$TAG ."
     echo $cmd; $cmd
