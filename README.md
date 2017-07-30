@@ -7,7 +7,7 @@ Object Store Manipulator (osm: pronounced like `awesome`) - `curl` for cloud sto
 
 ## Install OSM
 You can download and install a pre-built binary:
-```bash
+```console
 # Linux amd 64-bit:
 wget -O osm https://cdn.appscode.com/binaries/osm/0.5.1/osm-linux-amd64 \
   && chmod +x osm \
@@ -32,7 +32,7 @@ wget -O osm https://cdn.appscode.com/binaries/osm/0.5.1/osm-darwin-386 \
 To build from source, run: `go get -u github.com/appscode/osm`
 
 ## Usage
-```bash
+```console
 osm [command] [flags]
 osm [command]
 
@@ -64,7 +64,7 @@ Use "osm [command] --help" for more information about a command.
 ### OSM Configuration
 `osm` stores credentials necessary to connect to a cloud storage provider in YAML format in `$HOME/.osm/config` file.
 This allows providing commands one time for multiple subsequent operations with a cloud provider.
-```bash
+```console
 # AWS S3:
 osm config set-context osm-s3 --provider=s3 --s3.access_key_id=<key_id> --s3.secret_key=<secret_key> --s3.region=us-east-1
 
@@ -76,7 +76,7 @@ osm config set-context osm-az --provider=azure --azure.account=<storage_ac> --az
 ```
 
 ### Bucket Operations
-```bash
+```console
 # create bucket
 osm mc mybucket
 
