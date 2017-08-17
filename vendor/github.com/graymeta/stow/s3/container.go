@@ -4,10 +4,14 @@ import (
 	"bytes"
 	"io"
 	"io/ioutil"
+	"os"
 	"strings"
+
+	"net/http"
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/s3"
+	"github.com/aws/aws-sdk-go/service/s3/s3manager"
 	"github.com/graymeta/stow"
 	"github.com/pkg/errors"
 )
@@ -116,6 +120,42 @@ func (c *container) RemoveItem(id string) error {
 // content, and the size of the file. Many more attributes can be given to the
 // file, including metadata. Keeping it simple for now.
 func (c *container) Put(name string, r io.Reader, size int64, metadata map[string]interface{}) (stow.Item, error) {
+	switch file := r.(type) {
+	case *os.File:
+		uploader := s3manager.NewUploaderWithClient(c.client)
+
+		// Convert map[string]interface{} to map[string]*string
+		mdPrepped, err := prepMetadata(metadata)
+
+		// Perform an upload.
+		result, err := uploader.Upload(&s3manager.UploadInput{
+			Bucket:   aws.String(c.name),
+			Key:      aws.String(name),
+			Body:     file,
+			Metadata: mdPrepped,
+		})
+
+		if err != nil {
+			return nil, errors.Wrap(err, "Put, uploading object")
+		}
+
+		newItem := &item{
+			container: c,
+			client:    c.client,
+			properties: properties{
+				ETag: &result.UploadID,
+				Key:  &name,
+				// Owner        *s3.Owner
+				// StorageClass *string
+			},
+		}
+		if st, err := file.Stat(); err == nil && !st.IsDir() {
+			newItem.properties.Size = aws.Int64(st.Size())
+			newItem.properties.LastModified = aws.Time(st.ModTime())
+		}
+		return newItem, nil
+	}
+
 	content, err := ioutil.ReadAll(r)
 	if err != nil {
 		return nil, errors.Wrap(err, "unable to create or update item, reading content")
@@ -127,10 +167,15 @@ func (c *container) Put(name string, r io.Reader, size int64, metadata map[strin
 		return nil, errors.Wrap(err, "unable to create or update item, preparing metadata")
 	}
 
+	// Get Content Type as string
+	// https://golang.org/pkg/net/http/#DetectContentType
+	contentType := http.DetectContentType(content)
+
 	params := &s3.PutObjectInput{
 		Bucket:        aws.String(c.name), // Required
 		Key:           aws.String(name),   // Required
 		ContentLength: aws.Int64(size),
+		ContentType:   &contentType,
 		Body:          bytes.NewReader(content),
 		Metadata:      mdPrepped, // map[string]*string
 	}
