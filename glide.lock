@@ -1,5 +1,5 @@
 hash: a6a6fab9c6b8a5846393fc708e652c0f37bb2b7c3a14caab4ff74eca05de83a9
-updated: 2017-08-17T12:07:52.024908718-07:00
+updated: 2017-08-17T13:55:57.748483414-07:00
 imports:
 - name: cloud.google.com/go
   version: fe3d41e1ecb2ce36ad3a979037c9b9a2b726226f
@@ -47,6 +47,8 @@ imports:
   - private/protocol/xml/xmlutil
   - private/waiter
   - service/s3
+  - service/s3/s3iface
+  - service/s3/s3manager
   - service/sts
 - name: github.com/Azure/azure-sdk-for-go
   version: 2d49bb8f2cee530cc16f1f1a9f0aae763dee257d
@@ -82,7 +84,7 @@ imports:
   subpackages:
   - proto
 - name: github.com/graymeta/stow
-  version: 062b7428392f2e60ce332cb7492beebbcac82d15
+  version: 3c6848a44916f9a5c422d54979e46f12d6dea8e1
   repo: https://github.com/appscode/stow.git
   vcs: git
   subpackages:
@@ -141,7 +143,7 @@ imports:
   subpackages:
   - unix
 - name: google.golang.org/api
-  version: 93a219feb72690ca01348faec80d5a076a32f688
+  version: ed10e890a8366167a7ce33fac2b12447987bcb1c
   subpackages:
   - gensupport
   - googleapi
