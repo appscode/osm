@@ -2,6 +2,7 @@ package term
 
 import (
 	"fmt"
+	"sort"
 	"strconv"
 	"strings"
 )
@@ -65,8 +66,10 @@ func Confirm(prompt string) {
 }
 
 func List(items []string) (int, string) {
+	sort.Strings(items)
+	width := len(strconv.Itoa(len(items)))
 	for i, item := range items {
-		fmt.Printf("[%v] %v\n", i+1, item)
+		fmt.Printf("[%"+strconv.Itoa(width)+"d] %v\n", i+1, item)
 	}
 	for {
 		fmt.Print("Select option: ")
