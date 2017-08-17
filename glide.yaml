@@ -22,7 +22,8 @@ import:
 - package: google.golang.org/api/storage/v1
   version: master
 - package: github.com/Azure/azure-sdk-for-go
-  vcs: git
-  version: v7.0.1-beta
+  version: v10.2.1-beta
+- package: github.com/Azure/go-autorest
+  version: ~8.1.1
 - package: github.com/ncw/swift
   version: master
