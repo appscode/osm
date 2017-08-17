@@ -1,7 +1,5 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/appscode/osm)](https://goreportcard.com/report/github.com/appscode/osm)
 
-[Website](https://appscode.com) • [Slack](https://slack.appscode.com) • [Twitter](https://twitter.com/AppsCodeHQ)
-
 # osm
 Object Store Manipulator (osm: pronounced like `awesome`) - `curl` for cloud storage services. 🙌 `osm` can create & delete buckets and upload, download & delete files from buckets for AWS S3, Google Cloud Storage, Microsoft Azure storage and OpenStack Swift. Its single binary can be easily packaged instead of official python based clis inside Docker images.
 
@@ -99,9 +97,11 @@ osm rm -c mybucket a/b/c.pdf
 osm rc -f mybucket
 ```
 
-## Issues
-Please file an issue if you think you've found a bug. Be sure to describe
- * How can it be reproduced?
- * What did you expect?
- * What actually occurred?
- * Cloud provider, Go version, platform, etc. if possibly relevant.
+## Contribution guidelines
+Want to help improve OSM? Please start [here](/CONTRIBUTING.md).
+
+## Support
+If you have any questions, you can reach out to us.
+* [Slack](https://slack.appscode.com)
+* [Twitter](https://twitter.com/AppsCodeHQ)
+* [Website](https://appscode.com)

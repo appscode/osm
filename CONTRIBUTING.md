@@ -21,7 +21,12 @@ please feel free to send a Pull Request.
 If you have a question about OSM or having problem using it, you can contact us on our public Slack channel. Follow [this link](https://slack.appscode.com) to get invitation to our Slack channel.
 
 ## Bugs/Feature request
-If you have found a bug with OSM or want to request for new features, please [file an issue](https://github.com/appscode/OSM/issues/new). 
+If you have found a bug with OSM or want to request for new features, please [file an issue](https://github.com/appscode/OSM/issues/new). Be sure to describe
+- How can it be reproduced?
+- What did you expect?
+- What actually occurred?
+- Cloud provider, Go version, platform, etc. if possibly relevant.
+
 
 ## Contribution Flow
 If you fix a bug or developed a new feature, feel free to submit a PR. In either case, please file a [Github issue]((https://github.com/appscode/osm/issues/new)) first, so that we can have a discussion on it. This is a rough outline of what a contributor's workflow looks like:
