@@ -44,4 +44,3 @@ osm config view
 * [osm config use-context](osm_config_use-context.md)	 - Use context
 * [osm config view](osm_config_view.md)	 - Print osm config
 
-

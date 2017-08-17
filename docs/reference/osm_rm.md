@@ -41,4 +41,3 @@ osm rm -c mybucket f1.txt
 ### SEE ALSO
 * [osm](osm.md)	 - Object Store Manipulator by AppsCode
 
-

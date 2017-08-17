@@ -5,7 +5,7 @@ import (
 	"os"
 
 	"github.com/appscode/go-term"
-	otx "github.com/appscode/osm/pkg/context"
+	otx "github.com/appscode/osm/context"
 	"github.com/graymeta/stow"
 	"github.com/spf13/cobra"
 )
@@ -20,9 +20,10 @@ type itemListRequest struct {
 func NewCmdListIetms() *cobra.Command {
 	req := &itemListRequest{}
 	cmd := &cobra.Command{
-		Use:     "ls <name>",
-		Short:   "List container",
-		Example: "osm ls mybucket",
+		Use:               "ls <name>",
+		Short:             "List container",
+		Example:           "osm ls mybucket",
+		DisableAutoGenTag: true,
 		Run: func(cmd *cobra.Command, args []string) {
 			if len(args) == 0 {
 				term.Errorln("Provide container name as argument. See examples:")

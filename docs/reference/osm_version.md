@@ -33,4 +33,3 @@ osm version [flags]
 ### SEE ALSO
 * [osm](osm.md)	 - Object Store Manipulator by AppsCode
 
-

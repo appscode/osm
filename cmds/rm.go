@@ -4,7 +4,7 @@ import (
 	"os"
 
 	"github.com/appscode/go-term"
-	otx "github.com/appscode/osm/pkg/context"
+	otx "github.com/appscode/osm/context"
 	"github.com/spf13/cobra"
 )
 
@@ -17,9 +17,10 @@ type itemRemoveRequest struct {
 func NewCmdRemove() *cobra.Command {
 	req := &itemRemoveRequest{}
 	cmd := &cobra.Command{
-		Use:     "rm <id>",
-		Short:   "Remove item from container",
-		Example: "osm rm -c mybucket f1.txt",
+		Use:               "rm <id>",
+		Short:             "Remove item from container",
+		Example:           "osm rm -c mybucket f1.txt",
+		DisableAutoGenTag: true,
 		Run: func(cmd *cobra.Command, args []string) {
 			if len(args) == 0 {
 				term.Errorln("Provide item id as argument. See examples:")

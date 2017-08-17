@@ -41,4 +41,3 @@ osm pull -c mybucket f1.txt /tmp/f1.txt
 ### SEE ALSO
 * [osm](osm.md)	 - Object Store Manipulator by AppsCode
 
-

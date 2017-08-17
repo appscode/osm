@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	"github.com/appscode/osm/pkg/cmds"
+	"github.com/appscode/osm/cmds"
 )
 
 func main() {

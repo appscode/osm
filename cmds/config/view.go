@@ -4,16 +4,17 @@ import (
 	"os"
 
 	"github.com/appscode/go-term"
-	otx "github.com/appscode/osm/pkg/context"
+	otx "github.com/appscode/osm/context"
 	"github.com/ghodss/yaml"
 	"github.com/spf13/cobra"
 )
 
 func newCmdView() *cobra.Command {
 	setCmd := &cobra.Command{
-		Use:     "view",
-		Short:   "Print osm config",
-		Example: "osm config view",
+		Use:               "view",
+		Short:             "Print osm config",
+		Example:           "osm config view",
+		DisableAutoGenTag: true,
 		Run: func(cmd *cobra.Command, args []string) {
 			if len(args) > 0 {
 				cmd.Help()

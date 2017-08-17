@@ -79,9 +79,9 @@ def version():
 
 
 def fmt():
-    libbuild.ungroup_go_imports('pkg', '*.go')
-    die(call('goimports -w pkg *.go'))
-    call('gofmt -s -w *.go pkg')
+    libbuild.ungroup_go_imports('cmds', 'context', '*.go')
+    die(call('goimports -w cmds context *.go'))
+    call('gofmt -s -w *.go cmds context')
 
 
 def lint():

@@ -4,16 +4,17 @@ import (
 	"os"
 
 	"github.com/appscode/go-term"
-	otx "github.com/appscode/osm/pkg/context"
+	otx "github.com/appscode/osm/context"
 	"github.com/olekukonko/tablewriter"
 	"github.com/spf13/cobra"
 )
 
 func newCmdGet() *cobra.Command {
 	setCmd := &cobra.Command{
-		Use:     "get-contexts",
-		Short:   "List available contexts",
-		Example: "osm config get-contexts",
+		Use:               "get-contexts",
+		Short:             "List available contexts",
+		Example:           "osm config get-contexts",
+		DisableAutoGenTag: true,
 		Run: func(cmd *cobra.Command, args []string) {
 			if len(args) > 0 {
 				cmd.Help()

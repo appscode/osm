@@ -39,4 +39,3 @@ osm config get-contexts
 ### SEE ALSO
 * [osm config](osm_config.md)	 - OSM configuration
 
-

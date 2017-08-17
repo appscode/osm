@@ -6,7 +6,7 @@ import (
 	"strconv"
 
 	"github.com/appscode/go-term"
-	otx "github.com/appscode/osm/pkg/context"
+	otx "github.com/appscode/osm/context"
 	"github.com/graymeta/stow"
 	"github.com/graymeta/stow/azure"
 	gcs "github.com/graymeta/stow/google"
@@ -47,9 +47,10 @@ type setContextRequest struct {
 func newCmdSet() *cobra.Command {
 	req := &setContextRequest{}
 	setCmd := &cobra.Command{
-		Use:     "set-context <name>",
-		Short:   "Set context",
-		Example: "osm config set-context <name>",
+		Use:               "set-context <name>",
+		Short:             "Set context",
+		Example:           "osm config set-context <name>",
+		DisableAutoGenTag: true,
 		Run: func(cmd *cobra.Command, args []string) {
 			if len(args) == 0 {
 				term.Errorln("Provide context name as argument. See examples:")

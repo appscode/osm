@@ -4,7 +4,7 @@ import (
 	"os"
 
 	"github.com/appscode/go-term"
-	otx "github.com/appscode/osm/pkg/context"
+	otx "github.com/appscode/osm/context"
 	"github.com/graymeta/stow"
 	"github.com/spf13/cobra"
 )
@@ -18,9 +18,10 @@ type containerRemoveRequest struct {
 func NewCmdRemoveContainer() *cobra.Command {
 	req := &containerRemoveRequest{}
 	cmd := &cobra.Command{
-		Use:     "rc <name>",
-		Short:   "Remove container",
-		Example: "osm rc mybucket",
+		Use:               "rc <name>",
+		Short:             "Remove container",
+		Example:           "osm rc mybucket",
+		DisableAutoGenTag: true,
 		Run: func(cmd *cobra.Command, args []string) {
 			if len(args) == 0 {
 				term.Errorln("Provide container name as argument. See examples:")

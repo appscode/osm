@@ -42,4 +42,3 @@ osm ls mybucket
 ### SEE ALSO
 * [osm](osm.md)	 - Object Store Manipulator by AppsCode
 
-

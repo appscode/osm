@@ -4,7 +4,7 @@ import (
 	"os"
 
 	"github.com/appscode/go-term"
-	otx "github.com/appscode/osm/pkg/context"
+	otx "github.com/appscode/osm/context"
 	"github.com/spf13/cobra"
 )
 
@@ -16,9 +16,10 @@ type containerMakeRequest struct {
 func NewCmdMakeContainer() *cobra.Command {
 	req := &containerMakeRequest{}
 	cmd := &cobra.Command{
-		Use:     "mc <name>",
-		Short:   "Make container",
-		Example: "osm mc mybucket",
+		Use:               "mc <name>",
+		Short:             "Make container",
+		Example:           "osm mc mybucket",
+		DisableAutoGenTag: true,
 		Run: func(cmd *cobra.Command, args []string) {
 			if len(args) == 0 {
 				term.Errorln("Provide container name as argument. See examples:")
