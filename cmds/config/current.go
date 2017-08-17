@@ -4,15 +4,16 @@ import (
 	"os"
 
 	"github.com/appscode/go-term"
-	otx "github.com/appscode/osm/pkg/context"
+	otx "github.com/appscode/osm/context"
 	"github.com/spf13/cobra"
 )
 
 func newCmdCurrent() *cobra.Command {
 	setCmd := &cobra.Command{
-		Use:     "current-context",
-		Short:   "Print current context",
-		Example: "osm config current-context",
+		Use:               "current-context",
+		Short:             "Print current context",
+		Example:           "osm config current-context",
+		DisableAutoGenTag: true,
 		Run: func(cmd *cobra.Command, args []string) {
 			if len(args) > 0 {
 				cmd.Help()

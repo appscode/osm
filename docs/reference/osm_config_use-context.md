@@ -39,4 +39,3 @@ osm config use-context <name>
 ### SEE ALSO
 * [osm config](osm_config.md)	 - OSM configuration
 
-

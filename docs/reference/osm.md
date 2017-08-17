@@ -37,4 +37,3 @@ osm [command] [flags]
 * [osm stat](osm_stat.md)	 - Stat item from container
 * [osm version](osm_version.md)	 - Prints binary version number.
 
-

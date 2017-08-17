@@ -4,15 +4,16 @@ import (
 	"flag"
 
 	v "github.com/appscode/go/version"
-	cfgCmd "github.com/appscode/osm/pkg/cmds/config"
+	cfgCmd "github.com/appscode/osm/cmds/config"
 	"github.com/mitchellh/go-homedir"
 	"github.com/spf13/cobra"
 )
 
 func NewCmdOsm() *cobra.Command {
 	rootCmd := &cobra.Command{
-		Use:   "osm [command]",
-		Short: `Object Store Manipulator by AppsCode`,
+		Use:               "osm [command]",
+		Short:             `Object Store Manipulator by AppsCode`,
+		DisableAutoGenTag: true,
 		Run: func(c *cobra.Command, args []string) {
 			c.Help()
 		},

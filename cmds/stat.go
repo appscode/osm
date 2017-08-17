@@ -5,7 +5,7 @@ import (
 	"os"
 
 	"github.com/appscode/go-term"
-	otx "github.com/appscode/osm/pkg/context"
+	otx "github.com/appscode/osm/context"
 	"github.com/dustin/go-humanize"
 	"github.com/spf13/cobra"
 )
@@ -19,9 +19,10 @@ type itemStatRequest struct {
 func NewCmdStat() *cobra.Command {
 	req := &itemStatRequest{}
 	cmd := &cobra.Command{
-		Use:     "stat <id>",
-		Short:   "Stat item from container",
-		Example: "osm stat -c mybucket f1.txt",
+		Use:               "stat <id>",
+		Short:             "Stat item from container",
+		Example:           "osm stat -c mybucket f1.txt",
+		DisableAutoGenTag: true,
 		Run: func(cmd *cobra.Command, args []string) {
 			if len(args) == 0 {
 				term.Errorln("Provide item id as argument. See examples:")

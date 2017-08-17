@@ -39,4 +39,3 @@ osm config current-context
 ### SEE ALSO
 * [osm config](osm_config.md)	 - OSM configuration
 
-

@@ -5,7 +5,7 @@ import (
 	"path/filepath"
 
 	"github.com/appscode/go-term"
-	otx "github.com/appscode/osm/pkg/context"
+	otx "github.com/appscode/osm/context"
 	"github.com/graymeta/stow"
 	"github.com/spf13/cobra"
 )
@@ -20,9 +20,10 @@ type itemPushRequest struct {
 func NewCmdPush() *cobra.Command {
 	req := &itemPushRequest{}
 	cmd := &cobra.Command{
-		Use:     "push <src> <dest>",
-		Short:   "Push item from container",
-		Example: "osm push -c mybucket f1.txt /tmp/f1.txt",
+		Use:               "push <src> <dest>",
+		Short:             "Push item from container",
+		Example:           "osm push -c mybucket f1.txt /tmp/f1.txt",
+		DisableAutoGenTag: true,
 		Run: func(cmd *cobra.Command, args []string) {
 			if len(args) < 2 {
 				term.Errorln("Provide source path and destination item as argument. See examples:")

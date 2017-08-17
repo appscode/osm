@@ -6,7 +6,7 @@ import (
 	"os"
 
 	"github.com/appscode/go/runtime"
-	"github.com/appscode/osm/pkg/cmds"
+	"github.com/appscode/osm/cmds"
 	"github.com/spf13/cobra/doc"
 )
 

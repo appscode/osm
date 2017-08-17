@@ -4,15 +4,16 @@ import (
 	"os"
 
 	"github.com/appscode/go-term"
-	otx "github.com/appscode/osm/pkg/context"
+	otx "github.com/appscode/osm/context"
 	"github.com/spf13/cobra"
 )
 
 func newCmdUse() *cobra.Command {
 	setCmd := &cobra.Command{
-		Use:     "use-context <name>",
-		Short:   "Use context",
-		Example: "osm config use-context <name>",
+		Use:               "use-context <name>",
+		Short:             "Use context",
+		Example:           "osm config use-context <name>",
+		DisableAutoGenTag: true,
 		Run: func(cmd *cobra.Command, args []string) {
 			if len(args) == 0 {
 				term.Errorln("Provide context name as argument. See examples:")
