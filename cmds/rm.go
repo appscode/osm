@@ -57,9 +57,8 @@ func removeItem(req *itemRemoveRequest, configPath string) {
 		items, next, err := c.Items(req.itemID, cursor, 50)
 		term.ExitOnError(err)
 		for _, item := range items {
-			if err := c.RemoveItem(item.ID()); err != nil {
-				term.ExitOnError(err)
-			}
+			err = c.RemoveItem(item.ID())
+			term.ExitOnError(err)
 			term.Successln("Successfully removed item " + item.ID())
 		}
 		cursor = next
