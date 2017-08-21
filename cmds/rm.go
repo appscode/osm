@@ -52,10 +52,9 @@ func removeItem(req *itemRemoveRequest, configPath string) {
 	c, err := loc.Container(req.container)
 	term.ExitOnError(err)
 
-	prefix := req.itemID
 	cursor := stow.CursorStart
 	for {
-		items, next, err := c.Items(prefix, cursor, 50)
+		items, next, err := c.Items(req.itemID, cursor, 50)
 		term.ExitOnError(err)
 		for _, item := range items {
 			if err := c.RemoveItem(item.ID()); err != nil {
