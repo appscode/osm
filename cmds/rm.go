@@ -55,15 +55,15 @@ func removeItem(req *itemRemoveRequest, configPath string) {
 	prefix := req.itemID
 	cursor := stow.CursorStart
 	for {
-		page, err := c.Browse(prefix, "", cursor, 50)
+		items, next, err := c.Items(prefix, cursor, 50)
 		term.ExitOnError(err)
-		for _, item := range page.Items {
+		for _, item := range items {
 			if err := c.RemoveItem(item.ID()); err != nil {
 				term.ExitOnError(err)
 			}
 			term.Successln("Successfully removed item " + item.ID())
 		}
-		cursor = page.Cursor
+		cursor = next
 		if stow.IsCursorEnd(cursor) {
 			break
 		}
