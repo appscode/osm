@@ -5,6 +5,7 @@ import (
 
 	"github.com/appscode/go-term"
 	otx "github.com/appscode/osm/context"
+	"github.com/graymeta/stow"
 	"github.com/spf13/cobra"
 )
 
@@ -51,7 +52,20 @@ func removeItem(req *itemRemoveRequest, configPath string) {
 	c, err := loc.Container(req.container)
 	term.ExitOnError(err)
 
-	err = c.RemoveItem(req.itemID)
-	term.ExitOnError(err)
-	term.Successln("Successfully removed item " + req.itemID)
+	prefix := req.itemID
+	cursor := stow.CursorStart
+	for {
+		page, err := c.Browse(prefix, "", cursor, 50)
+		term.ExitOnError(err)
+		for _, item := range page.Items {
+			if err := c.RemoveItem(item.ID()); err != nil {
+				term.ExitOnError(err)
+			}
+			term.Successln("Successfully removed item " + item.ID())
+		}
+		cursor = page.Cursor
+		if stow.IsCursorEnd(cursor) {
+			break
+		}
+	}
 }
