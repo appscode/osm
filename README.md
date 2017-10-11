@@ -66,7 +66,7 @@ This allows providing commands one time for multiple subsequent operations with 
 # AWS S3:
 osm config set-context osm-s3 --provider=s3 --s3.access_key_id=<key_id> --s3.secret_key=<secret_key> --s3.region=us-east-1
 
-# DigitalOcean Spaces
+# DigitalOcean Spaces:
 osm config set-context osm-do --provider=s3 --s3.access_key_id=<key_id> --s3.secret_key=<secret_key> --s3.endpoint=nyc3.digitaloceanspaces.com
 
 # Google Cloud Storage:
