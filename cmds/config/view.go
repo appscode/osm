@@ -3,7 +3,7 @@ package config
 import (
 	"os"
 
-	"github.com/appscode/go-term"
+	"github.com/appscode/go/term"
 	otx "github.com/appscode/osm/context"
 	"github.com/ghodss/yaml"
 	"github.com/spf13/cobra"
