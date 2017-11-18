@@ -4,7 +4,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/appscode/go-term"
+	"github.com/appscode/go/term"
 	otx "github.com/appscode/osm/context"
 	"github.com/graymeta/stow"
 	"github.com/spf13/cobra"
