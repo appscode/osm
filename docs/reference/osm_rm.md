@@ -1,3 +1,14 @@
+---
+title: Osm Rm
+menu:
+  product_osm_0.6.0:
+    identifier: osm-rm
+    name: Osm Rm
+    parent: reference
+product_name: osm
+left_menu: product_osm_0.6.0
+section_menu_id: reference
+---
 ## osm rm
 
 Remove item from container
@@ -39,5 +50,5 @@ osm rm -c mybucket f1.txt
 ```
 
 ### SEE ALSO
-* [osm](osm.md)	 - Object Store Manipulator by AppsCode
+* [osm](/docs/reference/osm.md)	 - Object Store Manipulator by AppsCode
 

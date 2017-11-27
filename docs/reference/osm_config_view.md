@@ -1,3 +1,14 @@
+---
+title: Osm Config View
+menu:
+  product_osm_0.6.0:
+    identifier: osm-config-view
+    name: Osm Config View
+    parent: reference
+product_name: osm
+left_menu: product_osm_0.6.0
+section_menu_id: reference
+---
 ## osm config view
 
 Print osm config
@@ -37,5 +48,5 @@ osm config view
 ```
 
 ### SEE ALSO
-* [osm config](osm_config.md)	 - OSM configuration
+* [osm config](/docs/reference/osm_config.md)	 - OSM configuration
 

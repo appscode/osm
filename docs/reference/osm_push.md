@@ -1,3 +1,14 @@
+---
+title: Osm Push
+menu:
+  product_osm_0.6.0:
+    identifier: osm-push
+    name: Osm Push
+    parent: reference
+product_name: osm
+left_menu: product_osm_0.6.0
+section_menu_id: reference
+---
 ## osm push
 
 Push item from container
@@ -39,5 +50,5 @@ osm push -c mybucket f1.txt /tmp/f1.txt
 ```
 
 ### SEE ALSO
-* [osm](osm.md)	 - Object Store Manipulator by AppsCode
+* [osm](/docs/reference/osm.md)	 - Object Store Manipulator by AppsCode
 

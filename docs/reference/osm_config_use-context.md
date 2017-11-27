@@ -1,3 +1,14 @@
+---
+title: Osm Config Use-Context
+menu:
+  product_osm_0.6.0:
+    identifier: osm-config-use-context
+    name: Osm Config Use-Context
+    parent: reference
+product_name: osm
+left_menu: product_osm_0.6.0
+section_menu_id: reference
+---
 ## osm config use-context
 
 Use context
@@ -37,5 +48,5 @@ osm config use-context <name>
 ```
 
 ### SEE ALSO
-* [osm config](osm_config.md)	 - OSM configuration
+* [osm config](/docs/reference/osm_config.md)	 - OSM configuration
 
