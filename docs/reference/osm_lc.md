@@ -1,3 +1,14 @@
+---
+title: Osm Lc
+menu:
+  product_osm_0.6.0:
+    identifier: osm-lc
+    name: Osm Lc
+    parent: reference
+product_name: osm
+left_menu: product_osm_0.6.0
+section_menu_id: reference
+---
 ## osm lc
 
 List containers
@@ -38,5 +49,5 @@ osm lc
 ```
 
 ### SEE ALSO
-* [osm](osm.md)	 - Object Store Manipulator by AppsCode
+* [osm](/docs/reference/osm.md)	 - Object Store Manipulator by AppsCode
 

@@ -1,3 +1,14 @@
+---
+title: Osm Config Set-Context
+menu:
+  product_osm_0.6.0:
+    identifier: osm-config-set-context
+    name: Osm Config Set-Context
+    parent: reference
+product_name: osm
+left_menu: product_osm_0.6.0
+section_menu_id: reference
+---
 ## osm config set-context
 
 Set context
@@ -61,5 +72,5 @@ osm config set-context <name>
 ```
 
 ### SEE ALSO
-* [osm config](osm_config.md)	 - OSM configuration
+* [osm config](/docs/reference/osm_config.md)	 - OSM configuration
 

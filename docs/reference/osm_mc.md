@@ -1,3 +1,14 @@
+---
+title: Osm Mc
+menu:
+  product_osm_0.6.0:
+    identifier: osm-mc
+    name: Osm Mc
+    parent: reference
+product_name: osm
+left_menu: product_osm_0.6.0
+section_menu_id: reference
+---
 ## osm mc
 
 Make container
@@ -38,5 +49,5 @@ osm mc mybucket
 ```
 
 ### SEE ALSO
-* [osm](osm.md)	 - Object Store Manipulator by AppsCode
+* [osm](/docs/reference/osm.md)	 - Object Store Manipulator by AppsCode
 

@@ -1,3 +1,19 @@
+---
+title: Osm
+menu:
+  product_osm_0.6.0:
+    identifier: osm
+    name: Osm
+    parent: reference
+    weight: 0
+
+product_name: osm
+left_menu: product_osm_0.6.0
+section_menu_id: reference
+aliases:
+  - products/osm/0.6.0/reference/
+
+---
 ## osm
 
 Object Store Manipulator by AppsCode
@@ -26,14 +42,14 @@ osm [command] [flags]
 ```
 
 ### SEE ALSO
-* [osm config](osm_config.md)	 - OSM configuration
-* [osm lc](osm_lc.md)	 - List containers
-* [osm ls](osm_ls.md)	 - List container
-* [osm mc](osm_mc.md)	 - Make container
-* [osm pull](osm_pull.md)	 - Pull item from container
-* [osm push](osm_push.md)	 - Push item from container
-* [osm rc](osm_rc.md)	 - Remove container
-* [osm rm](osm_rm.md)	 - Remove item from container
-* [osm stat](osm_stat.md)	 - Stat item from container
-* [osm version](osm_version.md)	 - Prints binary version number.
+* [osm config](/docs/reference/osm_config.md)	 - OSM configuration
+* [osm lc](/docs/reference/osm_lc.md)	 - List containers
+* [osm ls](/docs/reference/osm_ls.md)	 - List container
+* [osm mc](/docs/reference/osm_mc.md)	 - Make container
+* [osm pull](/docs/reference/osm_pull.md)	 - Pull item from container
+* [osm push](/docs/reference/osm_push.md)	 - Push item from container
+* [osm rc](/docs/reference/osm_rc.md)	 - Remove container
+* [osm rm](/docs/reference/osm_rm.md)	 - Remove item from container
+* [osm stat](/docs/reference/osm_stat.md)	 - Stat item from container
+* [osm version](/docs/reference/osm_version.md)	 - Prints binary version number.
 

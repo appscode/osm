@@ -1,3 +1,14 @@
+---
+title: Osm Config Current-Context
+menu:
+  product_osm_0.6.0:
+    identifier: osm-config-current-context
+    name: Osm Config Current-Context
+    parent: reference
+product_name: osm
+left_menu: product_osm_0.6.0
+section_menu_id: reference
+---
 ## osm config current-context
 
 Print current context
@@ -37,5 +48,5 @@ osm config current-context
 ```
 
 ### SEE ALSO
-* [osm config](osm_config.md)	 - OSM configuration
+* [osm config](/docs/reference/osm_config.md)	 - OSM configuration
 

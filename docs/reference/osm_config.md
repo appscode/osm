@@ -1,3 +1,14 @@
+---
+title: Osm Config
+menu:
+  product_osm_0.6.0:
+    identifier: osm-config
+    name: Osm Config
+    parent: reference
+product_name: osm
+left_menu: product_osm_0.6.0
+section_menu_id: reference
+---
 ## osm config
 
 OSM configuration
@@ -37,10 +48,10 @@ osm config view
 ```
 
 ### SEE ALSO
-* [osm](osm.md)	 - Object Store Manipulator by AppsCode
-* [osm config current-context](osm_config_current-context.md)	 - Print current context
-* [osm config get-contexts](osm_config_get-contexts.md)	 - List available contexts
-* [osm config set-context](osm_config_set-context.md)	 - Set context
-* [osm config use-context](osm_config_use-context.md)	 - Use context
-* [osm config view](osm_config_view.md)	 - Print osm config
+* [osm](/docs/reference/osm.md)	 - Object Store Manipulator by AppsCode
+* [osm config current-context](/docs/reference/osm_config_current-context.md)	 - Print current context
+* [osm config get-contexts](/docs/reference/osm_config_get-contexts.md)	 - List available contexts
+* [osm config set-context](/docs/reference/osm_config_set-context.md)	 - Set context
+* [osm config use-context](/docs/reference/osm_config_use-context.md)	 - Use context
+* [osm config view](/docs/reference/osm_config_view.md)	 - Print osm config
 
