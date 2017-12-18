@@ -3,7 +3,7 @@ import:
 - package: github.com/appscode/go
   version: master
 - package: github.com/fatih/color
-  version: v1.4.1
+  version: v1.5.0
 - package: github.com/mitchellh/go-homedir
 - package: github.com/spf13/cobra
 - package: golang.org/x/crypto
@@ -30,4 +30,18 @@ import:
 - package: github.com/Azure/go-autorest
   version: ~8.1.1
 - package: github.com/ncw/swift
+  version: master
+- package: k8s.io/api
+  version: kubernetes-1.8.3
+- package: k8s.io/apimachinery
+  repo: https://github.com/tamalsaha/apimachinery.git
+  version: release-1.8
+  vcs: git
+- package: k8s.io/client-go
+  version: kubernetes-1.8.3
+- package: github.com/appscode/kutil
+  version: release-5.0
+- package: github.com/hashicorp/go-version
+  repo: https://github.com/appscode/go-version.git
+  vcs: git
   version: master
