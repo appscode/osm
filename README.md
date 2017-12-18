@@ -37,6 +37,7 @@ osm [command]
 Available Commands:
   config      OSM configuration
   help        Help about any command
+  lc          List containers
   ls          List container
   mc          Make container
   pull        Pull item from container
@@ -48,9 +49,12 @@ Available Commands:
 
 Flags:
       --alsologtostderr                  log to standard error as well as files
+      --analytics                        Send analytical events to Google Analytics (default true)
+  -h, --help                             help for osm
       --log_backtrace_at traceLocation   when logging hits line file:N, emit a stack trace (default :0)
       --log_dir string                   If non-empty, write log files in this directory
       --logtostderr                      log to standard error instead of files
+      --osmconfig string                 Path to osm config (default "/home/tamal/.osm/config")
       --stderrthreshold severity         logs at or above this threshold go to stderr (default 2)
   -v, --v Level                          log level for V logs
       --vmodule moduleSpec               comma-separated list of pattern=N settings for file-filtered logging
@@ -104,7 +108,11 @@ osm rc -f mybucket
 Want to help improve OSM? Please start [here](/CONTRIBUTING.md).
 
 ## Support
-If you have any questions, you can reach out to us.
-* [Slack](https://slack.appscode.com)
-* [Twitter](https://twitter.com/AppsCodeHQ)
-* [Website](https://appscode.com)
+If you have any questions, [file an issue](https://github.com/appscode/osm/issues/new) or talk to us on our community [Slack ](https://slack.appscode.com) channel.
+
+---
+
+**The osm binary collects anonymous usage statistics to help us learn how the software is being used and how we can improve it.
+To disable stats collection, run the operator with the flag** `--analytics=false`.
+
+---

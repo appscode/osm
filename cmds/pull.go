@@ -4,7 +4,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/appscode/go/io"
+	"github.com/appscode/go/ioutil"
 	"github.com/appscode/go/term"
 	otx "github.com/appscode/osm/context"
 	"github.com/graymeta/stow"
@@ -86,7 +86,7 @@ func pullItem(item stow.Item, destPath, srcID string) {
 	term.ExitOnError(err)
 	defer rd.Close()
 
-	err = io.WriteFile(destPath, rd, 0640)
+	err = ioutil.WriteFile(destPath, rd, 0640)
 	term.ExitOnError(err)
 	term.Successln("Successfully pulled item " + srcID)
 }
