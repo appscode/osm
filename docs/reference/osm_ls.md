@@ -6,7 +6,7 @@ menu:
     name: Osm Ls
     parent: reference
 product_name: osm
-left_menu: product_osm_0.6.0
+menu_name: product_osm_0.6.0
 section_menu_id: reference
 ---
 ## osm ls
