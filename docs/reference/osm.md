@@ -8,7 +8,7 @@ menu:
     weight: 0
 
 product_name: osm
-left_menu: product_osm_0.6.0
+menu_name: product_osm_0.6.0
 section_menu_id: reference
 aliases:
   - products/osm/0.6.0/reference/
