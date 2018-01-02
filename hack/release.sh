@@ -1,7 +1,21 @@
-#!/usr/bin/env bash
+#!/bin/bash
+set -xeou pipefail
 
-pushd ~/go/src/github.com/appscode/osm
+GOPATH=$(go env GOPATH)
+REPO_ROOT="$GOPATH/src/github.com/appscode/osm"
+
+export APPSCODE_ENV=prod
+
+pushd $REPO_ROOT
+
 rm -rf dist
-./hack/make.py build; env APPSCODE_ENV=prod ./hack/make.py push; ./hack/make.py push
-./hack/docker/setup.sh; env APPSCODE_ENV=prod  ./hack/docker/setup.sh release
+
+./hack/make.py build
+./hack/make.py push
+
+./hack/docker/setup.sh
+./hack/docker/setup.sh release
+
+rm dist/.tag
+
 popd
