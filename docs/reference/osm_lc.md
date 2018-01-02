@@ -1,12 +1,12 @@
 ---
 title: Osm Lc
 menu:
-  product_osm_0.6.0:
+  product_osm_0.6.1:
     identifier: osm-lc
     name: Osm Lc
     parent: reference
 product_name: osm
-menu_name: product_osm_0.6.0
+menu_name: product_osm_0.6.1
 section_menu_id: reference
 ---
 ## osm lc
