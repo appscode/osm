@@ -15,7 +15,6 @@ Push item from container
 
 ### Synopsis
 
-
 Push item from container
 
 ```
@@ -51,5 +50,6 @@ osm push -c mybucket f1.txt /tmp/f1.txt
 ```
 
 ### SEE ALSO
+
 * [osm](/docs/reference/osm.md)	 - Object Store Manipulator by AppsCode
 

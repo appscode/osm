@@ -15,7 +15,6 @@ Set context
 
 ### Synopsis
 
-
 Set context
 
 ```
@@ -73,5 +72,6 @@ osm config set-context <name>
 ```
 
 ### SEE ALSO
+
 * [osm config](/docs/reference/osm_config.md)	 - OSM configuration
 

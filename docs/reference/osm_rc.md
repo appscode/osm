@@ -15,7 +15,6 @@ Remove container
 
 ### Synopsis
 
-
 Remove container
 
 ```
@@ -51,5 +50,6 @@ osm rc mybucket
 ```
 
 ### SEE ALSO
+
 * [osm](/docs/reference/osm.md)	 - Object Store Manipulator by AppsCode
 

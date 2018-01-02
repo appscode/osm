@@ -15,7 +15,6 @@ List container
 
 ### Synopsis
 
-
 List container
 
 ```
@@ -52,5 +51,6 @@ osm ls mybucket
 ```
 
 ### SEE ALSO
+
 * [osm](/docs/reference/osm.md)	 - Object Store Manipulator by AppsCode
 

@@ -15,7 +15,6 @@ Print osm config
 
 ### Synopsis
 
-
 Print osm config
 
 ```
@@ -49,5 +48,6 @@ osm config view
 ```
 
 ### SEE ALSO
+
 * [osm config](/docs/reference/osm_config.md)	 - OSM configuration
 

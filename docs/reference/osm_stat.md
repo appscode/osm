@@ -15,7 +15,6 @@ Stat item from container
 
 ### Synopsis
 
-
 Stat item from container
 
 ```
@@ -51,5 +50,6 @@ osm stat -c mybucket f1.txt
 ```
 
 ### SEE ALSO
+
 * [osm](/docs/reference/osm.md)	 - Object Store Manipulator by AppsCode
 

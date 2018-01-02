@@ -15,7 +15,6 @@ Make container
 
 ### Synopsis
 
-
 Make container
 
 ```
@@ -50,5 +49,6 @@ osm mc mybucket
 ```
 
 ### SEE ALSO
+
 * [osm](/docs/reference/osm.md)	 - Object Store Manipulator by AppsCode
 

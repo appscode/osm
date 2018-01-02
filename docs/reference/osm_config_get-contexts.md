@@ -15,7 +15,6 @@ List available contexts
 
 ### Synopsis
 
-
 List available contexts
 
 ```
@@ -49,5 +48,6 @@ osm config get-contexts
 ```
 
 ### SEE ALSO
+
 * [osm config](/docs/reference/osm_config.md)	 - OSM configuration
 

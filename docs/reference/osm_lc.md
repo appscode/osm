@@ -15,7 +15,6 @@ List containers
 
 ### Synopsis
 
-
 List containers
 
 ```
@@ -50,5 +49,6 @@ osm lc
 ```
 
 ### SEE ALSO
+
 * [osm](/docs/reference/osm.md)	 - Object Store Manipulator by AppsCode
 

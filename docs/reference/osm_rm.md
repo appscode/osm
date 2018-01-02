@@ -15,7 +15,6 @@ Remove item from container
 
 ### Synopsis
 
-
 Remove item from container
 
 ```
@@ -51,5 +50,6 @@ osm rm -c mybucket f1.txt
 ```
 
 ### SEE ALSO
+
 * [osm](/docs/reference/osm.md)	 - Object Store Manipulator by AppsCode
 

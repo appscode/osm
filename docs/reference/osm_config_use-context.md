@@ -15,7 +15,6 @@ Use context
 
 ### Synopsis
 
-
 Use context
 
 ```
@@ -49,5 +48,6 @@ osm config use-context <name>
 ```
 
 ### SEE ALSO
+
 * [osm config](/docs/reference/osm_config.md)	 - OSM configuration
 

@@ -15,7 +15,6 @@ Print current context
 
 ### Synopsis
 
-
 Print current context
 
 ```
@@ -49,5 +48,6 @@ osm config current-context
 ```
 
 ### SEE ALSO
+
 * [osm config](/docs/reference/osm_config.md)	 - OSM configuration
 

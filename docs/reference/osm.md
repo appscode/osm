@@ -20,7 +20,6 @@ Object Store Manipulator by AppsCode
 
 ### Synopsis
 
-
 Object Store Manipulator by AppsCode
 
 ```
@@ -43,6 +42,7 @@ osm [command] [flags]
 ```
 
 ### SEE ALSO
+
 * [osm config](/docs/reference/osm_config.md)	 - OSM configuration
 * [osm lc](/docs/reference/osm_lc.md)	 - List containers
 * [osm ls](/docs/reference/osm_ls.md)	 - List container

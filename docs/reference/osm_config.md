@@ -15,7 +15,6 @@ OSM configuration
 
 ### Synopsis
 
-
 OSM configuration
 
 ```
@@ -49,6 +48,7 @@ osm config view
 ```
 
 ### SEE ALSO
+
 * [osm](/docs/reference/osm.md)	 - Object Store Manipulator by AppsCode
 * [osm config current-context](/docs/reference/osm_config_current-context.md)	 - Print current context
 * [osm config get-contexts](/docs/reference/osm_config_get-contexts.md)	 - List available contexts
