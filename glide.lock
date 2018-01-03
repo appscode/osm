@@ -1,5 +1,5 @@
 hash: d323322cd1b9fb8ba6cafa6e391709f0d6314e98b94ecd453256d51fd6ee6bbe
-updated: 2018-01-02T03:06:02.384602427-08:00
+updated: 2018-01-03T00:03:57.72029403-08:00
 imports:
 - name: cloud.google.com/go
   version: 3b1ae45394a234c385be014e9a488f2bb6eef821
@@ -21,7 +21,7 @@ imports:
   - term
   - version
 - name: github.com/appscode/kutil
-  version: 3cb214ff259e38b1d287d3005b08242af3ab3afc
+  version: 4a8306c9183a0dbebfc98327238735a1fb015e6a
   subpackages:
   - meta
   - tools/analytics
@@ -196,7 +196,7 @@ imports:
 - name: github.com/russross/blackfriday
   version: 300106c228d52c8941d4b3de6054a6062a86dda3
 - name: github.com/satori/uuid
-  version: 5bf94b69c6b68ee1b541973bb8e1144db23a194b
+  version: 063359185d32c6b045fa171ad7033ea545864fa1
 - name: github.com/shurcooL/sanitized_anchor_name
   version: 10ef21a441db47d8b13ebcc5fd2310f636973c77
 - name: github.com/spf13/cobra
@@ -245,7 +245,7 @@ imports:
   - unicode/norm
   - width
 - name: google.golang.org/api
-  version: 92c31202d4179425301c9ad5a63abd8df45a9674
+  version: 99aea8c56b9527d6ca9dc96b743c94e184ab704b
   subpackages:
   - gensupport
   - googleapi
@@ -266,7 +266,7 @@ imports:
 - name: gopkg.in/inf.v0
   version: 3887ee99ecf07df5b447e9b00d9c0b2adaa9f3e4
 - name: gopkg.in/yaml.v2
-  version: 287cf08546ab5e7e37d55a84f7ed3fd1db036de5
+  version: c95af922eae69f190717a0b7148960af8c55a072
 - name: k8s.io/api
   version: 4df58c811fe2e65feb879227b2b245e4dc26e7ad
   subpackages:
