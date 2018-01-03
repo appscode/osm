@@ -39,6 +39,7 @@ def _goenv():
 
 GOENV = _goenv()
 GOPATH = GOENV["GOPATH"]
+GOBIN = GOENV["GOPATH"] + '/bin'
 GOHOSTOS = GOENV["GOHOSTOS"]
 GOHOSTARCH = GOENV["GOHOSTARCH"]
 GOC = 'go'
@@ -177,12 +178,12 @@ def go_build(name, goos, goarch, main):
     if not os.path.isdir(bindir):
         os.makedirs(bindir)
     if goos == 'alpine':
-        print REPO_ROOT, GOPATH
         repo_dir = REPO_ROOT[len(GOPATH):]
-        print repo_dir
-        cmd = "docker run --rm -ti -v {repo_root}:/go{repo_dir} -w /go{repo_dir} -e {cgo_env} golang:1.8.3-alpine {goc} build -o {bindir}/{name}-{goos}-{goarch}{ext} {cgo} {ldflags} {main}".format(
+        uid = check_output('id -u').strip()
+        cmd = "docker run --rm -ti -u {uid} -v {repo_root}:/go{repo_dir} -w /go{repo_dir} -e {cgo_env} kiteci/golang:1.9.2-alpine {goc} build -o {bindir}/{name}-{goos}-{goarch}{ext} {cgo} {ldflags} {main}".format(
             repo_root=REPO_ROOT,
             repo_dir=repo_dir,
+            uid=uid,
             name=name,
             goc=GOC,
             goos=goos,
