@@ -1,5 +1,5 @@
 hash: d323322cd1b9fb8ba6cafa6e391709f0d6314e98b94ecd453256d51fd6ee6bbe
-updated: 2018-01-03T00:03:57.72029403-08:00
+updated: 2018-01-05T19:21:52.613043504-08:00
 imports:
 - name: cloud.google.com/go
   version: 3b1ae45394a234c385be014e9a488f2bb6eef821
@@ -91,7 +91,7 @@ imports:
 - name: github.com/ghodss/yaml
   version: 0ca9ea5df5451ffdf184b4428c902747c2c11cd7
 - name: github.com/go-ini/ini
-  version: 2e44421e256d82ebbf3d4d4fcabe8930b905eff3
+  version: 20b96f641a5ea98f2f8619ff4f3e061cff4833bd
 - name: github.com/go-openapi/jsonpointer
   version: 46af16f9f7b149af66e5d1bd010e3574dc06de98
 - name: github.com/go-openapi/jsonreference
@@ -119,7 +119,7 @@ imports:
 - name: github.com/google/btree
   version: 7d79101e329e5a3adf994758c578dab82b90c017
 - name: github.com/google/go-cmp
-  version: 97a1ff3c48253a51c601f6e4420181273b6ca0ea
+  version: 97aa668b73e764ccdd786bc3ccd2edffe621150e
   subpackages:
   - cmp
   - cmp/internal/diff
@@ -150,7 +150,7 @@ imports:
   subpackages:
   - diskcache
 - name: github.com/hashicorp/go-version
-  version: ac737305c16432f4c660c6fc68cdcda4b5a0b5ae
+  version: 1b1de86cf2ec13494b6814b48157884efaf71c54
   repo: https://github.com/appscode/go-version.git
   vcs: git
 - name: github.com/howeyc/gopass
@@ -188,7 +188,7 @@ imports:
 - name: github.com/peterbourgon/diskv
   version: 5f041e8faa004a95c88a202771f4cc3e991971e6
 - name: github.com/pkg/errors
-  version: a22138067af1c4942683050411a841ade67fe1eb
+  version: 645ef00459ed84a119197bfb8d8205042c6df63d
 - name: github.com/PuerkitoBio/purell
   version: 8a290539e2e8629dbc4e6bad948158f790ec31f4
 - name: github.com/PuerkitoBio/urlesc
@@ -196,11 +196,11 @@ imports:
 - name: github.com/russross/blackfriday
   version: 300106c228d52c8941d4b3de6054a6062a86dda3
 - name: github.com/satori/uuid
-  version: 063359185d32c6b045fa171ad7033ea545864fa1
+  version: 5bf94b69c6b68ee1b541973bb8e1144db23a194b
 - name: github.com/shurcooL/sanitized_anchor_name
   version: 10ef21a441db47d8b13ebcc5fd2310f636973c77
 - name: github.com/spf13/cobra
-  version: b95ab734e27d33e0d8fbabf71ca990568d4e2020
+  version: 7b2c5ac9fc04fc5efafb60700713d4fa609b777b
   subpackages:
   - doc
 - name: github.com/spf13/pflag
@@ -245,14 +245,14 @@ imports:
   - unicode/norm
   - width
 - name: google.golang.org/api
-  version: 99aea8c56b9527d6ca9dc96b743c94e184ab704b
+  version: b1c0f9b3aa8fac163224fab909402d49c6dce50a
   subpackages:
   - gensupport
   - googleapi
   - googleapi/internal/uritemplates
   - storage/v1
 - name: google.golang.org/appengine
-  version: 5bee14b453b4c71be47ec1781b0fa61c2ea182db
+  version: 4f7eeb5305a4ba1966344836ba4af9996b7b4e05
   subpackages:
   - internal
   - internal/app_identity
