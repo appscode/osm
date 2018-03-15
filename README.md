@@ -1,4 +1,9 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/appscode/osm)](https://goreportcard.com/report/github.com/appscode/osm)
+[![Build Status](https://travis-ci.org/appscode/osm.svg?branch=master)](https://travis-ci.org/appscode/osm)
+[![codecov](https://codecov.io/gh/appscode/osm/branch/master/graph/badge.svg)](https://codecov.io/gh/appscode/osm)
+[![Docker Pulls](https://img.shields.io/docker/pulls/appscode/osm.svg)](https://hub.docker.com/r/appscode/osm/)
+[![Slack](https://slack.appscode.com/badge.svg)](https://slack.appscode.com)
+[![Twitter](https://img.shields.io/twitter/follow/appscodehq.svg?style=social&logo=twitter&label=Follow)](https://twitter.com/intent/follow?screen_name=AppsCodeHQ)
 
 # osm
 Object Store Manipulator (osm: pronounced like `awesome`) - `curl` for cloud storage services. 🙌 `osm` can create & delete buckets and upload, download & delete files from buckets for AWS S3, DigitalOcean Spaces, Google Cloud Storage, Microsoft Azure storage and OpenStack Swift. Its single binary can be easily packaged instead of official python based clis inside Docker images.
