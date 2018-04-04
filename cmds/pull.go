@@ -1,10 +1,10 @@
 package cmds
 
 import (
+	"io"
 	"os"
 	"path/filepath"
 
-	"github.com/appscode/go/ioutil"
 	"github.com/appscode/go/term"
 	otx "github.com/appscode/osm/context"
 	"github.com/graymeta/stow"
@@ -81,12 +81,21 @@ func pull(req *itemPullRequest, configPath string) {
 	}
 }
 
-func pullItem(item stow.Item, destPath, srcID string) {
+func pullItem(item stow.Item, dstPath, srcID string) {
 	rd, err := item.Open()
 	term.ExitOnError(err)
 	defer rd.Close()
 
-	err = ioutil.WriteFile(destPath, rd, 0640)
+	out, err := os.OpenFile(dstPath, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0640)
+	if err != nil {
+		return
+	}
+	defer func() {
+		if e := out.Close(); e != nil {
+			err = e
+		}
+	}()
+	_, err = io.Copy(out, rd)
 	term.ExitOnError(err)
 	term.Successln("Successfully pulled item " + srcID)
 }
