@@ -12,22 +12,22 @@ Object Store Manipulator (osm: pronounced like `awesome`) - `curl` for cloud sto
 You can download and install a pre-built binary:
 ```console
 # Linux amd 64-bit:
-wget -O osm https://cdn.appscode.com/binaries/osm/0.6.1/osm-linux-amd64 \
+wget -O osm https://cdn.appscode.com/binaries/osm/0.6.3/osm-linux-amd64 \
   && chmod +x osm \
   && sudo mv osm /usr/local/bin/
 
 # Linux 386 32-bit:
-wget -O osm https://cdn.appscode.com/binaries/osm/0.6.1/osm-linux-386 \
+wget -O osm https://cdn.appscode.com/binaries/osm/0.6.3/osm-linux-386 \
   && chmod +x osm \
   && sudo mv osm /usr/local/bin/
 
 # Mac 64-bit
-wget -O osm https://cdn.appscode.com/binaries/osm/0.6.1/osm-darwin-amd64 \
+wget -O osm https://cdn.appscode.com/binaries/osm/0.6.3/osm-darwin-amd64 \
   && chmod +x osm \
   && sudo mv osm /usr/local/bin/
 
 # Mac 32-bit
-wget -O osm https://cdn.appscode.com/binaries/osm/0.6.1/osm-darwin-386 \
+wget -O osm https://cdn.appscode.com/binaries/osm/0.6.3/osm-darwin-386 \
   && chmod +x osm \
   && sudo mv osm /usr/local/bin/
 ```
@@ -54,7 +54,7 @@ Available Commands:
 
 Flags:
       --alsologtostderr                  log to standard error as well as files
-      --analytics                        Send analytical events to Google Analytics (default true)
+      --enable-analytics                 Send usage events to Google Analytics (default true)
   -h, --help                             help for osm
       --log_backtrace_at traceLocation   when logging hits line file:N, emit a stack trace (default :0)
       --log_dir string                   If non-empty, write log files in this directory
@@ -63,9 +63,6 @@ Flags:
       --stderrthreshold severity         logs at or above this threshold go to stderr (default 2)
   -v, --v Level                          log level for V logs
       --vmodule moduleSpec               comma-separated list of pattern=N settings for file-filtered logging
-
-Use "osm [command] --help" for more information about a command.
-
 ```
 
 ### OSM Configuration
