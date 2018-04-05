@@ -42,6 +42,9 @@ func NewCmdOsm() *cobra.Command {
 	rootCmd.PersistentFlags().String("osmconfig", home+"/.osm/config", "Path to osm config")
 	rootCmd.PersistentFlags().BoolVar(&enableAnalytics, "enable-analytics", enableAnalytics, "Send usage events to Google Analytics")
 
+	rootCmd.PersistentFlags().BoolVar(&enableAnalytics, "analytics", enableAnalytics, "Send usage events to Google Analytics")
+	rootCmd.PersistentFlags().MarkDeprecated("analytics", "use --enable-analytics")
+
 	rootCmd.AddCommand(cfgCmd.NewCmdConfig())
 
 	rootCmd.AddCommand(NewCmdListContainers())
