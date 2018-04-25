@@ -21,7 +21,7 @@ func NewCmdListIetms() *cobra.Command {
 	req := &itemListRequest{}
 	cmd := &cobra.Command{
 		Use:               "ls <name>",
-		Short:             "List container",
+		Short:             "List items in a container",
 		Example:           "osm ls mybucket",
 		DisableAutoGenTag: true,
 		Run: func(cmd *cobra.Command, args []string) {

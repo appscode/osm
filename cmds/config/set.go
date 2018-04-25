@@ -25,6 +25,7 @@ type setContextRequest struct {
 	s3ConfigRegion           string
 	s3ConfigSecretKey        string
 	s3ConfigDisableSSL       bool
+	s3CACertDir              string
 	gcsConfigJSONKeyPath     string
 	gcsConfigProjectId       string
 	gcsConfigScopes          string
@@ -73,6 +74,7 @@ func newCmdSet() *cobra.Command {
 	setCmd.Flags().StringVar(&req.s3ConfigSecretKey, s3.Kind+"."+s3.ConfigSecretKey, "", "S3 config secret key")
 	setCmd.Flags().StringVar(&req.s3ConfigAuthType, s3.Kind+"."+s3.ConfigAuthType, "accesskey", "S3 config auth type (accesskey, iam)")
 	setCmd.Flags().BoolVar(&req.s3ConfigDisableSSL, s3.Kind+"."+s3.ConfigDisableSSL, false, "S3 config disable SSL")
+	setCmd.Flags().StringVar(&req.s3CACertDir, s3.Kind+"."+s3.ConfigCACertDir, "", "S3 config cacert_dir for custom endpoint(i.e minio)")
 
 	setCmd.Flags().StringVar(&req.gcsConfigJSONKeyPath, gcs.Kind+".json_key_path", "", "GCS config json key path")
 	setCmd.Flags().StringVar(&req.gcsConfigProjectId, gcs.Kind+"."+gcs.ConfigProjectId, "", "GCS config project id")
@@ -121,6 +123,9 @@ func setContext(req *setContextRequest, configPath string) {
 		}
 		if req.s3ConfigAuthType != "" {
 			nc.Config[s3.ConfigAuthType] = req.s3ConfigAuthType
+		}
+		if req.s3CACertDir != "" {
+			nc.Config[s3.ConfigCACertDir] = req.s3CACertDir
 		}
 		nc.Config[s3.ConfigDisableSSL] = strconv.FormatBool(req.s3ConfigDisableSSL)
 	case gcs.Kind:
