@@ -21,7 +21,7 @@ import:
   version: cca8bbc0798408af109aaaa239cbd2634846b340
 - package: github.com/graymeta/stow
   repo: https://github.com/appscode/stow.git
-  version: minio-cacerts
+  version: master
   vcs: git
 - package: github.com/aws/aws-sdk-go
   version: v1.7.8

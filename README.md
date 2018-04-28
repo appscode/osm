@@ -59,7 +59,7 @@ Flags:
       --log_backtrace_at traceLocation   when logging hits line file:N, emit a stack trace (default :0)
       --log_dir string                   If non-empty, write log files in this directory
       --logtostderr                      log to standard error instead of files
-      --osmconfig string                 Path to osm config (default "/home/ac/.osm/config")
+      --osmconfig string                 Path to osm config (default "$HOME/.osm/config")
       --stderrthreshold severity         logs at or above this threshold go to stderr (default 2)
   -v, --v Level                          log level for V logs
       --vmodule moduleSpec               comma-separated list of pattern=N settings for file-filtered logging
@@ -76,7 +76,7 @@ This allows providing commands one time for multiple subsequent operations with 
 osm config set-context osm-s3 --provider=s3 --s3.access_key_id=<key_id> --s3.secret_key=<secret_key> --s3.region=us-east-1
 
 # TLS secure Minio server
-osm config set-context osm-minio --provider=s3 --s3.access_key_id=<minio_access_key> --s3.secret_key=<minio_secret_key> --s3.endpoint=<minio_server_address> --s3.cacert_dir=<root_ca_file_path>
+osm config set-context osm-minio --provider=s3 --s3.access_key_id=<minio_access_key> --s3.secret_key=<minio_secret_key> --s3.endpoint=<minio_server_address> --s3.cacert_file=<root_ca_file_path>
 
 # DigitalOcean Spaces:
 osm config set-context osm-do --provider=s3 --s3.access_key_id=<key_id> --s3.secret_key=<secret_key> --s3.endpoint=nyc3.digitaloceanspaces.com
