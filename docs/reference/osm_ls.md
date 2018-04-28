@@ -1,12 +1,12 @@
 ---
 title: Osm Ls
 menu:
-  product_osm_0.6.1:
+  product_osm_0.7.0:
     identifier: osm-ls
     name: Osm Ls
     parent: reference
 product_name: osm
-menu_name: product_osm_0.6.1
+menu_name: product_osm_0.7.0
 section_menu_id: reference
 ---
 ## osm ls
