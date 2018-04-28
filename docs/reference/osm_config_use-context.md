@@ -1,12 +1,12 @@
 ---
 title: Osm Config Use-Context
 menu:
-  product_osm_0.6.1:
+  product_osm_0.7.0:
     identifier: osm-config-use-context
     name: Osm Config Use-Context
     parent: reference
 product_name: osm
-menu_name: product_osm_0.6.1
+menu_name: product_osm_0.7.0
 section_menu_id: reference
 ---
 ## osm config use-context

@@ -1,12 +1,12 @@
 ---
 title: Osm Config Set-Context
 menu:
-  product_osm_0.6.1:
+  product_osm_0.7.0:
     identifier: osm-config-set-context
     name: Osm Config Set-Context
     parent: reference
 product_name: osm
-menu_name: product_osm_0.6.1
+menu_name: product_osm_0.7.0
 section_menu_id: reference
 ---
 ## osm config set-context
