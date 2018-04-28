@@ -21,7 +21,7 @@ func NewCmdPush() *cobra.Command {
 	req := &itemPushRequest{}
 	cmd := &cobra.Command{
 		Use:               "push <src> <dest>",
-		Short:             "Push item from container",
+		Short:             "Push item to container",
 		Example:           "osm push -c mybucket f1.txt /tmp/f1.txt",
 		DisableAutoGenTag: true,
 		Run: func(cmd *cobra.Command, args []string) {

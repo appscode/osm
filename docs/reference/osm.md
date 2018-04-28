@@ -35,7 +35,7 @@ osm [command] [flags]
       --log_backtrace_at traceLocation   when logging hits line file:N, emit a stack trace (default :0)
       --log_dir string                   If non-empty, write log files in this directory
       --logtostderr                      log to standard error instead of files
-      --osmconfig string                 Path to osm config (default "/home/tamal/.osm/config")
+      --osmconfig string                 Path to osm config (default "$HOME/.osm/config")
       --stderrthreshold severity         logs at or above this threshold go to stderr (default 2)
   -v, --v Level                          log level for V logs
       --vmodule moduleSpec               comma-separated list of pattern=N settings for file-filtered logging
@@ -45,10 +45,10 @@ osm [command] [flags]
 
 * [osm config](/docs/reference/osm_config.md)	 - OSM configuration
 * [osm lc](/docs/reference/osm_lc.md)	 - List containers
-* [osm ls](/docs/reference/osm_ls.md)	 - List container
+* [osm ls](/docs/reference/osm_ls.md)	 - List items in a container
 * [osm mc](/docs/reference/osm_mc.md)	 - Make container
 * [osm pull](/docs/reference/osm_pull.md)	 - Pull item from container
-* [osm push](/docs/reference/osm_push.md)	 - Push item from container
+* [osm push](/docs/reference/osm_push.md)	 - Push item to container
 * [osm rc](/docs/reference/osm_rc.md)	 - Remove container
 * [osm rm](/docs/reference/osm_rm.md)	 - Remove item from container
 * [osm stat](/docs/reference/osm_stat.md)	 - Stat item from container
