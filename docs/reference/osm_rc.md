@@ -1,12 +1,12 @@
 ---
 title: Osm Rc
 menu:
-  product_osm_0.7.0:
+  product_osm_0.7.1:
     identifier: osm-rc
     name: Osm Rc
     parent: reference
 product_name: osm
-menu_name: product_osm_0.7.0
+menu_name: product_osm_0.7.1
 section_menu_id: reference
 ---
 ## osm rc

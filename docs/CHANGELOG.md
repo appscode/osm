@@ -2,28 +2,36 @@
 title: Changelog | Osm
 description: Changelog
 menu:
-  product_osm_0.7.0:
+  product_osm_0.7.1:
     identifier: changelog-osm
     name: Changelog
     parent: welcome
     weight: 10
 product_name: osm
-menu_name: product_osm_0.7.0
+menu_name: product_osm_0.7.1
 section_menu_id: welcome
-url: /products/osm/0.7.0/welcome/changelog/
+url: /products/osm/0.7.1/welcome/changelog/
 aliases:
-  - /products/osm/0.7.0/CHANGELOG/
+  - /products/osm/0.7.1/CHANGELOG/
 ---
 
 # Change Log
 
 ## [Unreleased](https://github.com/appscode/osm/tree/HEAD)
 
-[Full Changelog](https://github.com/appscode/osm/compare/0.6.3...HEAD)
+[Full Changelog](https://github.com/appscode/osm/compare/0.7.0...HEAD)
 
 **Merged pull requests:**
 
-- Add SSL support for S3 compatible Minio storage server [\#27](https://github.com/appscode/osm/pull/27) ([emruz-hossain](https://github.com/emruz-hossain))
+- Upgrade aws sdk to v1.12.7 [\#30](https://github.com/appscode/osm/pull/30) ([tamalsaha](https://github.com/tamalsaha))
+
+## [0.7.0](https://github.com/appscode/osm/tree/0.7.0) (2018-04-28)
+[Full Changelog](https://github.com/appscode/osm/compare/0.6.3...0.7.0)
+
+**Merged pull requests:**
+
+- Prepare docs for 0.7.0 release [\#29](https://github.com/appscode/osm/pull/29) ([tamalsaha](https://github.com/tamalsaha))
+- Add SSL support for S3 compatible Minio storage server [\#27](https://github.com/appscode/osm/pull/27) ([hossainemruz](https://github.com/hossainemruz))
 
 ## [0.6.3](https://github.com/appscode/osm/tree/0.6.3) (2018-04-05)
 [Full Changelog](https://github.com/appscode/osm/compare/0.6.2...0.6.3)
