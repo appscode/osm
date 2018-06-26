@@ -17,12 +17,12 @@ aliases:
 
 # Change Log
 
-## [Unreleased](https://github.com/appscode/osm/tree/HEAD)
-
-[Full Changelog](https://github.com/appscode/osm/compare/0.7.0...HEAD)
+## [0.7.1](https://github.com/appscode/osm/tree/0.7.1) (2018-06-26)
+[Full Changelog](https://github.com/appscode/osm/compare/0.7.0...0.7.1)
 
 **Merged pull requests:**
 
+- Prepare docs for 0.7.1 [\#31](https://github.com/appscode/osm/pull/31) ([tamalsaha](https://github.com/tamalsaha))
 - Upgrade aws sdk to v1.12.7 [\#30](https://github.com/appscode/osm/pull/30) ([tamalsaha](https://github.com/tamalsaha))
 
 ## [0.7.0](https://github.com/appscode/osm/tree/0.7.0) (2018-04-28)
