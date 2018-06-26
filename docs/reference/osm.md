@@ -1,17 +1,17 @@
 ---
 title: Osm
 menu:
-  product_osm_0.7.0:
+  product_osm_0.7.1:
     identifier: osm
     name: Osm
     parent: reference
     weight: 0
 
 product_name: osm
-menu_name: product_osm_0.7.0
+menu_name: product_osm_0.7.1
 section_menu_id: reference
 aliases:
-  - products/osm/0.7.0/reference/
+  - products/osm/0.7.1/reference/
 
 ---
 ## osm
