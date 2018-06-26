@@ -20,10 +20,8 @@ import (
 	"encoding/json"
 	"time"
 
-	"github.com/go-openapi/spec"
 	"github.com/golang/protobuf/jsonpb"
 	"github.com/google/gofuzz"
-	openapi "k8s.io/kube-openapi/pkg/common"
 )
 
 // Time is a wrapper around time.Time which supports correct
@@ -80,7 +78,13 @@ func (t *Time) Before(u *Time) bool {
 
 // Equal reports whether the time instant t is equal to u.
 func (t *Time) Equal(u *Time) bool {
-	return t.Time.Equal(u.Time)
+	if t == nil && u == nil {
+		return true
+	}
+	if t != nil && u != nil {
+		return t.Time.Equal(u.Time)
+	}
+	return false
 }
 
 // Unix returns the local time corresponding to the given Unix time
@@ -153,16 +157,15 @@ func (t *Time) UnmarshalJSONPB(_ *jsonpb.Unmarshaler, jstr []byte) error {
 	return t.UnmarshalJSON(jstr)
 }
 
-func (_ Time) OpenAPIDefinition() openapi.OpenAPIDefinition {
-	return openapi.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Type:   []string{"string"},
-				Format: "date-time",
-			},
-		},
-	}
-}
+// OpenAPISchemaType is used by the kube-openapi generator when constructing
+// the OpenAPI spec of this type.
+//
+// See: https://github.com/kubernetes/kube-openapi/tree/master/pkg/generators
+func (_ Time) OpenAPISchemaType() []string { return []string{"string"} }
+
+// OpenAPISchemaFormat is used by the kube-openapi generator when constructing
+// the OpenAPI spec of this type.
+func (_ Time) OpenAPISchemaFormat() string { return "date-time" }
 
 // MarshalQueryParameter converts to a URL query parameter value
 func (t Time) MarshalQueryParameter() (string, error) {

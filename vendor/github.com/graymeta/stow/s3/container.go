@@ -1,13 +1,9 @@
 package s3
 
 import (
-	"bytes"
 	"io"
-	"io/ioutil"
 	"os"
 	"strings"
-
-	"net/http"
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/s3"
@@ -16,11 +12,14 @@ import (
 	"github.com/pkg/errors"
 )
 
-// Amazon S3 bucket contains a creationdate and a name.
+// Amazon S3 bucket contains a creation date and a name.
 type container struct {
-	name           string // Name is needed to retrieve items.
-	client         *s3.S3 // Client is responsible for performing the requests.
-	region         string // Describes the AWS Availability Zone of the S3 Bucket.
+	// name is needed to retrieve items.
+	name string
+	// client is responsible for performing the requests.
+	client *s3.S3
+	// region describes the AWS Availability Zone of the S3 Bucket.
+	region         string
 	customEndpoint string
 }
 
@@ -40,18 +39,17 @@ func (c *container) Item(id string) (stow.Item, error) {
 	return c.getItem(id)
 }
 
-func (c *container) Browse(prefix, delimiter, cursor string, count int) (*stow.ItemPage, error) {
+func (c *container) Browse(prefix, delimiter, startAfter string, count int) (*stow.ItemPage, error) {
 	itemLimit := int64(count)
 
-	params := &s3.ListObjectsInput{
-		Bucket:    aws.String(c.Name()),
-		Delimiter: aws.String(delimiter),
-		Marker:    &cursor,
-		MaxKeys:   &itemLimit,
-		Prefix:    &prefix,
+	params := &s3.ListObjectsV2Input{
+		Bucket:     aws.String(c.Name()),
+		StartAfter: &startAfter,
+		MaxKeys:    &itemLimit,
+		Prefix:     &prefix,
 	}
 
-	response, err := c.client.ListObjects(params)
+	response, err := c.client.ListObjectsV2(params)
 	if err != nil {
 		return nil, errors.Wrap(err, "Items, listing objects")
 	}
@@ -81,25 +79,23 @@ func (c *container) Browse(prefix, delimiter, cursor string, count int) (*stow.I
 	}
 
 	// Create a marker and determine if the list of items to retrieve is complete.
-	// If not, provide the file name of the last item as the next marker. S3 lists
-	// its items (S3 Objects) in alphabetical order, so it will receive the item name
-	// and correctly return the next list of items in subsequent requests.
-	marker := ""
+	// If not, the last file is the input to the value of after which item to start
+	startAfter = ""
 	if *response.IsTruncated {
-		marker = containerItems[len(containerItems)-1].Name()
+		startAfter = containerItems[len(containerItems)-1].Name()
 	}
 
-	return &stow.ItemPage{Prefixes: prefixes, Items: containerItems, Cursor: marker}, nil
+	return &stow.ItemPage{Prefixes: prefixes, Items: containerItems, Cursor: startAfter}, nil
 }
 
 // Items sends a request to retrieve a list of items that are prepended with
 // the prefix argument. The 'cursor' variable facilitates pagination.
-func (c *container) Items(prefix, cursor string, count int) ([]stow.Item, string, error) {
-	page, err := c.Browse(prefix, "", cursor, count)
+func (c *container) Items(prefix, startAfter string, count int) ([]stow.Item, string, error) {
+	page, err := c.Browse(prefix, "", startAfter, count)
 	if err != nil {
 		return nil, "", err
 	}
-	return page.Items, cursor, err
+	return page.Items, startAfter, err
 }
 
 func (c *container) RemoveItem(id string) error {
@@ -120,91 +116,42 @@ func (c *container) RemoveItem(id string) error {
 // content, and the size of the file. Many more attributes can be given to the
 // file, including metadata. Keeping it simple for now.
 func (c *container) Put(name string, r io.Reader, size int64, metadata map[string]interface{}) (stow.Item, error) {
-	switch file := r.(type) {
-	case *os.File:
-		uploader := s3manager.NewUploaderWithClient(c.client)
-
-		// Convert map[string]interface{} to map[string]*string
-		mdPrepped, err := prepMetadata(metadata)
-
-		// Perform an upload.
-		result, err := uploader.Upload(&s3manager.UploadInput{
-			Bucket:   aws.String(c.name),
-			Key:      aws.String(name),
-			Body:     file,
-			Metadata: mdPrepped,
-		})
-
-		if err != nil {
-			return nil, errors.Wrap(err, "Put, uploading object")
-		}
-
-		newItem := &item{
-			container: c,
-			client:    c.client,
-			properties: properties{
-				ETag: &result.UploadID,
-				Key:  &name,
-				// Owner        *s3.Owner
-				// StorageClass *string
-			},
-		}
-		if st, err := file.Stat(); err == nil && !st.IsDir() {
-			newItem.properties.Size = aws.Int64(st.Size())
-			newItem.properties.LastModified = aws.Time(st.ModTime())
-		}
-		return newItem, nil
-	}
-
-	content, err := ioutil.ReadAll(r)
-	if err != nil {
-		return nil, errors.Wrap(err, "unable to create or update item, reading content")
-	}
+	uploader := s3manager.NewUploaderWithClient(c.client)
 
 	// Convert map[string]interface{} to map[string]*string
 	mdPrepped, err := prepMetadata(metadata)
+
+	// Perform an upload.
+	result, err := uploader.Upload(&s3manager.UploadInput{
+		Bucket:   aws.String(c.name),
+		Key:      aws.String(name),
+		Body:     r,
+		Metadata: mdPrepped,
+	})
+
 	if err != nil {
-		return nil, errors.Wrap(err, "unable to create or update item, preparing metadata")
+		return nil, errors.Wrap(err, "Put, uploading object")
 	}
 
-	// Get Content Type as string
-	// https://golang.org/pkg/net/http/#DetectContentType
-	contentType := http.DetectContentType(content)
-
-	params := &s3.PutObjectInput{
-		Bucket:        aws.String(c.name), // Required
-		Key:           aws.String(name),   // Required
-		ContentLength: aws.Int64(size),
-		ContentType:   &contentType,
-		Body:          bytes.NewReader(content),
-		Metadata:      mdPrepped, // map[string]*string
-	}
-
-	// Only Etag is returned.
-	response, err := c.client.PutObject(params)
-	if err != nil {
-		return nil, errors.Wrap(err, "RemoveItem, deleting object")
-	}
-	etag := cleanEtag(*response.ETag)
-
-	// Some fields are empty because this information isn't included in the response.
-	// May have to involve sending a request if we want more specific information.
-	// Keeping it simple for now.
-	// s3.Object info: https://github.com/aws/aws-sdk-go/blob/master/service/s3/api.go#L7092-L7107
-	// Response: https://github.com/aws/aws-sdk-go/blob/master/service/s3/api.go#L8193-L8227
 	newItem := &item{
 		container: c,
 		client:    c.client,
 		properties: properties{
-			ETag: &etag,
+			ETag: &result.UploadID,
 			Key:  &name,
-			Size: &size,
-			//LastModified *time.Time
-			//Owner        *s3.Owner
-			//StorageClass *string
+			// Owner        *s3.Owner
+			// StorageClass *string
 		},
 	}
-
+	switch file := r.(type) {
+	case *os.File:
+		if st, err := file.Stat(); err == nil && !st.IsDir() {
+			newItem.properties.Size = aws.Int64(st.Size())
+			newItem.properties.LastModified = aws.Time(st.ModTime())
+		}
+	default:
+		newItem.properties.Size = aws.Int64(size)
+	}
 	return newItem, nil
 }
 
