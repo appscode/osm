@@ -1,5 +1,5 @@
-hash: e0e770a2cd4a8d4ec3e25059e656d60f266167ec10740ae7a39bed849dba4197
-updated: 2018-06-26T03:24:01.51676542-07:00
+hash: 09b46fa0d5bc913c927c6d0e7ef04d81eb6540f4cd68a70e21a3671419ad363a
+updated: 2018-09-11T12:29:05.199223181-07:00
 imports:
 - name: cloud.google.com/go
   version: fe3d41e1ecb2ce36ad3a979037c9b9a2b726226f
@@ -7,21 +7,24 @@ imports:
   - compute/metadata
   - internal
 - name: github.com/appscode/go
-  version: 578091d435e848d79527d8b911fdf1dd5423b227
+  version: 0499c350ad263174dc8c1e3006b2d3300ff398e6
   subpackages:
   - analytics
   - context
+  - encoding/json/types
   - encoding/yaml
   - env
   - homedir
   - log
   - runtime
+  - sets
   - term
+  - types
   - version
 - name: github.com/appscode/jsonpatch
-  version: 1359b374de83fa14fd58ab10aa8ea4935f84d249
+  version: 5af499cf01c842bfdd7761a433fc90525ccd6836
 - name: github.com/appscode/kutil
-  version: ec37a3956e776f45abf97361f34928c4514ebea0
+  version: 58a89a000f0c44560e97537d989ec6d2fba95f64
   subpackages:
   - meta
   - tools/analytics
@@ -56,18 +59,19 @@ imports:
   - service/s3/s3manager
   - service/sts
 - name: github.com/Azure/azure-sdk-for-go
-  version: f111fc2fa3861c5fdced76cae4c9c71821969577
+  version: 56a0b1d2af3b65d5f1f7a330e02faaf48b473c5a
   subpackages:
   - storage
+  - version
 - name: github.com/Azure/go-autorest
-  version: d4e6b95c12a08b4de2d48b45d5b4d594e5d32fab
+  version: 1ff28809256a84bb6966640ff3d0371af82ccba4
   subpackages:
   - autorest
   - autorest/adal
   - autorest/azure
   - autorest/date
 - name: github.com/cpuguy83/go-md2man
-  version: 71acacd42f85e5e82f70a55327789582a5200a90
+  version: 20f5889cbdc3c73dbd2862796665e7c465ade7d1
   subpackages:
   - md2man
 - name: github.com/davecgh/go-spew
@@ -77,11 +81,13 @@ imports:
 - name: github.com/dgrijalva/jwt-go
   version: 01aeca54ebda6e0fbfafd0a524d234159c05ec20
 - name: github.com/dustin/go-humanize
-  version: bb3d318650d48840a39aa21a027c6630e198e626
+  version: 9f541cc9db5d55bce703bd99987c9d5cb8eea45e
 - name: github.com/evanphx/json-patch
-  version: 944e07253867aacae43c04b2e6a239005443f33a
+  version: 94e38aa1586e8a6c8a75770bddf5ff84c48a106b
 - name: github.com/fatih/color
-  version: 2d684516a8861da43017284349b7e303e809ac21
+  version: 9aae6aaa22315390f03959adca2c4d395b02fcef
+- name: github.com/fatih/structs
+  version: ebf56d35bba727c68ac77f56f2fcf90b181851aa
 - name: github.com/ghodss/yaml
   version: 0ca9ea5df5451ffdf184b4428c902747c2c11cd7
 - name: github.com/go-ini/ini
@@ -94,7 +100,7 @@ imports:
 - name: github.com/golang/glog
   version: 44145f04b68cf362d9c4df2182967c2275eaefed
 - name: github.com/golang/protobuf
-  version: 1643683e1b54a9e88ad26d98f81400c8c9d9f4f9
+  version: b4deda0973fb4c70b50d226b1af49f3da59f5265
   subpackages:
   - jsonpb
   - proto
@@ -103,8 +109,10 @@ imports:
   - ptypes/duration
   - ptypes/struct
   - ptypes/timestamp
+- name: github.com/google/btree
+  version: 7d79101e329e5a3adf994758c578dab82b90c017
 - name: github.com/google/go-cmp
-  version: 5411ab924f9ffa6566244a9e504bc347edacffd3
+  version: 3af367b6b30c263d47e8895973edcca9a49cf029
   subpackages:
   - cmp
   - cmp/internal/diff
@@ -121,7 +129,7 @@ imports:
   - compiler
   - extensions
 - name: github.com/graymeta/stow
-  version: 749bd5039731d827684b5d49a59b01d4c5316b65
+  version: afce6d90444a3ba63c6d6671498c6cdc79375369
   repo: https://github.com/appscode/stow.git
   vcs: git
   subpackages:
@@ -130,6 +138,10 @@ imports:
   - local
   - s3
   - swift
+- name: github.com/gregjones/httpcache
+  version: 787624de3eb7bd915c329cba748687a3b22666a6
+  subpackages:
+  - diskcache
 - name: github.com/howeyc/gopass
   version: bf9dde6d0d2c004a008c27aaee91170c786f6db8
 - name: github.com/inconshreveable/mousetrap
@@ -139,21 +151,27 @@ imports:
 - name: github.com/jpillora/go-ogle-analytics
   version: 14b04e0594ef6a9fd943363b135656f0ec8c9d0e
 - name: github.com/json-iterator/go
-  version: 13f86432b882000a51c6e610c620974462691a97
+  version: f2b4162afba35581b6d4a50d3b8f34e33c144682
 - name: github.com/marstr/guid
   version: 8bdf7d1a087ccc975cf37dd6507da50698fd19ca
 - name: github.com/mattn/go-colorable
-  version: efa589957cd060542a26d2dd7832fd6a6c6c3ade
+  version: ed8eb9e318d7a84ce5915b495b7d35e0cfe7b5a8
 - name: github.com/mattn/go-isatty
-  version: 57fdcb988a5c543893cc61bce354a6e24ab70022
+  version: 66b8e73f3f5cda9f96b69efd03dd3d7fc4a5cdb8
 - name: github.com/mattn/go-runewidth
   version: 9e777a8366cce605130a531d2cd6363d07ad7317
 - name: github.com/mitchellh/go-homedir
-  version: 3864e76763d94a6df2f9960b16a20a33da9f9a66
+  version: ae18d6b8b3205b561c79e8e5f69bff09736185f4
+- name: github.com/modern-go/concurrent
+  version: bacd9c7ef1dd9b15be4a9909b8ac7a4e313eec94
+- name: github.com/modern-go/reflect2
+  version: 05fbef0ca5da472bbf96c9322b84a53edc03c9fd
 - name: github.com/ncw/swift
-  version: b2a7479cf26fa841ff90dd932d0221cb5c50782d
+  version: 7854abff473c41fdde529ebe4cf7db6334dd61ce
 - name: github.com/olekukonko/tablewriter
-  version: cca8bbc0798408af109aaaa239cbd2634846b340
+  version: d4647c9c7a84d847478d890b816b7d8b62b0b279
+- name: github.com/peterbourgon/diskv
+  version: 5f041e8faa004a95c88a202771f4cc3e991971e6
 - name: github.com/pkg/errors
   version: 645ef00459ed84a119197bfb8d8205042c6df63d
 - name: github.com/russross/blackfriday
@@ -179,7 +197,7 @@ imports:
 - name: github.com/yudai/golcs
   version: d1c525dea8ce39ea9a783d33cf08932305373f2c
 - name: golang.org/x/crypto
-  version: 9419663f5a44be8b34ca85f08abc5fe1be11f8a3
+  version: 49796115aa4b964c318aad4f3084fdb41e9aa067
   subpackages:
   - ssh/terminal
 - name: golang.org/x/net
@@ -215,7 +233,7 @@ imports:
   subpackages:
   - rate
 - name: google.golang.org/api
-  version: 3639d6d93f377f39a1de765fa4ef37b3c7ca8bd9
+  version: 7ca32eb868bf53ea2fc406698eb98583a8073d19
   subpackages:
   - gensupport
   - googleapi
@@ -236,9 +254,9 @@ imports:
 - name: gopkg.in/inf.v0
   version: 3887ee99ecf07df5b447e9b00d9c0b2adaa9f3e4
 - name: gopkg.in/yaml.v2
-  version: 53feefa2559fb8dfa8d81baad31be332c97d6c77
+  version: 670d4cfef0544295bc27a114dbac37980d83185a
 - name: k8s.io/api
-  version: 73d903622b7391f3312dcbac6483fed484e185f8
+  version: 4e7be11eab3ffcfc1876898b8272df53785a9504
   subpackages:
   - admissionregistration/v1alpha1
   - admissionregistration/v1beta1
@@ -264,12 +282,13 @@ imports:
   - rbac/v1alpha1
   - rbac/v1beta1
   - scheduling/v1alpha1
+  - scheduling/v1beta1
   - settings/v1alpha1
   - storage/v1
   - storage/v1alpha1
   - storage/v1beta1
 - name: k8s.io/apimachinery
-  version: 2d462cff08891d952e216b5372464180933fc26c
+  version: cbad0ea24d3adbf8cc3c0c1b4077b79828119584
   repo: https://github.com/pharmer/apimachinery.git
   vcs: git
   subpackages:
@@ -312,7 +331,9 @@ imports:
   - third_party/forked/golang/json
   - third_party/forked/golang/reflect
 - name: k8s.io/client-go
-  version: 23781f4d6632d88e869066eaebb743857aa1ef9b
+  version: 805859b028aa45844e5d3b699d1dfad9eed753ad
+  repo: https://github.com/pharmer/client-go.git
+  vcs: git
   subpackages:
   - discovery
   - kubernetes
@@ -341,12 +362,14 @@ imports:
   - kubernetes/typed/rbac/v1alpha1
   - kubernetes/typed/rbac/v1beta1
   - kubernetes/typed/scheduling/v1alpha1
+  - kubernetes/typed/scheduling/v1beta1
   - kubernetes/typed/settings/v1alpha1
   - kubernetes/typed/storage/v1
   - kubernetes/typed/storage/v1alpha1
   - kubernetes/typed/storage/v1beta1
   - pkg/apis/clientauthentication
   - pkg/apis/clientauthentication/v1alpha1
+  - pkg/apis/clientauthentication/v1beta1
   - pkg/version
   - plugin/pkg/client/auth/exec
   - rest
@@ -356,10 +379,11 @@ imports:
   - tools/reference
   - transport
   - util/cert
+  - util/connrotation
   - util/flowcontrol
   - util/integer
 - name: k8s.io/kube-openapi
-  version: 50ae88d24ede7b8bad68e23c805b5d3da5c8abaf
+  version: 91cfa479c814065e420cee7ed227db0f63a5854e
   subpackages:
   - pkg/util/proto
 testImports: []

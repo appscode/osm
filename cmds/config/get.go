@@ -32,7 +32,7 @@ func getContexts(configPath string) {
 
 	table := tablewriter.NewWriter(os.Stdout)
 	table.SetRowLine(true)
-	table.SetAlignment(tablewriter.ALIGN_CENTRE)
+	table.SetAlignment(tablewriter.ALIGN_CENTER)
 	table.SetHeader([]string{"CURRENT", "NAME", "PROVIDER"})
 	ctx := config.CurrentContext
 	for _, osmCtx := range config.Contexts {
