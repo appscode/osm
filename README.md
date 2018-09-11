@@ -86,6 +86,9 @@ osm config set-context osm-gs --provider=google --google.json_key_path=<path_sa_
 
 # Microsoft Azure ARM Storage:
 osm config set-context osm-az --provider=azure --azure.account=<storage_ac> --azure.key=<key>
+
+# Local Filesystem
+osm config set-context osm-local --provider=local --local.path=/tmp/stow
 ```
 
 ### Bucket Operations
