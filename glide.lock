@@ -1,5 +1,5 @@
-hash: 09b46fa0d5bc913c927c6d0e7ef04d81eb6540f4cd68a70e21a3671419ad363a
-updated: 2018-09-11T12:29:05.199223181-07:00
+hash: ee02079ac71b40f268594c169448c79a626f25d1af7af24a76054109c5a8088a
+updated: 2018-09-11T12:53:20.230514599-07:00
 imports:
 - name: cloud.google.com/go
   version: fe3d41e1ecb2ce36ad3a979037c9b9a2b726226f
@@ -158,18 +158,12 @@ imports:
   version: ed8eb9e318d7a84ce5915b495b7d35e0cfe7b5a8
 - name: github.com/mattn/go-isatty
   version: 66b8e73f3f5cda9f96b69efd03dd3d7fc4a5cdb8
-- name: github.com/mattn/go-runewidth
-  version: 9e777a8366cce605130a531d2cd6363d07ad7317
-- name: github.com/mitchellh/go-homedir
-  version: ae18d6b8b3205b561c79e8e5f69bff09736185f4
 - name: github.com/modern-go/concurrent
   version: bacd9c7ef1dd9b15be4a9909b8ac7a4e313eec94
 - name: github.com/modern-go/reflect2
   version: 05fbef0ca5da472bbf96c9322b84a53edc03c9fd
 - name: github.com/ncw/swift
   version: 7854abff473c41fdde529ebe4cf7db6334dd61ce
-- name: github.com/olekukonko/tablewriter
-  version: d4647c9c7a84d847478d890b816b7d8b62b0b279
 - name: github.com/peterbourgon/diskv
   version: 5f041e8faa004a95c88a202771f4cc3e991971e6
 - name: github.com/pkg/errors
@@ -381,6 +375,7 @@ imports:
   - util/cert
   - util/connrotation
   - util/flowcontrol
+  - util/homedir
   - util/integer
 - name: k8s.io/kube-openapi
   version: 91cfa479c814065e420cee7ed227db0f63a5854e

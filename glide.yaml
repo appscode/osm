@@ -20,9 +20,6 @@ import:
 - package: cloud.google.com/go
   version: v0.2.0
 - package: github.com/jpillora/go-ogle-analytics
-- package: github.com/mitchellh/go-homedir
-- package: github.com/olekukonko/tablewriter
-  version: master
 - package: github.com/spf13/cobra
   version: v0.0.3
 - package: k8s.io/api
