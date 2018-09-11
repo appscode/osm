@@ -2,14 +2,15 @@ package cmds
 
 import (
 	"flag"
+	"path/filepath"
 	"strings"
 
 	v "github.com/appscode/go/version"
 	"github.com/appscode/kutil/tools/analytics"
 	cfgCmd "github.com/appscode/osm/cmds/config"
 	"github.com/jpillora/go-ogle-analytics"
-	"github.com/mitchellh/go-homedir"
 	"github.com/spf13/cobra"
+	"k8s.io/client-go/util/homedir"
 )
 
 const (
@@ -38,8 +39,7 @@ func NewCmdOsm() *cobra.Command {
 		},
 	}
 	rootCmd.PersistentFlags().AddGoFlagSet(flag.CommandLine)
-	home, _ := homedir.Dir()
-	rootCmd.PersistentFlags().String("osmconfig", home+"/.osm/config", "Path to osm config")
+	rootCmd.PersistentFlags().String("osmconfig", filepath.Join(homedir.HomeDir(), ".osm", "config"), "Path to osm config")
 	rootCmd.PersistentFlags().BoolVar(&enableAnalytics, "enable-analytics", enableAnalytics, "Send usage events to Google Analytics")
 
 	rootCmd.PersistentFlags().BoolVar(&enableAnalytics, "analytics", enableAnalytics, "Send usage events to Google Analytics")

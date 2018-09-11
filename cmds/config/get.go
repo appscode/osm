@@ -1,11 +1,12 @@
 package config
 
 import (
+	"fmt"
 	"os"
+	"text/tabwriter"
 
 	"github.com/appscode/go/term"
 	otx "github.com/appscode/osm/context"
-	"github.com/olekukonko/tablewriter"
 	"github.com/spf13/cobra"
 )
 
@@ -30,17 +31,15 @@ func getContexts(configPath string) {
 	config, err := otx.LoadConfig(configPath)
 	term.ExitOnError(err)
 
-	table := tablewriter.NewWriter(os.Stdout)
-	table.SetRowLine(true)
-	table.SetAlignment(tablewriter.ALIGN_CENTER)
-	table.SetHeader([]string{"CURRENT", "NAME", "PROVIDER"})
+	w := tabwriter.NewWriter(os.Stdout, 0, 8, 0, '\t', 0)
+	fmt.Fprintln(w, "CURRENT\tNAME\tPROVIDER")
 	ctx := config.CurrentContext
 	for _, osmCtx := range config.Contexts {
 		if osmCtx.Name == ctx {
-			table.Append([]string{"*", osmCtx.Name, osmCtx.Provider})
+			fmt.Fprintf(w, "*\t%s\t%s\n", osmCtx.Name, osmCtx.Provider)
 		} else {
-			table.Append([]string{"", osmCtx.Name, osmCtx.Provider})
+			fmt.Fprintf(w, "\t%s\t%s\n", osmCtx.Name, osmCtx.Provider)
 		}
 	}
-	table.Render()
+	w.Flush()
 }
