@@ -10,9 +10,9 @@ import:
   vcs: git
   version: master
 - package: github.com/Azure/azure-sdk-for-go
-  version: v12.4.0-beta
+  version: v14.6.0
 - package: github.com/Azure/go-autorest
-  version: v9.9.0
+  version: v10.6.2
 - package: github.com/aws/aws-sdk-go
   version: v1.12.7
 - package: google.golang.org/api/storage/v1
@@ -22,15 +22,18 @@ import:
 - package: github.com/jpillora/go-ogle-analytics
 - package: github.com/mitchellh/go-homedir
 - package: github.com/olekukonko/tablewriter
+  version: master
 - package: github.com/spf13/cobra
   version: v0.0.3
 - package: k8s.io/api
-  version: kubernetes-1.10.0
+  version: kubernetes-1.11.3
 - package: k8s.io/apimachinery
   repo: https://github.com/pharmer/apimachinery.git
   vcs: git
-  version: release-1.10
+  version: release-1.11.3
 - package: k8s.io/client-go
-  version: v7.0.0
+  repo: https://github.com/pharmer/client-go.git
+  vcs: git
+  version: release-1.11.3
 - package: github.com/appscode/kutil
-  version: release-7.0
+  version: release-8.0
