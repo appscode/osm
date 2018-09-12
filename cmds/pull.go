@@ -8,6 +8,7 @@ import (
 	"github.com/appscode/go/term"
 	otx "github.com/appscode/osm/context"
 	"github.com/graymeta/stow"
+	"github.com/graymeta/stow/local"
 	"github.com/spf13/cobra"
 )
 
@@ -53,6 +54,9 @@ func pull(req *itemPullRequest, configPath string) {
 	loc, err := cfg.Dial(req.context)
 	term.ExitOnError(err)
 
+	ctx, err := cfg.Context(req.context)
+	term.ExitOnError(err)
+
 	c, err := loc.Container(req.container)
 	term.ExitOnError(err)
 
@@ -63,7 +67,11 @@ func pull(req *itemPullRequest, configPath string) {
 			items, next, err := c.Items(req.srcID, cursor, 50)
 			term.ExitOnError(err)
 			for _, item := range items {
-				r, err := filepath.Rel(req.srcID, item.ID())
+				src := req.srcID
+				if ctx.Provider == local.Kind {
+					src = filepath.Join(c.ID(), src)
+				}
+				r, err := filepath.Rel(src, item.ID())
 				term.ExitOnError(err)
 
 				f := filepath.Join(req.destPath, r)

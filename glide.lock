@@ -1,5 +1,5 @@
 hash: ee02079ac71b40f268594c169448c79a626f25d1af7af24a76054109c5a8088a
-updated: 2018-09-11T12:53:20.230514599-07:00
+updated: 2018-09-11T23:35:16.198667738-07:00
 imports:
 - name: cloud.google.com/go
   version: fe3d41e1ecb2ce36ad3a979037c9b9a2b726226f
@@ -83,7 +83,7 @@ imports:
 - name: github.com/dustin/go-humanize
   version: 9f541cc9db5d55bce703bd99987c9d5cb8eea45e
 - name: github.com/evanphx/json-patch
-  version: 94e38aa1586e8a6c8a75770bddf5ff84c48a106b
+  version: afac545df32f2287a079e2dfb7ba2745a643747e
 - name: github.com/fatih/color
   version: 9aae6aaa22315390f03959adca2c4d395b02fcef
 - name: github.com/fatih/structs
@@ -129,7 +129,7 @@ imports:
   - compiler
   - extensions
 - name: github.com/graymeta/stow
-  version: afce6d90444a3ba63c6d6671498c6cdc79375369
+  version: 1849a82ac7fbd3e5cb144bcc711544e90903eac4
   repo: https://github.com/appscode/stow.git
   vcs: git
   subpackages:
