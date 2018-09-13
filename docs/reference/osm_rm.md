@@ -1,12 +1,12 @@
 ---
 title: Osm Rm
 menu:
-  product_osm_0.7.1:
+  product_osm_0.8.0:
     identifier: osm-rm
     name: Osm Rm
     parent: reference
 product_name: osm
-menu_name: product_osm_0.7.1
+menu_name: product_osm_0.8.0
 section_menu_id: reference
 ---
 ## osm rm
