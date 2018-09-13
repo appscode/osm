@@ -1,12 +1,12 @@
 ---
 title: Osm Config Current-Context
 menu:
-  product_osm_0.7.1:
+  product_osm_0.8.0:
     identifier: osm-config-current-context
     name: Osm Config Current-Context
     parent: reference
 product_name: osm
-menu_name: product_osm_0.7.1
+menu_name: product_osm_0.8.0
 section_menu_id: reference
 ---
 ## osm config current-context

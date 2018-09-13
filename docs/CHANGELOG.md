@@ -2,17 +2,17 @@
 title: Changelog | Osm
 description: Changelog
 menu:
-  product_osm_0.7.1:
+  product_osm_0.8.0:
     identifier: changelog-osm
     name: Changelog
     parent: welcome
     weight: 10
 product_name: osm
-menu_name: product_osm_0.7.1
+menu_name: product_osm_0.8.0
 section_menu_id: welcome
-url: /products/osm/0.7.1/welcome/changelog/
+url: /products/osm/0.8.0/welcome/changelog/
 aliases:
-  - /products/osm/0.7.1/CHANGELOG/
+  - /products/osm/0.8.0/CHANGELOG/
 ---
 
 # Change Log
