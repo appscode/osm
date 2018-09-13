@@ -17,6 +17,19 @@ aliases:
 
 # Change Log
 
+## [0.8.0](https://github.com/appscode/osm/tree/0.8.0) (2018-09-12)
+[Full Changelog](https://github.com/appscode/osm/compare/0.7.1...0.8.0)
+
+**Closed issues:**
+
+- Document that local storage can be used with osm [\#28](https://github.com/appscode/osm/issues/28)
+
+**Merged pull requests:**
+
+- Local: mimic the path semantics of cloud backends [\#35](https://github.com/appscode/osm/pull/35) ([tamalsaha](https://github.com/tamalsaha))
+- Use Go's built-in tab writer [\#34](https://github.com/appscode/osm/pull/34) ([tamalsaha](https://github.com/tamalsaha))
+- Use kubernetes-1.11.3 [\#33](https://github.com/appscode/osm/pull/33) ([tamalsaha](https://github.com/tamalsaha))
+
 ## [0.7.1](https://github.com/appscode/osm/tree/0.7.1) (2018-06-26)
 [Full Changelog](https://github.com/appscode/osm/compare/0.7.0...0.7.1)
 
