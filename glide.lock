@@ -1,5 +1,5 @@
-hash: ee02079ac71b40f268594c169448c79a626f25d1af7af24a76054109c5a8088a
-updated: 2018-09-11T23:35:16.198667738-07:00
+hash: 56f5fce9e8b33ecaf781428b1e597ab8d82c92cec8651f32d04133e5806d085b
+updated: 2018-10-12T12:10:32.80106837-07:00
 imports:
 - name: cloud.google.com/go
   version: fe3d41e1ecb2ce36ad3a979037c9b9a2b726226f
@@ -16,6 +16,7 @@ imports:
   - env
   - homedir
   - log
+  - net
   - runtime
   - sets
   - term
@@ -24,12 +25,12 @@ imports:
 - name: github.com/appscode/jsonpatch
   version: 5af499cf01c842bfdd7761a433fc90525ccd6836
 - name: github.com/appscode/kutil
-  version: 58a89a000f0c44560e97537d989ec6d2fba95f64
+  version: 303298aa86dad096fed4c49ba117700e506eca2c
   subpackages:
   - meta
   - tools/analytics
 - name: github.com/aws/aws-sdk-go
-  version: 760741802ad40f49ae9fc4a69ef6706d2527d62e
+  version: fde4ded7becdeae4d26bf1212916aabba79349b4
   subpackages:
   - aws
   - aws/awserr
@@ -41,14 +42,19 @@ imports:
   - aws/credentials/ec2rolecreds
   - aws/credentials/endpointcreds
   - aws/credentials/stscreds
+  - aws/csm
   - aws/defaults
   - aws/ec2metadata
   - aws/endpoints
   - aws/request
   - aws/session
   - aws/signer/v4
+  - internal/sdkio
+  - internal/sdkrand
   - internal/shareddefaults
   - private/protocol
+  - private/protocol/eventstream
+  - private/protocol/eventstream/eventstreamapi
   - private/protocol/query
   - private/protocol/query/queryutil
   - private/protocol/rest
@@ -59,23 +65,24 @@ imports:
   - service/s3/s3manager
   - service/sts
 - name: github.com/Azure/azure-sdk-for-go
-  version: 56a0b1d2af3b65d5f1f7a330e02faaf48b473c5a
+  version: 520918e6c8e8e1064154f51d13e02fad92b287b8
   subpackages:
   - storage
   - version
 - name: github.com/Azure/go-autorest
-  version: 1ff28809256a84bb6966640ff3d0371af82ccba4
+  version: bca49d5b51a50dc5bb17bbf6204c711c6dbded06
   subpackages:
   - autorest
   - autorest/adal
   - autorest/azure
   - autorest/date
+  - version
 - name: github.com/cpuguy83/go-md2man
   version: 20f5889cbdc3c73dbd2862796665e7c465ade7d1
   subpackages:
   - md2man
 - name: github.com/davecgh/go-spew
-  version: 782f4967f2dc4564575ca782fe2d04090b5faca8
+  version: 8991bc29aa16c548c550c7ff78260e27b9ab7c73
   subpackages:
   - spew
 - name: github.com/dgrijalva/jwt-go
@@ -83,11 +90,11 @@ imports:
 - name: github.com/dustin/go-humanize
   version: 9f541cc9db5d55bce703bd99987c9d5cb8eea45e
 - name: github.com/evanphx/json-patch
-  version: afac545df32f2287a079e2dfb7ba2745a643747e
+  version: 94e38aa1586e8a6c8a75770bddf5ff84c48a106b
 - name: github.com/fatih/color
-  version: 9aae6aaa22315390f03959adca2c4d395b02fcef
+  version: 3f9d52f7176a6927daacff70a3e8d1dc2025c53e
 - name: github.com/fatih/structs
-  version: ebf56d35bba727c68ac77f56f2fcf90b181851aa
+  version: 878a968ab22548362a09bdb3322f98b00f470d46
 - name: github.com/ghodss/yaml
   version: 0ca9ea5df5451ffdf184b4428c902747c2c11cd7
 - name: github.com/go-ini/ini
@@ -151,19 +158,19 @@ imports:
 - name: github.com/jpillora/go-ogle-analytics
   version: 14b04e0594ef6a9fd943363b135656f0ec8c9d0e
 - name: github.com/json-iterator/go
-  version: f2b4162afba35581b6d4a50d3b8f34e33c144682
+  version: 1624edc4454b8682399def8740d46db5e4362ba4
 - name: github.com/marstr/guid
   version: 8bdf7d1a087ccc975cf37dd6507da50698fd19ca
 - name: github.com/mattn/go-colorable
-  version: ed8eb9e318d7a84ce5915b495b7d35e0cfe7b5a8
+  version: efa589957cd060542a26d2dd7832fd6a6c6c3ade
 - name: github.com/mattn/go-isatty
-  version: 66b8e73f3f5cda9f96b69efd03dd3d7fc4a5cdb8
+  version: 3fb116b820352b7f0c281308a4d6250c22d94e27
 - name: github.com/modern-go/concurrent
   version: bacd9c7ef1dd9b15be4a9909b8ac7a4e313eec94
 - name: github.com/modern-go/reflect2
   version: 05fbef0ca5da472bbf96c9322b84a53edc03c9fd
 - name: github.com/ncw/swift
-  version: 7854abff473c41fdde529ebe4cf7db6334dd61ce
+  version: 6f907bcc698fc1d24fa918255b18c6c5668b8b2b
 - name: github.com/peterbourgon/diskv
   version: 5f041e8faa004a95c88a202771f4cc3e991971e6
 - name: github.com/pkg/errors
@@ -171,7 +178,7 @@ imports:
 - name: github.com/russross/blackfriday
   version: 300106c228d52c8941d4b3de6054a6062a86dda3
 - name: github.com/satori/go.uuid
-  version: 879c5887cd475cd7864858769793b2ceb0d44feb
+  version: 36e9d2ebbde5e3f13ab2e25625fd453271d6522e
 - name: github.com/sergi/go-diff
   version: 97b2266dfe4bd4ea1b81a463322f04f8b724801e
   subpackages:
@@ -191,7 +198,7 @@ imports:
 - name: github.com/yudai/golcs
   version: d1c525dea8ce39ea9a783d33cf08932305373f2c
 - name: golang.org/x/crypto
-  version: 49796115aa4b964c318aad4f3084fdb41e9aa067
+  version: de0752318171da717af4ce24d0a2e8626afaeb11
   subpackages:
   - ssh/terminal
 - name: golang.org/x/net
@@ -227,14 +234,14 @@ imports:
   subpackages:
   - rate
 - name: google.golang.org/api
-  version: 7ca32eb868bf53ea2fc406698eb98583a8073d19
+  version: 3639d6d93f377f39a1de765fa4ef37b3c7ca8bd9
   subpackages:
   - gensupport
   - googleapi
   - googleapi/internal/uritemplates
   - storage/v1
 - name: google.golang.org/appengine
-  version: 12d5545dc1cfa6047a286d5e853841b6471f4c19
+  version: ae0ab99deb4dc413a2b4bd6c8bdd0eb67f1e4d06
   subpackages:
   - internal
   - internal/app_identity
@@ -248,9 +255,9 @@ imports:
 - name: gopkg.in/inf.v0
   version: 3887ee99ecf07df5b447e9b00d9c0b2adaa9f3e4
 - name: gopkg.in/yaml.v2
-  version: 670d4cfef0544295bc27a114dbac37980d83185a
+  version: 53feefa2559fb8dfa8d81baad31be332c97d6c77
 - name: k8s.io/api
-  version: 4e7be11eab3ffcfc1876898b8272df53785a9504
+  version: fd83cbc87e7632ccd8bbab63d2b673d4e0c631cc
   subpackages:
   - admissionregistration/v1alpha1
   - admissionregistration/v1beta1
@@ -263,10 +270,12 @@ imports:
   - authorization/v1beta1
   - autoscaling/v1
   - autoscaling/v2beta1
+  - autoscaling/v2beta2
   - batch/v1
   - batch/v1beta1
   - batch/v2alpha1
   - certificates/v1beta1
+  - coordination/v1beta1
   - core/v1
   - events/v1beta1
   - extensions/v1beta1
@@ -282,8 +291,8 @@ imports:
   - storage/v1alpha1
   - storage/v1beta1
 - name: k8s.io/apimachinery
-  version: cbad0ea24d3adbf8cc3c0c1b4077b79828119584
-  repo: https://github.com/pharmer/apimachinery.git
+  version: 8d7a0c3d7f0948197f384288363dfe20cd1f00e4
+  repo: https://github.com/kmodules/apimachinery.git
   vcs: git
   subpackages:
   - pkg/api/errors
@@ -312,22 +321,20 @@ imports:
   - pkg/util/intstr
   - pkg/util/json
   - pkg/util/mergepatch
+  - pkg/util/naming
   - pkg/util/net
   - pkg/util/runtime
   - pkg/util/sets
   - pkg/util/strategicpatch
   - pkg/util/validation
   - pkg/util/validation/field
-  - pkg/util/wait
   - pkg/util/yaml
   - pkg/version
   - pkg/watch
   - third_party/forked/golang/json
   - third_party/forked/golang/reflect
 - name: k8s.io/client-go
-  version: 805859b028aa45844e5d3b699d1dfad9eed753ad
-  repo: https://github.com/pharmer/client-go.git
-  vcs: git
+  version: 1638f8970cefaa404ff3a62950f88b08292b2696
   subpackages:
   - discovery
   - kubernetes
@@ -343,10 +350,12 @@ imports:
   - kubernetes/typed/authorization/v1beta1
   - kubernetes/typed/autoscaling/v1
   - kubernetes/typed/autoscaling/v2beta1
+  - kubernetes/typed/autoscaling/v2beta2
   - kubernetes/typed/batch/v1
   - kubernetes/typed/batch/v1beta1
   - kubernetes/typed/batch/v2alpha1
   - kubernetes/typed/certificates/v1beta1
+  - kubernetes/typed/coordination/v1beta1
   - kubernetes/typed/core/v1
   - kubernetes/typed/events/v1beta1
   - kubernetes/typed/extensions/v1beta1
@@ -378,7 +387,7 @@ imports:
   - util/homedir
   - util/integer
 - name: k8s.io/kube-openapi
-  version: 91cfa479c814065e420cee7ed227db0f63a5854e
+  version: 0cf8f7e6ed1d2e3d47d02e3b6e559369af24d803
   subpackages:
   - pkg/util/proto
 testImports: []
