@@ -13,6 +13,7 @@ REPO_ROOT=$GOPATH/src/github.com/appscode/osm
 source "$REPO_ROOT/hack/libbuild/common/lib.sh"
 source "$REPO_ROOT/hack/libbuild/common/public_image.sh"
 
+DOCKER_REGISTRY=${DOCKER_REGISTRY:-appscode}
 APPSCODE_ENV=${APPSCODE_ENV:-dev}
 IMG=osm
 
@@ -41,9 +42,10 @@ build_docker() {
   cp $DIST/osm/osm-alpine-amd64 osm
   chmod 755 osm
 
-  local cmd="docker build -t appscode/$IMG:$TAG ."
+  local cmd="docker build -t $DOCKER_REGISTRY/$IMG:$TAG ."
   echo $cmd
   $cmd
+  rm osm
   popd
 }
 

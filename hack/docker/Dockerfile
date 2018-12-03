@@ -1,10 +1,10 @@
 FROM alpine
 
 RUN set -x \
-  && apk add --update --no-cache ca-certificates \
+  && apk add --update --no-cache ca-certificates bash \
   && mkdir .osm \
   && touch .osm/config \
-  && chmod 777 .osm/config
+  && chmod -R 777 .osm
 
 COPY osm /usr/bin/osm
 COPY docker-entrypoint.sh /usr/local/bin/
@@ -35,6 +35,7 @@ ENV AZURE_ACCOUNT_KEY ""
 ENV SWIFT_AUTH_TOKEN ""
 ENV SWIFT_DOMAIN ""
 ENV SWIFT_KEY ""
+
 ENV SWIFT_REGION ""
 ENV SWIFT_STORAGE_URL ""
 ENV SWIFT_TENANT_AUTH_URL ""
