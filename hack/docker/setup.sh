@@ -41,12 +41,12 @@ build_docker() {
   pushd $GOPATH/src/github.com/appscode/osm/hack/docker
   cp $DIST/osm/osm-alpine-amd64 osm
   chmod 755 osm
-  chmod 755 /usr/local/bin/docker-entrypoint.sh
+  chmod 755 docker-entrypoint.sh
 
   local cmd="docker build --pull -t $DOCKER_REGISTRY/$IMG:$TAG ."
   echo $cmd
   $cmd
-  rm osm
+  rm -rf osm
   popd
 }
 
