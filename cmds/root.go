@@ -3,36 +3,21 @@ package cmds
 import (
 	"flag"
 	"path/filepath"
-	"strings"
 
 	v "github.com/appscode/go/version"
-	"github.com/appscode/kutil/tools/analytics"
+	"github.com/appscode/kutil/tools/cli"
 	cfgCmd "github.com/appscode/osm/cmds/config"
-	"github.com/jpillora/go-ogle-analytics"
 	"github.com/spf13/cobra"
 	"k8s.io/client-go/util/homedir"
 )
 
-const (
-	gaTrackingCode = "UA-62096468-20"
-)
-
 func NewCmdOsm() *cobra.Command {
-	var (
-		enableAnalytics = true
-	)
 	rootCmd := &cobra.Command{
 		Use:               "osm [command]",
 		Short:             `Object Store Manipulator by AppsCode`,
 		DisableAutoGenTag: true,
 		PersistentPreRun: func(c *cobra.Command, args []string) {
-			if enableAnalytics && gaTrackingCode != "" {
-				if client, err := ga.NewClient(gaTrackingCode); err == nil {
-					client.ClientID(analytics.ClientID())
-					parts := strings.Split(c.CommandPath(), " ")
-					client.Send(ga.NewEvent(parts[0], strings.Join(parts[1:], "/")).Label(v.Version.Version))
-				}
-			}
+			cli.SendAnalytics(c, v.Version.Version)
 		},
 		Run: func(c *cobra.Command, args []string) {
 			c.Help()
@@ -40,9 +25,9 @@ func NewCmdOsm() *cobra.Command {
 	}
 	rootCmd.PersistentFlags().AddGoFlagSet(flag.CommandLine)
 	rootCmd.PersistentFlags().String("osmconfig", filepath.Join(homedir.HomeDir(), ".osm", "config"), "Path to osm config")
-	rootCmd.PersistentFlags().BoolVar(&enableAnalytics, "enable-analytics", enableAnalytics, "Send usage events to Google Analytics")
+	rootCmd.PersistentFlags().BoolVar(&cli.EnableAnalytics, "enable-analytics", cli.EnableAnalytics, "Send usage events to Google Analytics")
 
-	rootCmd.PersistentFlags().BoolVar(&enableAnalytics, "analytics", enableAnalytics, "Send usage events to Google Analytics")
+	rootCmd.PersistentFlags().BoolVar(&cli.EnableAnalytics, "analytics", cli.EnableAnalytics, "Send usage events to Google Analytics")
 	rootCmd.PersistentFlags().MarkDeprecated("analytics", "use --enable-analytics")
 
 	rootCmd.AddCommand(cfgCmd.NewCmdConfig())

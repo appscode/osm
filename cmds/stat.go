@@ -6,7 +6,7 @@ import (
 
 	"github.com/appscode/go/term"
 	otx "github.com/appscode/osm/context"
-	"github.com/dustin/go-humanize"
+	humanize "github.com/dustin/go-humanize"
 	"github.com/spf13/cobra"
 )
 
