@@ -17,15 +17,26 @@ aliases:
 
 # Change Log
 
-## [0.8.0](https://github.com/appscode/osm/tree/0.8.0) (2018-09-12)
+## [0.9.0](https://github.com/appscode/osm/tree/0.9.0) (2018-12-04)
+[Full Changelog](https://github.com/appscode/osm/compare/0.8.0...0.9.0)
+
+**Merged pull requests:**
+
+- Use kutil/tools/cli to send analytics [\#41](https://github.com/appscode/osm/pull/41) ([tamalsaha](https://github.com/tamalsaha))
+- Make osm docker image configurable via environment variables [\#40](https://github.com/appscode/osm/pull/40) ([hossainemruz](https://github.com/hossainemruz))
+- Support Kubernetes 1.12 [\#37](https://github.com/appscode/osm/pull/37) ([tamalsaha](https://github.com/tamalsaha))
+
+## [0.8.0](https://github.com/appscode/osm/tree/0.8.0) (2018-09-13)
 [Full Changelog](https://github.com/appscode/osm/compare/0.7.1...0.8.0)
 
 **Closed issues:**
 
+- osm does not behave same for local backend as cloud storage [\#32](https://github.com/appscode/osm/issues/32)
 - Document that local storage can be used with osm [\#28](https://github.com/appscode/osm/issues/28)
 
 **Merged pull requests:**
 
+- Prepare docs for 0.8.0 release [\#36](https://github.com/appscode/osm/pull/36) ([tamalsaha](https://github.com/tamalsaha))
 - Local: mimic the path semantics of cloud backends [\#35](https://github.com/appscode/osm/pull/35) ([tamalsaha](https://github.com/tamalsaha))
 - Use Go's built-in tab writer [\#34](https://github.com/appscode/osm/pull/34) ([tamalsaha](https://github.com/tamalsaha))
 - Use kubernetes-1.11.3 [\#33](https://github.com/appscode/osm/pull/33) ([tamalsaha](https://github.com/tamalsaha))
