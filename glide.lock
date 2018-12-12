@@ -1,5 +1,5 @@
-hash: d0134694bc5b00e76483e491b4fb2ddc5f3696fddd2f889ce5831ac1f9228f76
-updated: 2018-12-04T05:00:46.761076378-08:00
+hash: 1b3c4019b6fb5ad1496bc708967910e711a7ed2f613e76d8517a2baedfca85e4
+updated: 2018-12-12T00:14:01.425604013-08:00
 imports:
 - name: cloud.google.com/go
   version: fe3d41e1ecb2ce36ad3a979037c9b9a2b726226f
@@ -7,7 +7,7 @@ imports:
   - compute/metadata
   - internal
 - name: github.com/appscode/go
-  version: aa0a55d74dac66f9b9bec9c0e7b67944115a3f44
+  version: 584aaa73af837f112c0a471be398ea837341c330
   subpackages:
   - analytics
   - context
@@ -26,7 +26,7 @@ imports:
 - name: github.com/appscode/jsonpatch
   version: 5af499cf01c842bfdd7761a433fc90525ccd6836
 - name: github.com/appscode/kutil
-  version: 239838b6231b8a27a66426e25678351ce50c4cfd
+  version: 333f8316973162b49176cdd933f1bbf64157ba74
   subpackages:
   - meta
   - tools/analytics
@@ -109,7 +109,7 @@ imports:
 - name: github.com/golang/glog
   version: 44145f04b68cf362d9c4df2182967c2275eaefed
 - name: github.com/golang/protobuf
-  version: b4deda0973fb4c70b50d226b1af49f3da59f5265
+  version: 925541529c1fa6821df4e44ce2723319eb2be768
   subpackages:
   - jsonpb
   - proto
@@ -140,7 +140,7 @@ imports:
 - name: github.com/gorilla/websocket
   version: 66b9c49e59c6c48f0ffce28c2d8b8a5678502c6d
 - name: github.com/graymeta/stow
-  version: 1849a82ac7fbd3e5cb144bcc711544e90903eac4
+  version: 8020e152292b2cdbdca30274fec24e18905f254d
   repo: https://github.com/appscode/stow.git
   vcs: git
   subpackages:
@@ -155,6 +155,8 @@ imports:
   - diskcache
 - name: github.com/howeyc/gopass
   version: bf9dde6d0d2c004a008c27aaee91170c786f6db8
+- name: github.com/imdario/mergo
+  version: 9316a62528ac99aaecb4e47eadd6dc8aa6533d58
 - name: github.com/inconshreveable/mousetrap
   version: 76626ae9c91c4f2a10f34cad8ce83ea42c93bb75
 - name: github.com/jmespath/go-jmespath
@@ -256,6 +258,8 @@ imports:
   - urlfetch
 - name: gopkg.in/inf.v0
   version: 3887ee99ecf07df5b447e9b00d9c0b2adaa9f3e4
+- name: gopkg.in/square/go-jose.v2
+  version: 72415094398e2f013bf50b76fd6de36df47938ea
 - name: gopkg.in/yaml.v2
   version: 5420a8b6744d3b0345ab293f6fcba19c978f1183
 - name: k8s.io/api
@@ -392,4 +396,6 @@ imports:
   version: 0cf8f7e6ed1d2e3d47d02e3b6e559369af24d803
   subpackages:
   - pkg/util/proto
+- name: sigs.k8s.io/yaml
+  version: fd68e9863619f6ec2fdd8625fe1f02e7c877e480
 testImports: []
