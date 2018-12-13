@@ -17,6 +17,13 @@ aliases:
 
 # Change Log
 
+## [0.9.1](https://github.com/appscode/osm/tree/0.9.1) (2018-12-13)
+[Full Changelog](https://github.com/appscode/osm/compare/0.9.0...0.9.1)
+
+**Merged pull requests:**
+
+- Fix next page cursor for list calls [\#43](https://github.com/appscode/osm/pull/43) ([tamalsaha](https://github.com/tamalsaha))
+
 ## [0.9.0](https://github.com/appscode/osm/tree/0.9.0) (2018-12-04)
 [Full Changelog](https://github.com/appscode/osm/compare/0.8.0...0.9.0)
 
