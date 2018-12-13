@@ -12,22 +12,22 @@ Object Store Manipulator (osm: pronounced like `awesome`) - `curl` for cloud sto
 You can download and install a pre-built binary:
 ```console
 # Linux amd 64-bit:
-wget -O osm https://cdn.appscode.com/binaries/osm/0.9.0/osm-linux-amd64 \
+wget -O osm https://cdn.appscode.com/binaries/osm/0.9.1/osm-linux-amd64 \
   && chmod +x osm \
   && sudo mv osm /usr/local/bin/
 
 # Linux 386 32-bit:
-wget -O osm https://cdn.appscode.com/binaries/osm/0.9.0/osm-linux-386 \
+wget -O osm https://cdn.appscode.com/binaries/osm/0.9.1/osm-linux-386 \
   && chmod +x osm \
   && sudo mv osm /usr/local/bin/
 
 # Mac 64-bit
-wget -O osm https://cdn.appscode.com/binaries/osm/0.9.0/osm-darwin-amd64 \
+wget -O osm https://cdn.appscode.com/binaries/osm/0.9.1/osm-darwin-amd64 \
   && chmod +x osm \
   && sudo mv osm /usr/local/bin/
 
 # Mac 32-bit
-wget -O osm https://cdn.appscode.com/binaries/osm/0.9.0/osm-darwin-386 \
+wget -O osm https://cdn.appscode.com/binaries/osm/0.9.1/osm-darwin-386 \
   && chmod +x osm \
   && sudo mv osm /usr/local/bin/
 ```
