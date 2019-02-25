@@ -12,7 +12,6 @@ import (
 	"github.com/appscode/go/analytics"
 	net2 "github.com/appscode/go/net"
 	"github.com/appscode/go/sets"
-	"github.com/appscode/kutil/meta"
 	core "k8s.io/api/core/v1"
 	kerr "k8s.io/apimachinery/pkg/api/errors"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -20,6 +19,7 @@ import (
 	"k8s.io/apimachinery/pkg/util/runtime"
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/rest"
+	"kmodules.xyz/client-go/meta"
 )
 
 const (

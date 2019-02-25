@@ -6,9 +6,9 @@ import (
 	"time"
 
 	"github.com/appscode/go/log/golog"
-	"github.com/appscode/kutil/tools/analytics"
 	ga "github.com/jpillora/go-ogle-analytics"
 	"github.com/spf13/cobra"
+	"kmodules.xyz/client-go/tools/analytics"
 )
 
 const (

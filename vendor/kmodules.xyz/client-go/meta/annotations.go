@@ -4,7 +4,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/appscode/kutil"
+	kutil "kmodules.xyz/client-go"
 )
 
 type ParserFunc func(map[string]string, string) (interface{}, error)

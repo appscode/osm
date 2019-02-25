@@ -5,10 +5,10 @@ import (
 	"path/filepath"
 
 	v "github.com/appscode/go/version"
-	"github.com/appscode/kutil/tools/cli"
 	cfgCmd "github.com/appscode/osm/cmds/config"
 	"github.com/spf13/cobra"
 	"k8s.io/client-go/util/homedir"
+	"kmodules.xyz/client-go/tools/cli"
 )
 
 func NewCmdOsm() *cobra.Command {
