@@ -138,14 +138,12 @@ github.com/modern-go/reflect2
 github.com/ncw/swift
 # github.com/pkg/errors v0.8.1
 github.com/pkg/errors
-# github.com/russross/blackfriday v2.0.0+incompatible
+# github.com/russross/blackfriday v1.5.2
 github.com/russross/blackfriday
 # github.com/satori/go.uuid v1.2.0
 github.com/satori/go.uuid
 # github.com/sergi/go-diff v1.0.0
 github.com/sergi/go-diff/diffmatchpatch
-# github.com/shurcooL/sanitized_anchor_name v1.0.0
-github.com/shurcooL/sanitized_anchor_name
 # github.com/spf13/cobra v0.0.3
 github.com/spf13/cobra
 github.com/spf13/cobra/doc
