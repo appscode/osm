@@ -6,8 +6,8 @@ import (
 
 	"github.com/appscode/go/term"
 	otx "github.com/appscode/osm/context"
-	"github.com/graymeta/stow"
 	"github.com/spf13/cobra"
+	"gomodules.xyz/stow"
 )
 
 type itemPushRequest struct {
