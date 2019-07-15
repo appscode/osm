@@ -1,0 +1,14 @@
+FROM {ARG_FROM}
+
+RUN set -x \
+  && apk add --update --no-cache ca-certificates bash \
+  && mkdir /.osm \
+  && touch /.osm/config \
+  && chmod -R 777 .osm
+
+COPY bin/{ARG_OS}_{ARG_ARCH}/{ARG_BIN} /usr/bin/{ARG_BIN}
+COPY docker-entrypoint.sh /usr/local/bin/
+
+USER nobody:nobody
+
+ENTRYPOINT ["docker-entrypoint.sh"]

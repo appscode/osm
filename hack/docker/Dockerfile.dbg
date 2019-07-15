@@ -1,4 +1,4 @@
-FROM alpine
+FROM {ARG_FROM}
 
 RUN set -x \
   && apk add --update --no-cache ca-certificates bash \
@@ -6,8 +6,7 @@ RUN set -x \
   && touch /.osm/config \
   && chmod -R 777 .osm
 
-COPY osm /usr/bin/osm
+COPY bin/{ARG_OS}_{ARG_ARCH}/{ARG_BIN} /usr/bin/{ARG_BIN}
 COPY docker-entrypoint.sh /usr/local/bin/
 
-USER nobody:nobody
 ENTRYPOINT ["docker-entrypoint.sh"]
