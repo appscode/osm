@@ -3,25 +3,21 @@ module github.com/appscode/osm
 go 1.12
 
 require (
-	github.com/appscode/go v0.0.0-20190424183524-60025f1135c9
-	github.com/cpuguy83/go-md2man v1.0.10 // indirect
+	github.com/appscode/go v0.0.0-20190621064509-6b292c9166e3
 	github.com/dustin/go-humanize v1.0.0
 	github.com/ghodss/yaml v1.0.0
-	github.com/graymeta/stow v0.0.0-00010101000000-000000000000
-	github.com/spf13/cobra v0.0.3
-	golang.org/x/crypto v0.0.0-20190506204251-e1dfcc566284 // indirect
-	golang.org/x/net v0.0.0-20190503192946-f4e77d36d62c // indirect
-	golang.org/x/sys v0.0.0-20190508100423-12bbe5a7a520 // indirect
+	github.com/spf13/cobra v0.0.5
+	gomodules.xyz/stow v0.2.0
 	k8s.io/api v0.0.0-20190503110853-61630f889b3c // indirect
 	k8s.io/apimachinery v0.0.0-20190508063446-a3da69d3723c // indirect
 	k8s.io/client-go v11.0.0+incompatible
 	k8s.io/kube-openapi v0.0.0-20190502190224-411b2483e503 // indirect
 	k8s.io/utils v0.0.0-20190506122338-8fab8cb257d5 // indirect
-	kmodules.xyz/client-go v0.0.0-20190508091620-0d215c04352f
+	kmodules.xyz/client-go v0.0.0-20190715080709-7162a6c90b04
 )
 
 replace (
-	github.com/graymeta/stow => github.com/appscode/stow v0.0.0-20190506085026-ca5baa008ea3
+	github.com/Azure/go-autorest => github.com/Azure/go-autorest/autorest v0.5.0
 	k8s.io/api => k8s.io/api v0.0.0-20190313235455-40a48860b5ab
 	k8s.io/apiextensions-apiserver => k8s.io/apiextensions-apiserver v0.0.0-20190315093550-53c4693659ed
 	k8s.io/apimachinery => github.com/kmodules/apimachinery v0.0.0-20190508045248-a52a97a7a2bf

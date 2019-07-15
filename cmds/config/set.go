@@ -7,13 +7,13 @@ import (
 
 	"github.com/appscode/go/term"
 	otx "github.com/appscode/osm/context"
-	"github.com/graymeta/stow"
-	"github.com/graymeta/stow/azure"
-	gcs "github.com/graymeta/stow/google"
-	"github.com/graymeta/stow/local"
-	"github.com/graymeta/stow/s3"
-	"github.com/graymeta/stow/swift"
 	"github.com/spf13/cobra"
+	"gomodules.xyz/stow"
+	"gomodules.xyz/stow/azure"
+	gcs "gomodules.xyz/stow/google"
+	"gomodules.xyz/stow/local"
+	"gomodules.xyz/stow/s3"
+	"gomodules.xyz/stow/swift"
 )
 
 type setContextRequest struct {

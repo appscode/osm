@@ -7,9 +7,9 @@ import (
 
 	"github.com/appscode/go/term"
 	otx "github.com/appscode/osm/context"
-	"github.com/graymeta/stow"
-	"github.com/graymeta/stow/local"
 	"github.com/spf13/cobra"
+	"gomodules.xyz/stow"
+	"gomodules.xyz/stow/local"
 )
 
 type itemPullRequest struct {
