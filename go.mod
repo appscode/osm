@@ -3,7 +3,7 @@ module github.com/appscode/osm
 go 1.12
 
 require (
-	github.com/appscode/go v0.0.0-20190621064509-6b292c9166e3
+	github.com/appscode/go v0.0.0-20190722173419-e454bf744023
 	github.com/dustin/go-humanize v1.0.0
 	github.com/ghodss/yaml v1.0.0
 	github.com/spf13/cobra v0.0.5
@@ -13,11 +13,15 @@ require (
 	k8s.io/client-go v11.0.0+incompatible
 	k8s.io/kube-openapi v0.0.0-20190502190224-411b2483e503 // indirect
 	k8s.io/utils v0.0.0-20190506122338-8fab8cb257d5 // indirect
-	kmodules.xyz/client-go v0.0.0-20190715080709-7162a6c90b04
+	kmodules.xyz/client-go v0.0.0-20190802200916-043217632b6a
 )
 
 replace (
-	github.com/Azure/go-autorest => github.com/Azure/go-autorest/autorest v0.5.0
+	contrib.go.opencensus.io/exporter/ocagent => contrib.go.opencensus.io/exporter/ocagent v0.3.0
+	github.com/Azure/go-autorest => github.com/Azure/go-autorest v12.3.0+incompatible
+	github.com/census-instrumentation/opencensus-proto => github.com/census-instrumentation/opencensus-proto v0.1.0
+	github.com/golang/protobuf => github.com/golang/protobuf v1.2.0
+	go.opencensus.io => go.opencensus.io v0.21.0
 	k8s.io/api => k8s.io/api v0.0.0-20190313235455-40a48860b5ab
 	k8s.io/apiextensions-apiserver => k8s.io/apiextensions-apiserver v0.0.0-20190315093550-53c4693659ed
 	k8s.io/apimachinery => github.com/kmodules/apimachinery v0.0.0-20190508045248-a52a97a7a2bf
