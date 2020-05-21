@@ -12,17 +12,3 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM {ARG_FROM}
-
-RUN set -x \
-  && apk add --update --no-cache ca-certificates bash \
-  && mkdir /.osm \
-  && touch /.osm/config \
-  && chmod -R 777 .osm
-
-COPY bin/{ARG_OS}_{ARG_ARCH}/{ARG_BIN} /usr/bin/{ARG_BIN}
-COPY hack/docker/docker-entrypoint.sh /usr/local/bin/
-
-USER nobody:nobody
-
-ENTRYPOINT ["docker-entrypoint.sh"]

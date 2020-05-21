@@ -14,16 +14,3 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-package main
-
-import (
-	"log"
-
-	"github.com/appscode/osm/cmds"
-)
-
-func main() {
-	if err := cmds.NewCmdOsm().Execute(); err != nil {
-		log.Fatal(err)
-	}
-}
