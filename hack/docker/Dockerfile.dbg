@@ -20,7 +20,7 @@ RUN set -x \
   && touch /.osm/config \
   && chmod -R 777 .osm
 
-COPY bin/{ARG_OS}_{ARG_ARCH}/{ARG_BIN} /usr/bin/{ARG_BIN}
+COPY bin/{ARG_BIN}-{ARG_OS}-{ARG_ARCH} /usr/bin/{ARG_BIN}
 COPY hack/docker/docker-entrypoint.sh /usr/local/bin/
 
 ENTRYPOINT ["docker-entrypoint.sh"]
