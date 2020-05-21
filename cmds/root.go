@@ -1,3 +1,19 @@
+/*
+Copyright The osm Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
 package cmds
 
 import (
@@ -20,7 +36,7 @@ func NewCmdOsm() *cobra.Command {
 			cli.SendAnalytics(c, v.Version.Version)
 		},
 		Run: func(c *cobra.Command, args []string) {
-			c.Help()
+			_ = c.Help()
 		},
 	}
 	rootCmd.PersistentFlags().AddGoFlagSet(flag.CommandLine)
@@ -28,7 +44,7 @@ func NewCmdOsm() *cobra.Command {
 	rootCmd.PersistentFlags().BoolVar(&cli.EnableAnalytics, "enable-analytics", cli.EnableAnalytics, "Send usage events to Google Analytics")
 
 	rootCmd.PersistentFlags().BoolVar(&cli.EnableAnalytics, "analytics", cli.EnableAnalytics, "Send usage events to Google Analytics")
-	rootCmd.PersistentFlags().MarkDeprecated("analytics", "use --enable-analytics")
+	_ = rootCmd.PersistentFlags().MarkDeprecated("analytics", "use --enable-analytics")
 
 	rootCmd.AddCommand(cfgCmd.NewCmdConfig())
 
