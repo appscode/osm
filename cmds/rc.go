@@ -41,10 +41,10 @@ func NewCmdRemoveContainer() *cobra.Command {
 		Run: func(cmd *cobra.Command, args []string) {
 			if len(args) == 0 {
 				term.Errorln("Provide container name as argument. See examples:")
-				cmd.Help()
+				_ = cmd.Help()
 				os.Exit(1)
 			} else if len(args) > 1 {
-				cmd.Help()
+				_ = cmd.Help()
 				os.Exit(1)
 			}
 
@@ -75,7 +75,8 @@ func removeContainer(req *containerRemoveRequest, configPath string) {
 			term.ExitOnError(err)
 			for _, item := range items {
 				term.Warningln("Removing item: " + item.ID())
-				c.RemoveItem(item.ID())
+				err = c.RemoveItem(item.ID())
+				term.ExitOnError(err)
 			}
 			cursor = next
 			if stow.IsCursorEnd(cursor) {

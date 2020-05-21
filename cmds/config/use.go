@@ -33,10 +33,10 @@ func newCmdUse() *cobra.Command {
 		Run: func(cmd *cobra.Command, args []string) {
 			if len(args) == 0 {
 				term.Errorln("Provide context name as argument. See examples:")
-				cmd.Help()
+				_ = cmd.Help()
 				os.Exit(1)
 			} else if len(args) > 1 {
-				cmd.Help()
+				_ = cmd.Help()
 				os.Exit(1)
 			}
 

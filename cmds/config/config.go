@@ -25,7 +25,7 @@ func NewCmdConfig() *cobra.Command {
 		Example:           "osm config view",
 		DisableAutoGenTag: true,
 		Run: func(cmd *cobra.Command, args []string) {
-			cmd.Help()
+			_ = cmd.Help()
 		},
 	}
 

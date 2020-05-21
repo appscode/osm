@@ -45,10 +45,10 @@ func NewCmdPull() *cobra.Command {
 		Run: func(cmd *cobra.Command, args []string) {
 			if len(args) < 2 {
 				term.Errorln("Provide source item and destination path as argument. See examples:")
-				cmd.Help()
+				_ = cmd.Help()
 				os.Exit(1)
 			} else if len(args) > 2 {
-				cmd.Help()
+				_ = cmd.Help()
 				os.Exit(1)
 			}
 
@@ -91,7 +91,8 @@ func pull(req *itemPullRequest, configPath string) {
 				term.ExitOnError(err)
 
 				f := filepath.Join(req.destPath, r)
-				os.MkdirAll(filepath.Dir(f), 0755)
+				err = os.MkdirAll(filepath.Dir(f), 0755)
+				term.ExitOnError(err)
 				pullItem(item, f, item.ID())
 			}
 			cursor = next

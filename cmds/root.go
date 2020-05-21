@@ -36,7 +36,7 @@ func NewCmdOsm() *cobra.Command {
 			cli.SendAnalytics(c, v.Version.Version)
 		},
 		Run: func(c *cobra.Command, args []string) {
-			c.Help()
+			_ = c.Help()
 		},
 	}
 	rootCmd.PersistentFlags().AddGoFlagSet(flag.CommandLine)
@@ -44,7 +44,7 @@ func NewCmdOsm() *cobra.Command {
 	rootCmd.PersistentFlags().BoolVar(&cli.EnableAnalytics, "enable-analytics", cli.EnableAnalytics, "Send usage events to Google Analytics")
 
 	rootCmd.PersistentFlags().BoolVar(&cli.EnableAnalytics, "analytics", cli.EnableAnalytics, "Send usage events to Google Analytics")
-	rootCmd.PersistentFlags().MarkDeprecated("analytics", "use --enable-analytics")
+	_ = rootCmd.PersistentFlags().MarkDeprecated("analytics", "use --enable-analytics")
 
 	rootCmd.AddCommand(cfgCmd.NewCmdConfig())
 
