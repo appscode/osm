@@ -19,10 +19,10 @@ package config
 import (
 	"os"
 
-	"github.com/appscode/go/term"
 	otx "github.com/appscode/osm/context"
-	"github.com/ghodss/yaml"
+	"sigs.k8s.io/yaml"
 	"github.com/spf13/cobra"
+	"gomodules.xyz/x/term"
 )
 
 func newCmdView() *cobra.Command {

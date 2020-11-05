@@ -20,10 +20,10 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/appscode/go/term"
 	otx "github.com/appscode/osm/context"
 	humanize "github.com/dustin/go-humanize"
 	"github.com/spf13/cobra"
+	"gomodules.xyz/x/term"
 )
 
 type itemStatRequest struct {
