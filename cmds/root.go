@@ -20,9 +20,9 @@ import (
 	"flag"
 	"path/filepath"
 
-	v "github.com/appscode/go/version"
 	cfgCmd "github.com/appscode/osm/cmds/config"
 	"github.com/spf13/cobra"
+	v "gomodules.xyz/x/version"
 	"k8s.io/client-go/util/homedir"
 	"kmodules.xyz/client-go/tools/cli"
 )

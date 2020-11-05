@@ -19,9 +19,9 @@ package config
 import (
 	"os"
 
-	"github.com/appscode/go/term"
 	otx "github.com/appscode/osm/context"
 	"github.com/spf13/cobra"
+	"gomodules.xyz/x/term"
 )
 
 func newCmdUse() *cobra.Command {

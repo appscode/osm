@@ -21,7 +21,6 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/appscode/go/term"
 	otx "github.com/appscode/osm/context"
 	"github.com/spf13/cobra"
 	"gomodules.xyz/stow"
@@ -30,6 +29,7 @@ import (
 	"gomodules.xyz/stow/local"
 	"gomodules.xyz/stow/s3"
 	"gomodules.xyz/stow/swift"
+	"gomodules.xyz/x/term"
 )
 
 type setContextRequest struct {

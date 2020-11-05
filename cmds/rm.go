@@ -19,10 +19,10 @@ package cmds
 import (
 	"os"
 
-	"github.com/appscode/go/term"
 	otx "github.com/appscode/osm/context"
 	"github.com/spf13/cobra"
 	"gomodules.xyz/stow"
+	"gomodules.xyz/x/term"
 )
 
 type itemRemoveRequest struct {
