@@ -20,9 +20,9 @@ import (
 	"os"
 
 	otx "github.com/appscode/osm/context"
-	"sigs.k8s.io/yaml"
 	"github.com/spf13/cobra"
 	"gomodules.xyz/x/term"
+	"sigs.k8s.io/yaml"
 )
 
 func newCmdView() *cobra.Command {
