@@ -12,48 +12,48 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-    - name: Check out code into the Go module directory
-      uses: actions/checkout@v1
+      - name: Check out code into the Go module directory
+        uses: actions/checkout@v1
 
-    - name: Print version info
-      id: semver
-      run: |
-        make version
+      - name: Print version info
+        id: semver
+        run: |
+          make version
 
-    - name: Set up Docker Buildx
-      id: buildx
-      uses: crazy-max/ghaction-docker-buildx@v1
-      with:
-        buildx-version: latest
-        qemu-version: latest
+      - name: Set up QEMU
+        id: qemu
+        uses: docker/setup-qemu-action@v1
 
-    - name: Available platforms
-      run: echo ${{ steps.buildx.outputs.platforms }}
+      - name: Available platforms
+        run: echo ${{steps.qemu.outputs.platforms}}
 
-    - name: Build
-      env:
-        APPSCODE_ENV: prod
-        DOCKER_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
-        USERNAME: 1gtm
-      run: |
-        docker login --username ${USERNAME} --password ${DOCKER_TOKEN}
-        make release
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
 
-    - name: Release
-      uses: softprops/action-gh-release@v1
-      if: startsWith(github.ref, 'refs/tags/')
-      with:
-        draft: true
-        files: |
-          bin/osm-linux-amd64
-          bin/osm-linux-arm
-          bin/osm-linux-arm64
-          bin/osm-windows-amd64.exe
-          bin/osm-darwin-amd64
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build
+        env:
+          APPSCODE_ENV: prod
+          DOCKER_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+          USERNAME: 1gtm
+        run: |
+          docker login --username ${USERNAME} --password ${DOCKER_TOKEN}
+          make release
 
-    - uses: actions/upload-artifact@master
-      with:
-        name: osm-binaries
-        path:  bin
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          draft: true
+          files: |
+            bin/osm-linux-amd64
+            bin/osm-linux-arm
+            bin/osm-linux-arm64
+            bin/osm-windows-amd64.exe
+            bin/osm-darwin-amd64
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/upload-artifact@master
+        with:
+          name: osm-binaries
+          path: bin
