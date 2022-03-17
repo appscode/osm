@@ -4,6 +4,7 @@ go 1.12
 
 require (
 	github.com/dustin/go-humanize v1.0.0
+	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/spf13/cobra v1.1.1
 	gomodules.xyz/runtime v0.0.0-20201104200926-d838b09dda8b
 	gomodules.xyz/stow v0.2.3
