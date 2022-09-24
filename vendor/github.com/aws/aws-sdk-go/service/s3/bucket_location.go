@@ -78,7 +78,7 @@ func WithNormalizeBucketLocation(r *request.Request) {
 func buildGetBucketLocation(r *request.Request) {
 	if r.DataFilled() {
 		out := r.Data.(*GetBucketLocationOutput)
-		b, err := ioutil.ReadAll(r.HTTPResponse.Body)
+		b, err := io.ReadAll(r.HTTPResponse.Body)
 		if err != nil {
 			r.Error = awserr.New(request.ErrCodeSerialization,
 				"failed reading response body", err)

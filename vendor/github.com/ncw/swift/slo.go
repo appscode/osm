@@ -152,7 +152,7 @@ func (c *Connection) getAllSLOSegments(container, path string) (string, []Object
 		return "", nil, err
 	}
 
-	content, err := ioutil.ReadAll(file)
+	content, err := io.ReadAll(file)
 	if err != nil {
 		return "", nil, err
 	}

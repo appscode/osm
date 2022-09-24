@@ -892,7 +892,7 @@ func genBatchReader(batchBoundary string, respBody []byte) (io.Reader, string, e
 
 func readAndCloseBody(body io.ReadCloser) ([]byte, error) {
 	defer body.Close()
-	out, err := ioutil.ReadAll(body)
+	out, err := io.ReadAll(body)
 	if err == io.EOF {
 		err = nil
 	}

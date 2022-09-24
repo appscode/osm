@@ -186,7 +186,7 @@ func newS3Client(config stow.Config, region string) (client *s3.S3, endpoint str
 	} else {
 		cacertFile, ok := config.Config(ConfigCACertFile)
 		if ok {
-			cacert, err := ioutil.ReadFile(cacertFile)
+			cacert, err := os.ReadFile(cacertFile)
 			if err != nil {
 				return nil, "", errors.Errorf("unable to read root certificate: %v", err)
 			}

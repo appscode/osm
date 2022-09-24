@@ -268,7 +268,7 @@ func (f Future) GetResult(sender autorest.Sender) (*http.Response, error) {
 	if err == nil && resp.Body != nil {
 		// copy the body and close it so callers don't have to
 		defer resp.Body.Close()
-		b, err := ioutil.ReadAll(resp.Body)
+		b, err := io.ReadAll(resp.Body)
 		if err != nil {
 			return resp, err
 		}
@@ -409,7 +409,7 @@ func (pt *pollingTrackerBase) updateRawBody() error {
 	pt.rawBody = map[string]interface{}{}
 	if pt.resp.ContentLength != 0 {
 		defer pt.resp.Body.Close()
-		b, err := ioutil.ReadAll(pt.resp.Body)
+		b, err := io.ReadAll(pt.resp.Body)
 		if err != nil {
 			return autorest.NewErrorWithError(err, "pollingTrackerBase", "updateRawBody", nil, "failed to read response body")
 		}
@@ -466,7 +466,7 @@ func (pt *pollingTrackerBase) updateErrorFromResponse() {
 		re := respErr{}
 		defer pt.resp.Body.Close()
 		var b []byte
-		if b, err = ioutil.ReadAll(pt.resp.Body); err != nil {
+		if b, err = io.ReadAll(pt.resp.Body); err != nil {
 			goto Default
 		}
 		// put the body back so it's available to other callers
