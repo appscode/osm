@@ -17,7 +17,6 @@ limitations under the License.
 package config
 
 import (
-	"io/ioutil"
 	"os"
 	"strconv"
 
@@ -147,7 +146,7 @@ func setContext(req *setContextRequest, configPath string) {
 	case gcs.Kind:
 		nc.Provider = gcs.Kind
 		if req.gcsConfigJSONKeyPath != "" {
-			jsonKey, err := ioutil.ReadFile(req.gcsConfigJSONKeyPath)
+			jsonKey, err := os.ReadFile(req.gcsConfigJSONKeyPath)
 			term.ExitOnError(err)
 			nc.Config[gcs.ConfigJSON] = string(jsonKey)
 		}

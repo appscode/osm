@@ -55,7 +55,7 @@ func unmarshalBody(r *request.Request, v reflect.Value) {
 					switch payload.Interface().(type) {
 					case []byte:
 						defer r.HTTPResponse.Body.Close()
-						b, err := ioutil.ReadAll(r.HTTPResponse.Body)
+						b, err := io.ReadAll(r.HTTPResponse.Body)
 						if err != nil {
 							r.Error = awserr.New(request.ErrCodeSerialization, "failed to decode REST response", err)
 						} else {
@@ -63,7 +63,7 @@ func unmarshalBody(r *request.Request, v reflect.Value) {
 						}
 					case *string:
 						defer r.HTTPResponse.Body.Close()
-						b, err := ioutil.ReadAll(r.HTTPResponse.Body)
+						b, err := io.ReadAll(r.HTTPResponse.Body)
 						if err != nil {
 							r.Error = awserr.New(request.ErrCodeSerialization, "failed to decode REST response", err)
 						} else {
@@ -75,7 +75,7 @@ func unmarshalBody(r *request.Request, v reflect.Value) {
 						case "io.ReadCloser":
 							payload.Set(reflect.ValueOf(r.HTTPResponse.Body))
 						case "io.ReadSeeker":
-							b, err := ioutil.ReadAll(r.HTTPResponse.Body)
+							b, err := io.ReadAll(r.HTTPResponse.Body)
 							if err != nil {
 								r.Error = awserr.New(request.ErrCodeSerialization,
 									"failed to read response body", err)

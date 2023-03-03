@@ -5,12 +5,16 @@ go 1.12
 require (
 	github.com/dustin/go-humanize v1.0.0
 	github.com/json-iterator/go v1.1.12 // indirect
+	github.com/modern-go/reflect2 v1.0.2
 	github.com/spf13/cobra v1.1.1
+	golang.org/x/crypto v0.6.0
+	golang.org/x/net v0.7.0
 	gomodules.xyz/runtime v0.0.0-20201104200926-d838b09dda8b
 	gomodules.xyz/stow v0.2.3
 	gomodules.xyz/x v0.0.0-20201105065653-91c568df6331
 	k8s.io/client-go v0.21.0
 	kmodules.xyz/client-go v0.0.0-20210425191502-3a7296dae084
+	kmodules.xyz/resource-metadata v0.15.0
 	sigs.k8s.io/yaml v1.2.0
 )
 

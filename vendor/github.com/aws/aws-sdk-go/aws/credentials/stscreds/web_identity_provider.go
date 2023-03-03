@@ -64,7 +64,7 @@ func NewWebIdentityRoleProvider(svc stsiface.STSAPI, roleARN, roleSessionName, p
 // 'WebIdentityTokenFilePath' specified destination and if that is empty an
 // error will be returned.
 func (p *WebIdentityRoleProvider) Retrieve() (credentials.Value, error) {
-	b, err := ioutil.ReadFile(p.tokenFilePath)
+	b, err := os.ReadFile(p.tokenFilePath)
 	if err != nil {
 		errMsg := fmt.Sprintf("unable to read file at %s", p.tokenFilePath)
 		return credentials.Value{}, awserr.New(ErrCodeWebIdentity, errMsg, err)
